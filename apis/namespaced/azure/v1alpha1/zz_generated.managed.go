@@ -5,164 +5,164 @@ Copyright 2022 Upbound Inc.
 
 package v1alpha1
 
-import xpv1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+import xpv2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 
 // GetCondition of this AuthBackendConfig.
-func (mg *AuthBackendConfig) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *AuthBackendConfig) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetManagementPolicies of this AuthBackendConfig.
-func (mg *AuthBackendConfig) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *AuthBackendConfig) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this AuthBackendConfig.
-func (mg *AuthBackendConfig) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+func (mg *AuthBackendConfig) GetProviderConfigReference() *xpv2.ProviderConfigReference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this AuthBackendConfig.
-func (mg *AuthBackendConfig) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+func (mg *AuthBackendConfig) GetWriteConnectionSecretToReference() *xpv2.LocalSecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this AuthBackendConfig.
-func (mg *AuthBackendConfig) SetConditions(c ...xpv1.Condition) {
+func (mg *AuthBackendConfig) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetManagementPolicies of this AuthBackendConfig.
-func (mg *AuthBackendConfig) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *AuthBackendConfig) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this AuthBackendConfig.
-func (mg *AuthBackendConfig) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+func (mg *AuthBackendConfig) SetProviderConfigReference(r *xpv2.ProviderConfigReference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this AuthBackendConfig.
-func (mg *AuthBackendConfig) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+func (mg *AuthBackendConfig) SetWriteConnectionSecretToReference(r *xpv2.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this AuthBackendRole.
-func (mg *AuthBackendRole) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *AuthBackendRole) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetManagementPolicies of this AuthBackendRole.
-func (mg *AuthBackendRole) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *AuthBackendRole) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this AuthBackendRole.
-func (mg *AuthBackendRole) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+func (mg *AuthBackendRole) GetProviderConfigReference() *xpv2.ProviderConfigReference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this AuthBackendRole.
-func (mg *AuthBackendRole) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+func (mg *AuthBackendRole) GetWriteConnectionSecretToReference() *xpv2.LocalSecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this AuthBackendRole.
-func (mg *AuthBackendRole) SetConditions(c ...xpv1.Condition) {
+func (mg *AuthBackendRole) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetManagementPolicies of this AuthBackendRole.
-func (mg *AuthBackendRole) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *AuthBackendRole) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this AuthBackendRole.
-func (mg *AuthBackendRole) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+func (mg *AuthBackendRole) SetProviderConfigReference(r *xpv2.ProviderConfigReference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this AuthBackendRole.
-func (mg *AuthBackendRole) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+func (mg *AuthBackendRole) SetWriteConnectionSecretToReference(r *xpv2.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this SecretBackend.
-func (mg *SecretBackend) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *SecretBackend) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetManagementPolicies of this SecretBackend.
-func (mg *SecretBackend) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *SecretBackend) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this SecretBackend.
-func (mg *SecretBackend) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+func (mg *SecretBackend) GetProviderConfigReference() *xpv2.ProviderConfigReference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this SecretBackend.
-func (mg *SecretBackend) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+func (mg *SecretBackend) GetWriteConnectionSecretToReference() *xpv2.LocalSecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this SecretBackend.
-func (mg *SecretBackend) SetConditions(c ...xpv1.Condition) {
+func (mg *SecretBackend) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetManagementPolicies of this SecretBackend.
-func (mg *SecretBackend) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *SecretBackend) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this SecretBackend.
-func (mg *SecretBackend) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+func (mg *SecretBackend) SetProviderConfigReference(r *xpv2.ProviderConfigReference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this SecretBackend.
-func (mg *SecretBackend) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+func (mg *SecretBackend) SetWriteConnectionSecretToReference(r *xpv2.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this SecretBackendRole.
-func (mg *SecretBackendRole) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *SecretBackendRole) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetManagementPolicies of this SecretBackendRole.
-func (mg *SecretBackendRole) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *SecretBackendRole) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this SecretBackendRole.
-func (mg *SecretBackendRole) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+func (mg *SecretBackendRole) GetProviderConfigReference() *xpv2.ProviderConfigReference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this SecretBackendRole.
-func (mg *SecretBackendRole) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+func (mg *SecretBackendRole) GetWriteConnectionSecretToReference() *xpv2.LocalSecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this SecretBackendRole.
-func (mg *SecretBackendRole) SetConditions(c ...xpv1.Condition) {
+func (mg *SecretBackendRole) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetManagementPolicies of this SecretBackendRole.
-func (mg *SecretBackendRole) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *SecretBackendRole) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this SecretBackendRole.
-func (mg *SecretBackendRole) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+func (mg *SecretBackendRole) SetProviderConfigReference(r *xpv2.ProviderConfigReference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this SecretBackendRole.
-func (mg *SecretBackendRole) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+func (mg *SecretBackendRole) SetWriteConnectionSecretToReference(r *xpv2.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }

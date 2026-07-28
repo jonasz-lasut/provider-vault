@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretBackendRoleInitParameters struct {
@@ -25,11 +24,11 @@ type SecretBackendRoleInitParameters struct {
 
 	// Reference to a SecretBackend in rabbitmq to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a SecretBackend in rabbitmq to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// The name to identify this role within the backend.
 	// Must be unique within the backend.
@@ -102,11 +101,11 @@ type SecretBackendRoleParameters struct {
 
 	// Reference to a SecretBackend in rabbitmq to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a SecretBackend in rabbitmq to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// The name to identify this role within the backend.
 	// Must be unique within the backend.
@@ -277,8 +276,8 @@ type SecretBackendRoleSpec struct {
 
 // SecretBackendRoleStatus defines the observed state of SecretBackendRole.
 type SecretBackendRoleStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretBackendRoleObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretBackendRoleObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

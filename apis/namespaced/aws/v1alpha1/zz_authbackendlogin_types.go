@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type AuthBackendLoginInitParameters struct {
@@ -25,11 +24,11 @@ type AuthBackendLoginInitParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// The HTTP method used in the signed IAM
 	// request.
@@ -85,11 +84,11 @@ type AuthBackendLoginInitParameters struct {
 
 	// Reference to a AuthBackendRole in aws to populate role.
 	// +kubebuilder:validation:Optional
-	RoleRef *v1.NamespacedReference `json:"roleRef,omitempty" tf:"-"`
+	RoleRef *v2.NamespacedReference `json:"roleRef,omitempty" tf:"-"`
 
 	// Selector for a AuthBackendRole in aws to populate role.
 	// +kubebuilder:validation:Optional
-	RoleSelector *v1.NamespacedSelector `json:"roleSelector,omitempty" tf:"-"`
+	RoleSelector *v2.NamespacedSelector `json:"roleSelector,omitempty" tf:"-"`
 
 	// The base64-encoded SHA256 RSA signature of the
 	// instance identity document to authenticate with, with all newline characters
@@ -208,11 +207,11 @@ type AuthBackendLoginParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// The HTTP method used in the signed IAM
 	// request.
@@ -277,11 +276,11 @@ type AuthBackendLoginParameters struct {
 
 	// Reference to a AuthBackendRole in aws to populate role.
 	// +kubebuilder:validation:Optional
-	RoleRef *v1.NamespacedReference `json:"roleRef,omitempty" tf:"-"`
+	RoleRef *v2.NamespacedReference `json:"roleRef,omitempty" tf:"-"`
 
 	// Selector for a AuthBackendRole in aws to populate role.
 	// +kubebuilder:validation:Optional
-	RoleSelector *v1.NamespacedSelector `json:"roleSelector,omitempty" tf:"-"`
+	RoleSelector *v2.NamespacedSelector `json:"roleSelector,omitempty" tf:"-"`
 
 	// The base64-encoded SHA256 RSA signature of the
 	// instance identity document to authenticate with, with all newline characters
@@ -310,8 +309,8 @@ type AuthBackendLoginSpec struct {
 
 // AuthBackendLoginStatus defines the observed state of AuthBackendLogin.
 type AuthBackendLoginStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        AuthBackendLoginObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               AuthBackendLoginObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

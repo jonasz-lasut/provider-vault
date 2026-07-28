@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretBackendInitParameters struct {
@@ -35,12 +35,12 @@ type SecretBackendInitParameters struct {
 
 	// The GCP service account credentials in JSON format.
 	// JSON-encoded credentials to use to connect to GCP
-	CredentialsSecretRef *v1.SecretKeySelector `json:"credentialsSecretRef,omitempty" tf:"-"`
+	CredentialsSecretRef *v2.SecretKeySelector `json:"credentialsSecretRef,omitempty" tf:"-"`
 
 	// The GCP service account credentials in JSON format. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
 	// Write-only JSON-encoded credentials to use to connect to GCP
-	CredentialsWoSecretRef *v1.SecretKeySelector `json:"credentialsWoSecretRef,omitempty" tf:"-"`
+	CredentialsWoSecretRef *v2.SecretKeySelector `json:"credentialsWoSecretRef,omitempty" tf:"-"`
 
 	// The version of the credentials_wo. For more info see updating write-only attributes.
 	// Version counter for write-only JSON-encoded credentials
@@ -349,13 +349,13 @@ type SecretBackendParameters struct {
 	// The GCP service account credentials in JSON format.
 	// JSON-encoded credentials to use to connect to GCP
 	// +kubebuilder:validation:Optional
-	CredentialsSecretRef *v1.SecretKeySelector `json:"credentialsSecretRef,omitempty" tf:"-"`
+	CredentialsSecretRef *v2.SecretKeySelector `json:"credentialsSecretRef,omitempty" tf:"-"`
 
 	// The GCP service account credentials in JSON format. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
 	// Write-only JSON-encoded credentials to use to connect to GCP
 	// +kubebuilder:validation:Optional
-	CredentialsWoSecretRef *v1.SecretKeySelector `json:"credentialsWoSecretRef,omitempty" tf:"-"`
+	CredentialsWoSecretRef *v2.SecretKeySelector `json:"credentialsWoSecretRef,omitempty" tf:"-"`
 
 	// The version of the credentials_wo. For more info see updating write-only attributes.
 	// Version counter for write-only JSON-encoded credentials
@@ -512,8 +512,8 @@ type SecretBackendParameters struct {
 
 // SecretBackendSpec defines the desired state of SecretBackend
 type SecretBackendSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     SecretBackendParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   SecretBackendParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -529,8 +529,8 @@ type SecretBackendSpec struct {
 
 // SecretBackendStatus defines the observed state of SecretBackend.
 type SecretBackendStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretBackendObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretBackendObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

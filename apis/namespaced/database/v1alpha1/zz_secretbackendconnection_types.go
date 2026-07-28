@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type CassandraInitParameters struct {
@@ -40,16 +39,16 @@ type CassandraInitParameters struct {
 
 	// The password to authenticate with.
 	// The password to use when authenticating with Cassandra.
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// Concatenated PEM blocks configuring the certificate
 	// chain.
 	// Concatenated PEM blocks containing a certificate and private key; a certificate, private key, and issuing CA certificate; or just a CA certificate.
-	PemBundleSecretRef *v1.LocalSecretKeySelector `json:"pemBundleSecretRef,omitempty" tf:"-"`
+	PemBundleSecretRef *v2.LocalSecretKeySelector `json:"pemBundleSecretRef,omitempty" tf:"-"`
 
 	// A JSON structure configuring the certificate chain.
 	// Specifies JSON containing a certificate and private key; a certificate, private key, and issuing CA certificate; or just a CA certificate.
-	PemJSONSecretRef *v1.LocalSecretKeySelector `json:"pemJsonSecretRef,omitempty" tf:"-"`
+	PemJSONSecretRef *v2.LocalSecretKeySelector `json:"pemJsonSecretRef,omitempty" tf:"-"`
 
 	// The default port to connect to if no port is specified as
 	// part of the host.
@@ -177,18 +176,18 @@ type CassandraParameters struct {
 	// The password to authenticate with.
 	// The password to use when authenticating with Cassandra.
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// Concatenated PEM blocks configuring the certificate
 	// chain.
 	// Concatenated PEM blocks containing a certificate and private key; a certificate, private key, and issuing CA certificate; or just a CA certificate.
 	// +kubebuilder:validation:Optional
-	PemBundleSecretRef *v1.LocalSecretKeySelector `json:"pemBundleSecretRef,omitempty" tf:"-"`
+	PemBundleSecretRef *v2.LocalSecretKeySelector `json:"pemBundleSecretRef,omitempty" tf:"-"`
 
 	// A JSON structure configuring the certificate chain.
 	// Specifies JSON containing a certificate and private key; a certificate, private key, and issuing CA certificate; or just a CA certificate.
 	// +kubebuilder:validation:Optional
-	PemJSONSecretRef *v1.LocalSecretKeySelector `json:"pemJsonSecretRef,omitempty" tf:"-"`
+	PemJSONSecretRef *v2.LocalSecretKeySelector `json:"pemJsonSecretRef,omitempty" tf:"-"`
 
 	// The default port to connect to if no port is specified as
 	// part of the host.
@@ -237,7 +236,7 @@ type CouchbaseInitParameters struct {
 
 	// Required if tls is true. Specifies the certificate authority of the Couchbase server, as a PEM certificate that has been base64 encoded.
 	// Required if `tls` is `true`. Specifies the certificate authority of the Couchbase server, as a PEM certificate that has been base64 encoded.
-	Base64PemSecretRef *v1.LocalSecretKeySelector `json:"base64PemSecretRef,omitempty" tf:"-"`
+	Base64PemSecretRef *v2.LocalSecretKeySelector `json:"base64PemSecretRef,omitempty" tf:"-"`
 
 	// Required for Couchbase versions prior to 6.5.0. This is only used to verify vault's connection to the server.
 	// Required for Couchbase versions prior to 6.5.0. This is only used to verify vault's connection to the server.
@@ -254,7 +253,7 @@ type CouchbaseInitParameters struct {
 
 	// The password to authenticate with.
 	// Specifies the password corresponding to the given username.
-	PasswordSecretRef v1.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
+	PasswordSecretRef v2.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
 	// Whether to use TLS when connecting to Cassandra.
 	// Specifies whether to use TLS when connecting to Couchbase.
@@ -302,7 +301,7 @@ type CouchbaseParameters struct {
 	// Required if tls is true. Specifies the certificate authority of the Couchbase server, as a PEM certificate that has been base64 encoded.
 	// Required if `tls` is `true`. Specifies the certificate authority of the Couchbase server, as a PEM certificate that has been base64 encoded.
 	// +kubebuilder:validation:Optional
-	Base64PemSecretRef *v1.LocalSecretKeySelector `json:"base64PemSecretRef,omitempty" tf:"-"`
+	Base64PemSecretRef *v2.LocalSecretKeySelector `json:"base64PemSecretRef,omitempty" tf:"-"`
 
 	// Required for Couchbase versions prior to 6.5.0. This is only used to verify vault's connection to the server.
 	// Required for Couchbase versions prior to 6.5.0. This is only used to verify vault's connection to the server.
@@ -323,7 +322,7 @@ type CouchbaseParameters struct {
 	// The password to authenticate with.
 	// Specifies the password corresponding to the given username.
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef v1.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
+	PasswordSecretRef v2.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
 	// Whether to use TLS when connecting to Cassandra.
 	// Specifies whether to use TLS when connecting to Couchbase.
@@ -365,7 +364,7 @@ type ElasticsearchInitParameters struct {
 
 	// The password to authenticate with.
 	// The password to be used in the connection URL
-	PasswordSecretRef v1.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
+	PasswordSecretRef v2.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
 	// Specifies the name to use as the SNI host when connecting to the Cassandra server via TLS.
 	// This, if set, is used to set the SNI host when connecting via TLS
@@ -453,7 +452,7 @@ type ElasticsearchParameters struct {
 	// The password to authenticate with.
 	// The password to be used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef v1.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
+	PasswordSecretRef v2.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
 	// Specifies the name to use as the SNI host when connecting to the Cassandra server via TLS.
 	// This, if set, is used to set the SNI host when connecting via TLS
@@ -506,7 +505,7 @@ type HanaInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -608,7 +607,7 @@ type HanaParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -650,16 +649,16 @@ type InfluxdbInitParameters struct {
 
 	// The password to authenticate with.
 	// Specifies the password corresponding to the given username.
-	PasswordSecretRef v1.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
+	PasswordSecretRef v2.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
 	// Concatenated PEM blocks configuring the certificate
 	// chain.
 	// Concatenated PEM blocks containing a certificate and private key; a certificate, private key, and issuing CA certificate; or just a CA certificate.
-	PemBundleSecretRef *v1.LocalSecretKeySelector `json:"pemBundleSecretRef,omitempty" tf:"-"`
+	PemBundleSecretRef *v2.LocalSecretKeySelector `json:"pemBundleSecretRef,omitempty" tf:"-"`
 
 	// A JSON structure configuring the certificate chain.
 	// Specifies JSON containing a certificate and private key; a certificate, private key, and issuing CA certificate; or just a CA certificate.
-	PemJSONSecretRef *v1.LocalSecretKeySelector `json:"pemJsonSecretRef,omitempty" tf:"-"`
+	PemJSONSecretRef *v2.LocalSecretKeySelector `json:"pemJsonSecretRef,omitempty" tf:"-"`
 
 	// The default port to connect to if no port is specified as
 	// part of the host.
@@ -735,18 +734,18 @@ type InfluxdbParameters struct {
 	// The password to authenticate with.
 	// Specifies the password corresponding to the given username.
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef v1.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
+	PasswordSecretRef v2.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
 	// Concatenated PEM blocks configuring the certificate
 	// chain.
 	// Concatenated PEM blocks containing a certificate and private key; a certificate, private key, and issuing CA certificate; or just a CA certificate.
 	// +kubebuilder:validation:Optional
-	PemBundleSecretRef *v1.LocalSecretKeySelector `json:"pemBundleSecretRef,omitempty" tf:"-"`
+	PemBundleSecretRef *v2.LocalSecretKeySelector `json:"pemBundleSecretRef,omitempty" tf:"-"`
 
 	// A JSON structure configuring the certificate chain.
 	// Specifies JSON containing a certificate and private key; a certificate, private key, and issuing CA certificate; or just a CA certificate.
 	// +kubebuilder:validation:Optional
-	PemJSONSecretRef *v1.LocalSecretKeySelector `json:"pemJsonSecretRef,omitempty" tf:"-"`
+	PemJSONSecretRef *v2.LocalSecretKeySelector `json:"pemJsonSecretRef,omitempty" tf:"-"`
 
 	// The default port to connect to if no port is specified as
 	// part of the host.
@@ -796,7 +795,7 @@ type MongodbInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -813,7 +812,7 @@ type MongodbInitParameters struct {
 
 	// The client certificate and private key (concatenated in PEM format) to use for TLS authentication with MongoDB. This is a sensitive field that will not be returned in API responses.
 	// The x509 certificate and private key bundle for connecting to the database. Must be PEM encoded.
-	TLSCertificateKeySecretRef *v1.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
+	TLSCertificateKeySecretRef *v2.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
 
 	// The username to authenticate with.
 	// The root credential username used in the connection URL
@@ -909,7 +908,7 @@ type MongodbParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -930,7 +929,7 @@ type MongodbParameters struct {
 	// The client certificate and private key (concatenated in PEM format) to use for TLS authentication with MongoDB. This is a sensitive field that will not be returned in API responses.
 	// The x509 certificate and private key bundle for connecting to the database. Must be PEM encoded.
 	// +kubebuilder:validation:Optional
-	TLSCertificateKeySecretRef *v1.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
+	TLSCertificateKeySecretRef *v2.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
 
 	// The username to authenticate with.
 	// The root credential username used in the connection URL
@@ -952,7 +951,7 @@ type MongodbatlasInitParameters struct {
 
 	// The Private Programmatic API Key used to connect with MongoDB Atlas API.
 	// The Private Programmatic API Key used to connect with MongoDB Atlas API.
-	PrivateKeySecretRef v1.LocalSecretKeySelector `json:"privateKeySecretRef" tf:"-"`
+	PrivateKeySecretRef v2.LocalSecretKeySelector `json:"privateKeySecretRef" tf:"-"`
 
 	// The Project ID the Database User should be created within.
 	// The Project ID the Database User should be created within.
@@ -987,7 +986,7 @@ type MongodbatlasParameters struct {
 	// The Private Programmatic API Key used to connect with MongoDB Atlas API.
 	// The Private Programmatic API Key used to connect with MongoDB Atlas API.
 	// +kubebuilder:validation:Optional
-	PrivateKeySecretRef v1.LocalSecretKeySelector `json:"privateKeySecretRef" tf:"-"`
+	PrivateKeySecretRef v2.LocalSecretKeySelector `json:"privateKeySecretRef" tf:"-"`
 
 	// The Project ID the Database User should be created within.
 	// The Project ID the Database User should be created within.
@@ -1042,7 +1041,7 @@ type MssqlInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -1159,7 +1158,7 @@ type MssqlParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -1213,7 +1212,7 @@ type MySQLAuroraInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -1226,7 +1225,7 @@ type MySQLAuroraInitParameters struct {
 
 	// JSON encoding of an IAM access key. Requires auth_type to be gcp_iam.
 	// A JSON encoded credential for use with IAM authorization
-	ServiceAccountJSONSecretRef *v1.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
+	ServiceAccountJSONSecretRef *v2.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
 
 	// The CA certificate to use when verifying the MongoDB server's TLS certificate.
 	// x509 CA file for validating the certificate presented by the MySQL server. Must be PEM encoded.
@@ -1234,7 +1233,7 @@ type MySQLAuroraInitParameters struct {
 
 	// The client certificate and private key (concatenated in PEM format) to use for TLS authentication with MongoDB. This is a sensitive field that will not be returned in API responses.
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
-	TLSCertificateKeySecretRef *v1.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
+	TLSCertificateKeySecretRef *v2.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
 
 	// The username to authenticate with.
 	// The root credential username used in the connection URL
@@ -1331,7 +1330,7 @@ type MySQLAuroraParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -1347,7 +1346,7 @@ type MySQLAuroraParameters struct {
 	// JSON encoding of an IAM access key. Requires auth_type to be gcp_iam.
 	// A JSON encoded credential for use with IAM authorization
 	// +kubebuilder:validation:Optional
-	ServiceAccountJSONSecretRef *v1.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
+	ServiceAccountJSONSecretRef *v2.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
 
 	// The CA certificate to use when verifying the MongoDB server's TLS certificate.
 	// x509 CA file for validating the certificate presented by the MySQL server. Must be PEM encoded.
@@ -1357,7 +1356,7 @@ type MySQLAuroraParameters struct {
 	// The client certificate and private key (concatenated in PEM format) to use for TLS authentication with MongoDB. This is a sensitive field that will not be returned in API responses.
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
 	// +kubebuilder:validation:Optional
-	TLSCertificateKeySecretRef *v1.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
+	TLSCertificateKeySecretRef *v2.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
 
 	// The username to authenticate with.
 	// The root credential username used in the connection URL
@@ -1400,7 +1399,7 @@ type MySQLInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -1413,7 +1412,7 @@ type MySQLInitParameters struct {
 
 	// JSON encoding of an IAM access key. Requires auth_type to be gcp_iam.
 	// A JSON encoded credential for use with IAM authorization
-	ServiceAccountJSONSecretRef *v1.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
+	ServiceAccountJSONSecretRef *v2.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
 
 	// The CA certificate to use when verifying the MongoDB server's TLS certificate.
 	// x509 CA file for validating the certificate presented by the MySQL server. Must be PEM encoded.
@@ -1421,7 +1420,7 @@ type MySQLInitParameters struct {
 
 	// The client certificate and private key (concatenated in PEM format) to use for TLS authentication with MongoDB. This is a sensitive field that will not be returned in API responses.
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
-	TLSCertificateKeySecretRef *v1.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
+	TLSCertificateKeySecretRef *v2.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
 
 	// The username to authenticate with.
 	// The root credential username used in the connection URL
@@ -1462,7 +1461,7 @@ type MySQLLegacyInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -1475,7 +1474,7 @@ type MySQLLegacyInitParameters struct {
 
 	// JSON encoding of an IAM access key. Requires auth_type to be gcp_iam.
 	// A JSON encoded credential for use with IAM authorization
-	ServiceAccountJSONSecretRef *v1.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
+	ServiceAccountJSONSecretRef *v2.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
 
 	// The CA certificate to use when verifying the MongoDB server's TLS certificate.
 	// x509 CA file for validating the certificate presented by the MySQL server. Must be PEM encoded.
@@ -1483,7 +1482,7 @@ type MySQLLegacyInitParameters struct {
 
 	// The client certificate and private key (concatenated in PEM format) to use for TLS authentication with MongoDB. This is a sensitive field that will not be returned in API responses.
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
-	TLSCertificateKeySecretRef *v1.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
+	TLSCertificateKeySecretRef *v2.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
 
 	// The username to authenticate with.
 	// The root credential username used in the connection URL
@@ -1580,7 +1579,7 @@ type MySQLLegacyParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -1596,7 +1595,7 @@ type MySQLLegacyParameters struct {
 	// JSON encoding of an IAM access key. Requires auth_type to be gcp_iam.
 	// A JSON encoded credential for use with IAM authorization
 	// +kubebuilder:validation:Optional
-	ServiceAccountJSONSecretRef *v1.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
+	ServiceAccountJSONSecretRef *v2.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
 
 	// The CA certificate to use when verifying the MongoDB server's TLS certificate.
 	// x509 CA file for validating the certificate presented by the MySQL server. Must be PEM encoded.
@@ -1606,7 +1605,7 @@ type MySQLLegacyParameters struct {
 	// The client certificate and private key (concatenated in PEM format) to use for TLS authentication with MongoDB. This is a sensitive field that will not be returned in API responses.
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
 	// +kubebuilder:validation:Optional
-	TLSCertificateKeySecretRef *v1.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
+	TLSCertificateKeySecretRef *v2.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
 
 	// The username to authenticate with.
 	// The root credential username used in the connection URL
@@ -1705,7 +1704,7 @@ type MySQLParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -1721,7 +1720,7 @@ type MySQLParameters struct {
 	// JSON encoding of an IAM access key. Requires auth_type to be gcp_iam.
 	// A JSON encoded credential for use with IAM authorization
 	// +kubebuilder:validation:Optional
-	ServiceAccountJSONSecretRef *v1.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
+	ServiceAccountJSONSecretRef *v2.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
 
 	// The CA certificate to use when verifying the MongoDB server's TLS certificate.
 	// x509 CA file for validating the certificate presented by the MySQL server. Must be PEM encoded.
@@ -1731,7 +1730,7 @@ type MySQLParameters struct {
 	// The client certificate and private key (concatenated in PEM format) to use for TLS authentication with MongoDB. This is a sensitive field that will not be returned in API responses.
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
 	// +kubebuilder:validation:Optional
-	TLSCertificateKeySecretRef *v1.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
+	TLSCertificateKeySecretRef *v2.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
 
 	// The username to authenticate with.
 	// The root credential username used in the connection URL
@@ -1774,7 +1773,7 @@ type MySQLRDSInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -1787,7 +1786,7 @@ type MySQLRDSInitParameters struct {
 
 	// JSON encoding of an IAM access key. Requires auth_type to be gcp_iam.
 	// A JSON encoded credential for use with IAM authorization
-	ServiceAccountJSONSecretRef *v1.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
+	ServiceAccountJSONSecretRef *v2.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
 
 	// The CA certificate to use when verifying the MongoDB server's TLS certificate.
 	// x509 CA file for validating the certificate presented by the MySQL server. Must be PEM encoded.
@@ -1795,7 +1794,7 @@ type MySQLRDSInitParameters struct {
 
 	// The client certificate and private key (concatenated in PEM format) to use for TLS authentication with MongoDB. This is a sensitive field that will not be returned in API responses.
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
-	TLSCertificateKeySecretRef *v1.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
+	TLSCertificateKeySecretRef *v2.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
 
 	// The username to authenticate with.
 	// The root credential username used in the connection URL
@@ -1892,7 +1891,7 @@ type MySQLRDSParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -1908,7 +1907,7 @@ type MySQLRDSParameters struct {
 	// JSON encoding of an IAM access key. Requires auth_type to be gcp_iam.
 	// A JSON encoded credential for use with IAM authorization
 	// +kubebuilder:validation:Optional
-	ServiceAccountJSONSecretRef *v1.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
+	ServiceAccountJSONSecretRef *v2.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
 
 	// The CA certificate to use when verifying the MongoDB server's TLS certificate.
 	// x509 CA file for validating the certificate presented by the MySQL server. Must be PEM encoded.
@@ -1918,7 +1917,7 @@ type MySQLRDSParameters struct {
 	// The client certificate and private key (concatenated in PEM format) to use for TLS authentication with MongoDB. This is a sensitive field that will not be returned in API responses.
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
 	// +kubebuilder:validation:Optional
-	TLSCertificateKeySecretRef *v1.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
+	TLSCertificateKeySecretRef *v2.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
 
 	// The username to authenticate with.
 	// The root credential username used in the connection URL
@@ -1961,7 +1960,7 @@ type OracleInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -2083,7 +2082,7 @@ type OracleParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -2159,7 +2158,7 @@ type PostgresqlInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -2172,7 +2171,7 @@ type PostgresqlInitParameters struct {
 
 	// The Private Programmatic API Key used to connect with MongoDB Atlas API.
 	// The secret key used for the x509 client certificate. Must be PEM encoded.
-	PrivateKeySecretRef *v1.LocalSecretKeySelector `json:"privateKeySecretRef,omitempty" tf:"-"`
+	PrivateKeySecretRef *v2.LocalSecretKeySelector `json:"privateKeySecretRef,omitempty" tf:"-"`
 
 	// If set, allows onboarding static roles with a rootless
 	// connection configuration. Mutually exclusive with username and password.
@@ -2182,7 +2181,7 @@ type PostgresqlInitParameters struct {
 
 	// JSON encoding of an IAM access key. Requires auth_type to be gcp_iam.
 	// A JSON encoded credential for use with IAM authorization
-	ServiceAccountJSONSecretRef *v1.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
+	ServiceAccountJSONSecretRef *v2.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
 
 	// The CA certificate to use when verifying the MongoDB server's TLS certificate.
 	// The x509 CA file for validating the certificate presented by the PostgreSQL server. Must be PEM encoded.
@@ -2321,7 +2320,7 @@ type PostgresqlParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -2337,7 +2336,7 @@ type PostgresqlParameters struct {
 	// The Private Programmatic API Key used to connect with MongoDB Atlas API.
 	// The secret key used for the x509 client certificate. Must be PEM encoded.
 	// +kubebuilder:validation:Optional
-	PrivateKeySecretRef *v1.LocalSecretKeySelector `json:"privateKeySecretRef,omitempty" tf:"-"`
+	PrivateKeySecretRef *v2.LocalSecretKeySelector `json:"privateKeySecretRef,omitempty" tf:"-"`
 
 	// If set, allows onboarding static roles with a rootless
 	// connection configuration. Mutually exclusive with username and password.
@@ -2349,7 +2348,7 @@ type PostgresqlParameters struct {
 	// JSON encoding of an IAM access key. Requires auth_type to be gcp_iam.
 	// A JSON encoded credential for use with IAM authorization
 	// +kubebuilder:validation:Optional
-	ServiceAccountJSONSecretRef *v1.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
+	ServiceAccountJSONSecretRef *v2.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
 
 	// The CA certificate to use when verifying the MongoDB server's TLS certificate.
 	// The x509 CA file for validating the certificate presented by the PostgreSQL server. Must be PEM encoded.
@@ -2377,7 +2376,7 @@ type RedisElasticacheInitParameters struct {
 
 	// The password to authenticate with.
 	// The AWS secret key id to use to talk to ElastiCache. If omitted the credentials chain provider is used instead.
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The region where the ElastiCache cluster is hosted. If omitted Vault tries to infer from the environment instead.
 	// The AWS region where the ElastiCache cluster is hosted. If omitted the plugin tries to infer the region from the environment.
@@ -2389,7 +2388,7 @@ type RedisElasticacheInitParameters struct {
 
 	// The username to authenticate with.
 	// The AWS access key id to use to talk to ElastiCache. If omitted the credentials chain provider is used instead.
-	UsernameSecretRef *v1.LocalSecretKeySelector `json:"usernameSecretRef,omitempty" tf:"-"`
+	UsernameSecretRef *v2.LocalSecretKeySelector `json:"usernameSecretRef,omitempty" tf:"-"`
 }
 
 type RedisElasticacheObservation struct {
@@ -2408,7 +2407,7 @@ type RedisElasticacheParameters struct {
 	// The password to authenticate with.
 	// The AWS secret key id to use to talk to ElastiCache. If omitted the credentials chain provider is used instead.
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The region where the ElastiCache cluster is hosted. If omitted Vault tries to infer from the environment instead.
 	// The AWS region where the ElastiCache cluster is hosted. If omitted the plugin tries to infer the region from the environment.
@@ -2423,7 +2422,7 @@ type RedisElasticacheParameters struct {
 	// The username to authenticate with.
 	// The AWS access key id to use to talk to ElastiCache. If omitted the credentials chain provider is used instead.
 	// +kubebuilder:validation:Optional
-	UsernameSecretRef *v1.LocalSecretKeySelector `json:"usernameSecretRef,omitempty" tf:"-"`
+	UsernameSecretRef *v2.LocalSecretKeySelector `json:"usernameSecretRef,omitempty" tf:"-"`
 }
 
 type RedisInitParameters struct {
@@ -2443,7 +2442,7 @@ type RedisInitParameters struct {
 
 	// The password to authenticate with.
 	// Specifies the password corresponding to the given username.
-	PasswordSecretRef v1.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
+	PasswordSecretRef v2.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
 	// The default port to connect to if no port is specified as
 	// part of the host.
@@ -2509,7 +2508,7 @@ type RedisParameters struct {
 	// The password to authenticate with.
 	// Specifies the password corresponding to the given username.
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef v1.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
+	PasswordSecretRef v2.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
 	// The default port to connect to if no port is specified as
 	// part of the host.
@@ -2558,7 +2557,7 @@ type RedshiftInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -2660,7 +2659,7 @@ type RedshiftParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -2699,11 +2698,11 @@ type SecretBackendConnectionInitParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// A nested block containing configuration options for Cassandra connections.
 	// Connection parameters for the cassandra-database-plugin plugin.
@@ -3001,11 +3000,11 @@ type SecretBackendConnectionParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// A nested block containing configuration options for Cassandra connections.
 	// Connection parameters for the cassandra-database-plugin plugin.
@@ -3197,7 +3196,7 @@ type SnowflakeInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -3211,7 +3210,7 @@ type SnowflakeInitParameters struct {
 	// The private key associated with the Snowflake user.
 	// Note: This property is write-only and will not be read from the API.
 	// The private key configured for the admin user in Snowflake.
-	PrivateKeyWoSecretRef *v1.LocalSecretKeySelector `json:"privateKeyWoSecretRef,omitempty" tf:"-"`
+	PrivateKeyWoSecretRef *v2.LocalSecretKeySelector `json:"privateKeyWoSecretRef,omitempty" tf:"-"`
 
 	// The version of the private_key_wo. For more info see updating write-only attributes.
 	// Version counter for the private key key-pair credentials write-only field
@@ -3303,7 +3302,7 @@ type SnowflakeParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -3320,7 +3319,7 @@ type SnowflakeParameters struct {
 	// Note: This property is write-only and will not be read from the API.
 	// The private key configured for the admin user in Snowflake.
 	// +kubebuilder:validation:Optional
-	PrivateKeyWoSecretRef *v1.LocalSecretKeySelector `json:"privateKeyWoSecretRef,omitempty" tf:"-"`
+	PrivateKeyWoSecretRef *v2.LocalSecretKeySelector `json:"privateKeyWoSecretRef,omitempty" tf:"-"`
 
 	// The version of the private_key_wo. For more info see updating write-only attributes.
 	// Version counter for the private key key-pair credentials write-only field
@@ -3357,8 +3356,8 @@ type SecretBackendConnectionSpec struct {
 
 // SecretBackendConnectionStatus defines the observed state of SecretBackendConnection.
 type SecretBackendConnectionStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretBackendConnectionObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretBackendConnectionObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type AuthBackendClientInitParameters struct {
@@ -19,7 +18,7 @@ type AuthBackendClientInitParameters struct {
 	// The AWS access key that Vault should use for the
 	// auth backend. Mutually exclusive with identity_token_audience.
 	// AWS Access key with permissions to query AWS APIs.
-	AccessKeySecretRef *v1.LocalSecretKeySelector `json:"accessKeySecretRef,omitempty" tf:"-"`
+	AccessKeySecretRef *v2.LocalSecretKeySelector `json:"accessKeySecretRef,omitempty" tf:"-"`
 
 	// List of additional headers that are allowed to be in STS request headers.
 	// The headers are automatically canonicalized (e.g., content-type becomes Content-Type). Duplicate values are automatically
@@ -37,11 +36,11 @@ type AuthBackendClientInitParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// Cancels all upcoming rotations of the root credential until unset. Requires Vault Enterprise 1.19+.
 	// Stops rotation of the root credential until set to false.
@@ -110,14 +109,14 @@ type AuthBackendClientInitParameters struct {
 	// auth backend. Mutually exclusive with secret_key_wo.
 	// Consider using secret_key_wo instead for enhanced security.
 	// AWS Secret key with permissions to query AWS APIs.
-	SecretKeySecretRef *v1.LocalSecretKeySelector `json:"secretKeySecretRef,omitempty" tf:"-"`
+	SecretKeySecretRef *v2.LocalSecretKeySelector `json:"secretKeySecretRef,omitempty" tf:"-"`
 
 	// Write-only AWS secret key that Vault should use for the
 	// auth backend. Mutually exclusive with secret_key.
 	// Must be used together with secret_key_wo_version.
 	// Note: This property is write-only and will not be read from the API.
 	// Write-only AWS Secret key with permissions to query AWS APIs. This field is recommended over secret_key for enhanced security.
-	SecretKeyWoSecretRef *v1.LocalSecretKeySelector `json:"secretKeyWoSecretRef,omitempty" tf:"-"`
+	SecretKeyWoSecretRef *v2.LocalSecretKeySelector `json:"secretKeyWoSecretRef,omitempty" tf:"-"`
 
 	// Version counter for the write-only secret_key_wo field.
 	// Increment this value to rotate the secret key. Required when secret_key_wo is set.
@@ -252,7 +251,7 @@ type AuthBackendClientParameters struct {
 	// auth backend. Mutually exclusive with identity_token_audience.
 	// AWS Access key with permissions to query AWS APIs.
 	// +kubebuilder:validation:Optional
-	AccessKeySecretRef *v1.LocalSecretKeySelector `json:"accessKeySecretRef,omitempty" tf:"-"`
+	AccessKeySecretRef *v2.LocalSecretKeySelector `json:"accessKeySecretRef,omitempty" tf:"-"`
 
 	// List of additional headers that are allowed to be in STS request headers.
 	// The headers are automatically canonicalized (e.g., content-type becomes Content-Type). Duplicate values are automatically
@@ -272,11 +271,11 @@ type AuthBackendClientParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// Cancels all upcoming rotations of the root credential until unset. Requires Vault Enterprise 1.19+.
 	// Stops rotation of the root credential until set to false.
@@ -358,7 +357,7 @@ type AuthBackendClientParameters struct {
 	// Consider using secret_key_wo instead for enhanced security.
 	// AWS Secret key with permissions to query AWS APIs.
 	// +kubebuilder:validation:Optional
-	SecretKeySecretRef *v1.LocalSecretKeySelector `json:"secretKeySecretRef,omitempty" tf:"-"`
+	SecretKeySecretRef *v2.LocalSecretKeySelector `json:"secretKeySecretRef,omitempty" tf:"-"`
 
 	// Write-only AWS secret key that Vault should use for the
 	// auth backend. Mutually exclusive with secret_key.
@@ -366,7 +365,7 @@ type AuthBackendClientParameters struct {
 	// Note: This property is write-only and will not be read from the API.
 	// Write-only AWS Secret key with permissions to query AWS APIs. This field is recommended over secret_key for enhanced security.
 	// +kubebuilder:validation:Optional
-	SecretKeyWoSecretRef *v1.LocalSecretKeySelector `json:"secretKeyWoSecretRef,omitempty" tf:"-"`
+	SecretKeyWoSecretRef *v2.LocalSecretKeySelector `json:"secretKeyWoSecretRef,omitempty" tf:"-"`
 
 	// Version counter for the write-only secret_key_wo field.
 	// Increment this value to rotate the secret key. Required when secret_key_wo is set.
@@ -415,8 +414,8 @@ type AuthBackendClientSpec struct {
 
 // AuthBackendClientStatus defines the observed state of AuthBackendClient.
 type AuthBackendClientStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        AuthBackendClientObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               AuthBackendClientObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

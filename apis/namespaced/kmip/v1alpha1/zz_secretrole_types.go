@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretRoleInitParameters struct {
@@ -147,11 +146,11 @@ type SecretRoleInitParameters struct {
 
 	// Reference to a SecretScope in kmip to populate path.
 	// +kubebuilder:validation:Optional
-	PathRef *v1.NamespacedReference `json:"pathRef,omitempty" tf:"-"`
+	PathRef *v2.NamespacedReference `json:"pathRef,omitempty" tf:"-"`
 
 	// Selector for a SecretScope in kmip to populate path.
 	// +kubebuilder:validation:Optional
-	PathSelector *v1.NamespacedSelector `json:"pathSelector,omitempty" tf:"-"`
+	PathSelector *v2.NamespacedSelector `json:"pathSelector,omitempty" tf:"-"`
 
 	// Name of the role.
 	// Name of the role
@@ -165,11 +164,11 @@ type SecretRoleInitParameters struct {
 
 	// Reference to a SecretScope in kmip to populate scope.
 	// +kubebuilder:validation:Optional
-	ScopeRef *v1.NamespacedReference `json:"scopeRef,omitempty" tf:"-"`
+	ScopeRef *v2.NamespacedReference `json:"scopeRef,omitempty" tf:"-"`
 
 	// Selector for a SecretScope in kmip to populate scope.
 	// +kubebuilder:validation:Optional
-	ScopeSelector *v1.NamespacedSelector `json:"scopeSelector,omitempty" tf:"-"`
+	ScopeSelector *v2.NamespacedSelector `json:"scopeSelector,omitempty" tf:"-"`
 
 	// Client certificate key bits, valid values depend on key type.
 	// Client certificate key bits, valid values depend on key type
@@ -500,11 +499,11 @@ type SecretRoleParameters struct {
 
 	// Reference to a SecretScope in kmip to populate path.
 	// +kubebuilder:validation:Optional
-	PathRef *v1.NamespacedReference `json:"pathRef,omitempty" tf:"-"`
+	PathRef *v2.NamespacedReference `json:"pathRef,omitempty" tf:"-"`
 
 	// Selector for a SecretScope in kmip to populate path.
 	// +kubebuilder:validation:Optional
-	PathSelector *v1.NamespacedSelector `json:"pathSelector,omitempty" tf:"-"`
+	PathSelector *v2.NamespacedSelector `json:"pathSelector,omitempty" tf:"-"`
 
 	// Name of the role.
 	// Name of the role
@@ -520,11 +519,11 @@ type SecretRoleParameters struct {
 
 	// Reference to a SecretScope in kmip to populate scope.
 	// +kubebuilder:validation:Optional
-	ScopeRef *v1.NamespacedReference `json:"scopeRef,omitempty" tf:"-"`
+	ScopeRef *v2.NamespacedReference `json:"scopeRef,omitempty" tf:"-"`
 
 	// Selector for a SecretScope in kmip to populate scope.
 	// +kubebuilder:validation:Optional
-	ScopeSelector *v1.NamespacedSelector `json:"scopeSelector,omitempty" tf:"-"`
+	ScopeSelector *v2.NamespacedSelector `json:"scopeSelector,omitempty" tf:"-"`
 
 	// Client certificate key bits, valid values depend on key type.
 	// Client certificate key bits, valid values depend on key type
@@ -561,8 +560,8 @@ type SecretRoleSpec struct {
 
 // SecretRoleStatus defines the observed state of SecretRole.
 type SecretRoleStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretRoleObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretRoleObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

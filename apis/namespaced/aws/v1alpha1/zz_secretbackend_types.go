@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretBackendInitParameters struct {
@@ -19,7 +18,7 @@ type SecretBackendInitParameters struct {
 	// The AWS Access Key ID this backend should use to
 	// issue new credentials. Vault uses the official AWS SDK to authenticate, and thus can also use standard AWS environment credentials, shared file credentials or IAM role/ECS task credentials.
 	// The AWS Access Key ID to use when generating new credentials.
-	AccessKeySecretRef *v1.LocalSecretKeySelector `json:"accessKeySecretRef,omitempty" tf:"-"`
+	AccessKeySecretRef *v2.LocalSecretKeySelector `json:"accessKeySecretRef,omitempty" tf:"-"`
 
 	// Set of managed key registry entry names that the mount in question is allowed to access
 	// List of managed key registry entry names that the mount in question is allowed to access
@@ -161,7 +160,7 @@ type SecretBackendInitParameters struct {
 	// The AWS Secret Key this backend should use to
 	// issue new credentials. Vault uses the official AWS SDK to authenticate, and thus can also use standard AWS environment credentials, shared file credentials or IAM role/ECS task credentials. Conflicts with secret_key_wo.
 	// The AWS Secret Access Key to use when generating new credentials.
-	SecretKeySecretRef *v1.LocalSecretKeySelector `json:"secretKeySecretRef,omitempty" tf:"-"`
+	SecretKeySecretRef *v2.LocalSecretKeySelector `json:"secretKeySecretRef,omitempty" tf:"-"`
 
 	// The AWS Secret Key this backend should use to
 	// issue new credentials. This is a write-only field and will not be stored in state.
@@ -169,7 +168,7 @@ type SecretBackendInitParameters struct {
 	// environment credentials, shared file credentials or IAM role/ECS task credentials.
 	// Conflicts with secret_key.
 	// The AWS Secret Access Key to use when generating new credentials. This is a write-only field and will not be read back from Vault.
-	SecretKeyWoSecretRef *v1.LocalSecretKeySelector `json:"secretKeyWoSecretRef,omitempty" tf:"-"`
+	SecretKeyWoSecretRef *v2.LocalSecretKeySelector `json:"secretKeyWoSecretRef,omitempty" tf:"-"`
 
 	// A version counter for the
 	// secret_key_wo field. Incrementing this value will trigger an update to the secret key.
@@ -373,7 +372,7 @@ type SecretBackendParameters struct {
 	// issue new credentials. Vault uses the official AWS SDK to authenticate, and thus can also use standard AWS environment credentials, shared file credentials or IAM role/ECS task credentials.
 	// The AWS Access Key ID to use when generating new credentials.
 	// +kubebuilder:validation:Optional
-	AccessKeySecretRef *v1.LocalSecretKeySelector `json:"accessKeySecretRef,omitempty" tf:"-"`
+	AccessKeySecretRef *v2.LocalSecretKeySelector `json:"accessKeySecretRef,omitempty" tf:"-"`
 
 	// Set of managed key registry entry names that the mount in question is allowed to access
 	// List of managed key registry entry names that the mount in question is allowed to access
@@ -546,7 +545,7 @@ type SecretBackendParameters struct {
 	// issue new credentials. Vault uses the official AWS SDK to authenticate, and thus can also use standard AWS environment credentials, shared file credentials or IAM role/ECS task credentials. Conflicts with secret_key_wo.
 	// The AWS Secret Access Key to use when generating new credentials.
 	// +kubebuilder:validation:Optional
-	SecretKeySecretRef *v1.LocalSecretKeySelector `json:"secretKeySecretRef,omitempty" tf:"-"`
+	SecretKeySecretRef *v2.LocalSecretKeySelector `json:"secretKeySecretRef,omitempty" tf:"-"`
 
 	// The AWS Secret Key this backend should use to
 	// issue new credentials. This is a write-only field and will not be stored in state.
@@ -555,7 +554,7 @@ type SecretBackendParameters struct {
 	// Conflicts with secret_key.
 	// The AWS Secret Access Key to use when generating new credentials. This is a write-only field and will not be read back from Vault.
 	// +kubebuilder:validation:Optional
-	SecretKeyWoSecretRef *v1.LocalSecretKeySelector `json:"secretKeyWoSecretRef,omitempty" tf:"-"`
+	SecretKeyWoSecretRef *v2.LocalSecretKeySelector `json:"secretKeyWoSecretRef,omitempty" tf:"-"`
 
 	// A version counter for the
 	// secret_key_wo field. Incrementing this value will trigger an update to the secret key.
@@ -608,8 +607,8 @@ type SecretBackendSpec struct {
 
 // SecretBackendStatus defines the observed state of SecretBackend.
 type SecretBackendStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretBackendObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretBackendObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

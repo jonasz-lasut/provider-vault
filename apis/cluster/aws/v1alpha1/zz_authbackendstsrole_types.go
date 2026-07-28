@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type AuthBackendStsRoleInitParameters struct {
@@ -28,11 +28,11 @@ type AuthBackendStsRoleInitParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// External ID expected by the STS role. The associated STS role must be configured to require the external ID. Requires Vault 1.17+.
 	// External ID expected by the STS role.
@@ -98,11 +98,11 @@ type AuthBackendStsRoleParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// External ID expected by the STS role. The associated STS role must be configured to require the external ID. Requires Vault 1.17+.
 	// External ID expected by the STS role.
@@ -126,8 +126,8 @@ type AuthBackendStsRoleParameters struct {
 
 // AuthBackendStsRoleSpec defines the desired state of AuthBackendStsRole
 type AuthBackendStsRoleSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     AuthBackendStsRoleParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   AuthBackendStsRoleParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -143,8 +143,8 @@ type AuthBackendStsRoleSpec struct {
 
 // AuthBackendStsRoleStatus defines the observed state of AuthBackendStsRole.
 type AuthBackendStsRoleStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        AuthBackendStsRoleObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               AuthBackendStsRoleObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

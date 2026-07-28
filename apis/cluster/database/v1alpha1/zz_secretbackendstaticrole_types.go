@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretBackendStaticRoleInitParameters struct {
@@ -23,11 +23,11 @@ type SecretBackendStaticRoleInitParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// The configuration for the credential type.Full documentation for the allowed values can be found under "https://developer.hashicorp.com/vault/api-docs/secret/databases#credential_config".
 	// +mapType=granular
@@ -44,11 +44,11 @@ type SecretBackendStaticRoleInitParameters struct {
 
 	// Reference to a SecretBackendConnection in database to populate dbName.
 	// +kubebuilder:validation:Optional
-	DBNameRef *v1.Reference `json:"dbNameRef,omitempty" tf:"-"`
+	DBNameRef *v2.Reference `json:"dbNameRef,omitempty" tf:"-"`
 
 	// Selector for a SecretBackendConnection in database to populate dbName.
 	// +kubebuilder:validation:Optional
-	DBNameSelector *v1.Selector `json:"dbNameSelector,omitempty" tf:"-"`
+	DBNameSelector *v2.Selector `json:"dbNameSelector,omitempty" tf:"-"`
 
 	// A unique name to give the static role.
 	// Unique name for the static role.
@@ -97,7 +97,7 @@ type SecretBackendStaticRoleInitParameters struct {
 	// select DB engines (Postgres). Requires Vault 1.18+ Enterprise.
 	// Deprecated: Use password_wo instead. This field will be removed in a future version.
 	// The password corresponding to the username in the database. Required when using the Rootless Password Rotation workflow for static roles. Deprecated in favor of password_wo field introduced in Vault 1.19.
-	SelfManagedPasswordSecretRef *v1.SecretKeySelector `json:"selfManagedPasswordSecretRef,omitempty" tf:"-"`
+	SelfManagedPasswordSecretRef *v2.SecretKeySelector `json:"selfManagedPasswordSecretRef,omitempty" tf:"-"`
 
 	// If set to true, Vault will skip the
 	// initial secret rotation on import. Requires Vault 1.18+ Enterprise.
@@ -191,11 +191,11 @@ type SecretBackendStaticRoleParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// The configuration for the credential type.Full documentation for the allowed values can be found under "https://developer.hashicorp.com/vault/api-docs/secret/databases#credential_config".
 	// +kubebuilder:validation:Optional
@@ -215,11 +215,11 @@ type SecretBackendStaticRoleParameters struct {
 
 	// Reference to a SecretBackendConnection in database to populate dbName.
 	// +kubebuilder:validation:Optional
-	DBNameRef *v1.Reference `json:"dbNameRef,omitempty" tf:"-"`
+	DBNameRef *v2.Reference `json:"dbNameRef,omitempty" tf:"-"`
 
 	// Selector for a SecretBackendConnection in database to populate dbName.
 	// +kubebuilder:validation:Optional
-	DBNameSelector *v1.Selector `json:"dbNameSelector,omitempty" tf:"-"`
+	DBNameSelector *v2.Selector `json:"dbNameSelector,omitempty" tf:"-"`
 
 	// A unique name to give the static role.
 	// Unique name for the static role.
@@ -277,7 +277,7 @@ type SecretBackendStaticRoleParameters struct {
 	// Deprecated: Use password_wo instead. This field will be removed in a future version.
 	// The password corresponding to the username in the database. Required when using the Rootless Password Rotation workflow for static roles. Deprecated in favor of password_wo field introduced in Vault 1.19.
 	// +kubebuilder:validation:Optional
-	SelfManagedPasswordSecretRef *v1.SecretKeySelector `json:"selfManagedPasswordSecretRef,omitempty" tf:"-"`
+	SelfManagedPasswordSecretRef *v2.SecretKeySelector `json:"selfManagedPasswordSecretRef,omitempty" tf:"-"`
 
 	// If set to true, Vault will skip the
 	// initial secret rotation on import. Requires Vault 1.18+ Enterprise.
@@ -293,8 +293,8 @@ type SecretBackendStaticRoleParameters struct {
 
 // SecretBackendStaticRoleSpec defines the desired state of SecretBackendStaticRole
 type SecretBackendStaticRoleSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     SecretBackendStaticRoleParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   SecretBackendStaticRoleParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -310,8 +310,8 @@ type SecretBackendStaticRoleSpec struct {
 
 // SecretBackendStaticRoleStatus defines the observed state of SecretBackendStaticRole.
 type SecretBackendStaticRoleStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretBackendStaticRoleObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretBackendStaticRoleObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

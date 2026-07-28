@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type OidcRoleInitParameters struct {
@@ -29,11 +29,11 @@ type OidcRoleInitParameters struct {
 
 	// Reference to a OidcKey in identity to populate key.
 	// +kubebuilder:validation:Optional
-	KeyRef *v1.Reference `json:"keyRef,omitempty" tf:"-"`
+	KeyRef *v2.Reference `json:"keyRef,omitempty" tf:"-"`
 
 	// Selector for a OidcKey in identity to populate key.
 	// +kubebuilder:validation:Optional
-	KeySelector *v1.Selector `json:"keySelector,omitempty" tf:"-"`
+	KeySelector *v2.Selector `json:"keySelector,omitempty" tf:"-"`
 
 	// Name of the OIDC Role to create.
 	// Name of the role.
@@ -114,11 +114,11 @@ type OidcRoleParameters struct {
 
 	// Reference to a OidcKey in identity to populate key.
 	// +kubebuilder:validation:Optional
-	KeyRef *v1.Reference `json:"keyRef,omitempty" tf:"-"`
+	KeyRef *v2.Reference `json:"keyRef,omitempty" tf:"-"`
 
 	// Selector for a OidcKey in identity to populate key.
 	// +kubebuilder:validation:Optional
-	KeySelector *v1.Selector `json:"keySelector,omitempty" tf:"-"`
+	KeySelector *v2.Selector `json:"keySelector,omitempty" tf:"-"`
 
 	// Name of the OIDC Role to create.
 	// Name of the role.
@@ -149,8 +149,8 @@ type OidcRoleParameters struct {
 
 // OidcRoleSpec defines the desired state of OidcRole
 type OidcRoleSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     OidcRoleParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   OidcRoleParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -166,8 +166,8 @@ type OidcRoleSpec struct {
 
 // OidcRoleStatus defines the observed state of OidcRole.
 type OidcRoleStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        OidcRoleObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               OidcRoleObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

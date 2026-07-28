@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type CloudSecretCredsInitParameters struct {
@@ -25,11 +24,11 @@ type CloudSecretCredsInitParameters struct {
 
 	// Reference to a CloudSecretBackend in terraform to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a CloudSecretBackend in terraform to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// The namespace to provision the resource in.
 	// The value should not contain leading or trailing forward slashes.
@@ -45,11 +44,11 @@ type CloudSecretCredsInitParameters struct {
 
 	// Reference to a CloudSecretRole in terraform to populate role.
 	// +kubebuilder:validation:Optional
-	RoleRef *v1.NamespacedReference `json:"roleRef,omitempty" tf:"-"`
+	RoleRef *v2.NamespacedReference `json:"roleRef,omitempty" tf:"-"`
 
 	// Selector for a CloudSecretRole in terraform to populate role.
 	// +kubebuilder:validation:Optional
-	RoleSelector *v1.NamespacedSelector `json:"roleSelector,omitempty" tf:"-"`
+	RoleSelector *v2.NamespacedSelector `json:"roleSelector,omitempty" tf:"-"`
 }
 
 type CloudSecretCredsObservation struct {
@@ -94,11 +93,11 @@ type CloudSecretCredsParameters struct {
 
 	// Reference to a CloudSecretBackend in terraform to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a CloudSecretBackend in terraform to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// The namespace to provision the resource in.
 	// The value should not contain leading or trailing forward slashes.
@@ -116,11 +115,11 @@ type CloudSecretCredsParameters struct {
 
 	// Reference to a CloudSecretRole in terraform to populate role.
 	// +kubebuilder:validation:Optional
-	RoleRef *v1.NamespacedReference `json:"roleRef,omitempty" tf:"-"`
+	RoleRef *v2.NamespacedReference `json:"roleRef,omitempty" tf:"-"`
 
 	// Selector for a CloudSecretRole in terraform to populate role.
 	// +kubebuilder:validation:Optional
-	RoleSelector *v1.NamespacedSelector `json:"roleSelector,omitempty" tf:"-"`
+	RoleSelector *v2.NamespacedSelector `json:"roleSelector,omitempty" tf:"-"`
 }
 
 // CloudSecretCredsSpec defines the desired state of CloudSecretCreds
@@ -142,8 +141,8 @@ type CloudSecretCredsSpec struct {
 
 // CloudSecretCredsStatus defines the observed state of CloudSecretCreds.
 type CloudSecretCredsStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        CloudSecretCredsObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               CloudSecretCredsObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

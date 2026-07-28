@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type CloudSecretBackendInitParameters struct {
@@ -112,10 +112,10 @@ type CloudSecretBackendInitParameters struct {
 	// Enable seal wrapping for the mount, causing values stored by the mount to be wrapped by the seal's encryption capability
 	SealWrap *bool `json:"sealWrap,omitempty" tf:"seal_wrap,omitempty"`
 
-	TokenSecretRef *v1.SecretKeySelector `json:"tokenSecretRef,omitempty" tf:"-"`
+	TokenSecretRef *v2.SecretKeySelector `json:"tokenSecretRef,omitempty" tf:"-"`
 
 	// Note: This property is write-only and will not be read from the API.
-	TokenWoSecretRef *v1.SecretKeySelector `json:"tokenWoSecretRef,omitempty" tf:"-"`
+	TokenWoSecretRef *v2.SecretKeySelector `json:"tokenWoSecretRef,omitempty" tf:"-"`
 
 	// The version of the token_wo. For more info see updating write-only attributes.
 	// Version counter for write-only secret data.
@@ -353,11 +353,11 @@ type CloudSecretBackendParameters struct {
 	SealWrap *bool `json:"sealWrap,omitempty" tf:"seal_wrap,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	TokenSecretRef *v1.SecretKeySelector `json:"tokenSecretRef,omitempty" tf:"-"`
+	TokenSecretRef *v2.SecretKeySelector `json:"tokenSecretRef,omitempty" tf:"-"`
 
 	// Note: This property is write-only and will not be read from the API.
 	// +kubebuilder:validation:Optional
-	TokenWoSecretRef *v1.SecretKeySelector `json:"tokenWoSecretRef,omitempty" tf:"-"`
+	TokenWoSecretRef *v2.SecretKeySelector `json:"tokenWoSecretRef,omitempty" tf:"-"`
 
 	// The version of the token_wo. For more info see updating write-only attributes.
 	// Version counter for write-only secret data.
@@ -367,8 +367,8 @@ type CloudSecretBackendParameters struct {
 
 // CloudSecretBackendSpec defines the desired state of CloudSecretBackend
 type CloudSecretBackendSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     CloudSecretBackendParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   CloudSecretBackendParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -384,8 +384,8 @@ type CloudSecretBackendSpec struct {
 
 // CloudSecretBackendStatus defines the observed state of CloudSecretBackend.
 type CloudSecretBackendStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        CloudSecretBackendObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               CloudSecretBackendObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

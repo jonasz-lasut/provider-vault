@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type AuthBackendConfigInitParameters struct {
@@ -25,28 +24,28 @@ type AuthBackendConfigInitParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// The client id for credentials to query the Azure APIs.
 	// Currently read permissions to query compute resources are required.
 	// The client id for credentials to query the Azure APIs. Currently read permissions to query compute resources are required.
-	ClientIDSecretRef *v1.LocalSecretKeySelector `json:"clientIdSecretRef,omitempty" tf:"-"`
+	ClientIDSecretRef *v2.LocalSecretKeySelector `json:"clientIdSecretRef,omitempty" tf:"-"`
 
 	// The client secret for credentials to query the
 	// Azure APIs. Mutually exclusive with client_secret_wo. Consider using client_secret_wo instead for enhanced security.
 	// The client secret for credentials to query the Azure APIs. Mutually exclusive with 'client_secret_wo'.
-	ClientSecretSecretRef *v1.LocalSecretKeySelector `json:"clientSecretSecretRef,omitempty" tf:"-"`
+	ClientSecretSecretRef *v2.LocalSecretKeySelector `json:"clientSecretSecretRef,omitempty" tf:"-"`
 
 	// The client secret for credentials to query the Azure APIs,
 	// provided as a write-only field.
 	// Mutually exclusive with client_secret. Must be used with client_secret_wo_version.
 	// To rotate the secret, update the value and increment client_secret_wo_version.
 	// The client secret for credentials to query the Azure APIs. This field is write-only and will never be stored in state. Mutually exclusive with 'client_secret'. Requires 'client_secret_wo_version' to trigger updates.
-	ClientSecretWoSecretRef *v1.LocalSecretKeySelector `json:"clientSecretWoSecretRef,omitempty" tf:"-"`
+	ClientSecretWoSecretRef *v2.LocalSecretKeySelector `json:"clientSecretWoSecretRef,omitempty" tf:"-"`
 
 	// Version counter for the write-only client secret.
 	// Increment this value to trigger an update of the client secret in Vault.
@@ -125,7 +124,7 @@ type AuthBackendConfigInitParameters struct {
 	// The tenant id for the Azure Active Directory
 	// organization.
 	// The tenant id for the Azure Active Directory organization.
-	TenantIDSecretRef v1.LocalSecretKeySelector `json:"tenantIdSecretRef" tf:"-"`
+	TenantIDSecretRef v2.LocalSecretKeySelector `json:"tenantIdSecretRef" tf:"-"`
 }
 
 type AuthBackendConfigObservation struct {
@@ -224,23 +223,23 @@ type AuthBackendConfigParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// The client id for credentials to query the Azure APIs.
 	// Currently read permissions to query compute resources are required.
 	// The client id for credentials to query the Azure APIs. Currently read permissions to query compute resources are required.
 	// +kubebuilder:validation:Optional
-	ClientIDSecretRef *v1.LocalSecretKeySelector `json:"clientIdSecretRef,omitempty" tf:"-"`
+	ClientIDSecretRef *v2.LocalSecretKeySelector `json:"clientIdSecretRef,omitempty" tf:"-"`
 
 	// The client secret for credentials to query the
 	// Azure APIs. Mutually exclusive with client_secret_wo. Consider using client_secret_wo instead for enhanced security.
 	// The client secret for credentials to query the Azure APIs. Mutually exclusive with 'client_secret_wo'.
 	// +kubebuilder:validation:Optional
-	ClientSecretSecretRef *v1.LocalSecretKeySelector `json:"clientSecretSecretRef,omitempty" tf:"-"`
+	ClientSecretSecretRef *v2.LocalSecretKeySelector `json:"clientSecretSecretRef,omitempty" tf:"-"`
 
 	// The client secret for credentials to query the Azure APIs,
 	// provided as a write-only field.
@@ -248,7 +247,7 @@ type AuthBackendConfigParameters struct {
 	// To rotate the secret, update the value and increment client_secret_wo_version.
 	// The client secret for credentials to query the Azure APIs. This field is write-only and will never be stored in state. Mutually exclusive with 'client_secret'. Requires 'client_secret_wo_version' to trigger updates.
 	// +kubebuilder:validation:Optional
-	ClientSecretWoSecretRef *v1.LocalSecretKeySelector `json:"clientSecretWoSecretRef,omitempty" tf:"-"`
+	ClientSecretWoSecretRef *v2.LocalSecretKeySelector `json:"clientSecretWoSecretRef,omitempty" tf:"-"`
 
 	// Version counter for the write-only client secret.
 	// Increment this value to trigger an update of the client secret in Vault.
@@ -341,7 +340,7 @@ type AuthBackendConfigParameters struct {
 	// organization.
 	// The tenant id for the Azure Active Directory organization.
 	// +kubebuilder:validation:Optional
-	TenantIDSecretRef v1.LocalSecretKeySelector `json:"tenantIdSecretRef" tf:"-"`
+	TenantIDSecretRef v2.LocalSecretKeySelector `json:"tenantIdSecretRef" tf:"-"`
 }
 
 // AuthBackendConfigSpec defines the desired state of AuthBackendConfig
@@ -363,8 +362,8 @@ type AuthBackendConfigSpec struct {
 
 // AuthBackendConfigStatus defines the observed state of AuthBackendConfig.
 type AuthBackendConfigStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        AuthBackendConfigObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               AuthBackendConfigObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

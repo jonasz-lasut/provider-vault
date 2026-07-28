@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretBackendCrlConfigInitParameters struct {
@@ -31,11 +31,11 @@ type SecretBackendCrlConfigInitParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// Enable cross-cluster revocation request queues. Vault 1.13+
 	// Enable cross-cluster revocation request queues.
@@ -178,11 +178,11 @@ type SecretBackendCrlConfigParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// Enable cross-cluster revocation request queues. Vault 1.13+
 	// Enable cross-cluster revocation request queues.
@@ -249,8 +249,8 @@ type SecretBackendCrlConfigParameters struct {
 
 // SecretBackendCrlConfigSpec defines the desired state of SecretBackendCrlConfig
 type SecretBackendCrlConfigSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     SecretBackendCrlConfigParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   SecretBackendCrlConfigParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -266,8 +266,8 @@ type SecretBackendCrlConfigSpec struct {
 
 // SecretBackendCrlConfigStatus defines the observed state of SecretBackendCrlConfig.
 type SecretBackendCrlConfigStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretBackendCrlConfigObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretBackendCrlConfigObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

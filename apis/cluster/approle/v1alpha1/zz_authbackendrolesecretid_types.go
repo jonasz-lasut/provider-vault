@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type AuthBackendRoleSecretIDInitParameters struct {
@@ -22,11 +22,11 @@ type AuthBackendRoleSecretIDInitParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// If set, specifies blocks of IP addresses which can
 	// perform the login operation using this SecretID.
@@ -57,16 +57,16 @@ type AuthBackendRoleSecretIDInitParameters struct {
 
 	// Reference to a AuthBackendRole in approle to populate roleName.
 	// +kubebuilder:validation:Optional
-	RoleNameRef *v1.Reference `json:"roleNameRef,omitempty" tf:"-"`
+	RoleNameRef *v2.Reference `json:"roleNameRef,omitempty" tf:"-"`
 
 	// Selector for a AuthBackendRole in approle to populate roleName.
 	// +kubebuilder:validation:Optional
-	RoleNameSelector *v1.Selector `json:"roleNameSelector,omitempty" tf:"-"`
+	RoleNameSelector *v2.Selector `json:"roleNameSelector,omitempty" tf:"-"`
 
 	// The SecretID to be created. If set, uses "Push"
 	// mode.  Defaults to Vault auto-generating SecretIDs.
 	// The SecretID to be managed. If not specified, Vault auto-generates one.
-	SecretIDSecretRef *v1.SecretKeySelector `json:"secretIdSecretRef,omitempty" tf:"-"`
+	SecretIDSecretRef *v2.SecretKeySelector `json:"secretIdSecretRef,omitempty" tf:"-"`
 
 	// The TTL duration of the SecretID.
 	TTL *float64 `json:"ttl,omitempty" tf:"ttl,omitempty"`
@@ -167,11 +167,11 @@ type AuthBackendRoleSecretIDParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// If set, specifies blocks of IP addresses which can
 	// perform the login operation using this SecretID.
@@ -207,17 +207,17 @@ type AuthBackendRoleSecretIDParameters struct {
 
 	// Reference to a AuthBackendRole in approle to populate roleName.
 	// +kubebuilder:validation:Optional
-	RoleNameRef *v1.Reference `json:"roleNameRef,omitempty" tf:"-"`
+	RoleNameRef *v2.Reference `json:"roleNameRef,omitempty" tf:"-"`
 
 	// Selector for a AuthBackendRole in approle to populate roleName.
 	// +kubebuilder:validation:Optional
-	RoleNameSelector *v1.Selector `json:"roleNameSelector,omitempty" tf:"-"`
+	RoleNameSelector *v2.Selector `json:"roleNameSelector,omitempty" tf:"-"`
 
 	// The SecretID to be created. If set, uses "Push"
 	// mode.  Defaults to Vault auto-generating SecretIDs.
 	// The SecretID to be managed. If not specified, Vault auto-generates one.
 	// +kubebuilder:validation:Optional
-	SecretIDSecretRef *v1.SecretKeySelector `json:"secretIdSecretRef,omitempty" tf:"-"`
+	SecretIDSecretRef *v2.SecretKeySelector `json:"secretIdSecretRef,omitempty" tf:"-"`
 
 	// The TTL duration of the SecretID.
 	// +kubebuilder:validation:Optional
@@ -249,8 +249,8 @@ type AuthBackendRoleSecretIDParameters struct {
 
 // AuthBackendRoleSecretIDSpec defines the desired state of AuthBackendRoleSecretID
 type AuthBackendRoleSecretIDSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     AuthBackendRoleSecretIDParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   AuthBackendRoleSecretIDParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -266,8 +266,8 @@ type AuthBackendRoleSecretIDSpec struct {
 
 // AuthBackendRoleSecretIDStatus defines the observed state of AuthBackendRoleSecretID.
 type AuthBackendRoleSecretIDStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        AuthBackendRoleSecretIDObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               AuthBackendRoleSecretIDObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

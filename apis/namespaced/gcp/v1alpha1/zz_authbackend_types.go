@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type AuthBackendInitParameters struct {
@@ -19,10 +18,10 @@ type AuthBackendInitParameters struct {
 
 	ClientID *string `json:"clientId,omitempty" tf:"client_id,omitempty"`
 
-	CredentialsSecretRef *v1.LocalSecretKeySelector `json:"credentialsSecretRef,omitempty" tf:"-"`
+	CredentialsSecretRef *v2.LocalSecretKeySelector `json:"credentialsSecretRef,omitempty" tf:"-"`
 
 	// JSON-encoded credentials to use to connect to GCP. This field is write-only and the value cannot be read back.
-	CredentialsWoSecretRef *v1.LocalSecretKeySelector `json:"credentialsWoSecretRef,omitempty" tf:"-"`
+	CredentialsWoSecretRef *v2.LocalSecretKeySelector `json:"credentialsWoSecretRef,omitempty" tf:"-"`
 
 	// A version counter for write-only credentials. Incrementing this value will cause the provider to send the credentials to Vault.
 	CredentialsWoVersion *float64 `json:"credentialsWoVersion,omitempty" tf:"credentials_wo_version,omitempty"`
@@ -172,11 +171,11 @@ type AuthBackendParameters struct {
 	ClientID *string `json:"clientId,omitempty" tf:"client_id,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	CredentialsSecretRef *v1.LocalSecretKeySelector `json:"credentialsSecretRef,omitempty" tf:"-"`
+	CredentialsSecretRef *v2.LocalSecretKeySelector `json:"credentialsSecretRef,omitempty" tf:"-"`
 
 	// JSON-encoded credentials to use to connect to GCP. This field is write-only and the value cannot be read back.
 	// +kubebuilder:validation:Optional
-	CredentialsWoSecretRef *v1.LocalSecretKeySelector `json:"credentialsWoSecretRef,omitempty" tf:"-"`
+	CredentialsWoSecretRef *v2.LocalSecretKeySelector `json:"credentialsWoSecretRef,omitempty" tf:"-"`
 
 	// A version counter for write-only credentials. Incrementing this value will cause the provider to send the credentials to Vault.
 	// +kubebuilder:validation:Optional
@@ -395,8 +394,8 @@ type AuthBackendSpec struct {
 
 // AuthBackendStatus defines the observed state of AuthBackend.
 type AuthBackendStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        AuthBackendObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               AuthBackendObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

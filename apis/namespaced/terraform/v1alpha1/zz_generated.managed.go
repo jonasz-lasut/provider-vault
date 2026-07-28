@@ -5,124 +5,124 @@ Copyright 2022 Upbound Inc.
 
 package v1alpha1
 
-import xpv1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+import xpv2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 
 // GetCondition of this CloudSecretBackend.
-func (mg *CloudSecretBackend) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *CloudSecretBackend) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetManagementPolicies of this CloudSecretBackend.
-func (mg *CloudSecretBackend) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *CloudSecretBackend) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this CloudSecretBackend.
-func (mg *CloudSecretBackend) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+func (mg *CloudSecretBackend) GetProviderConfigReference() *xpv2.ProviderConfigReference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this CloudSecretBackend.
-func (mg *CloudSecretBackend) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+func (mg *CloudSecretBackend) GetWriteConnectionSecretToReference() *xpv2.LocalSecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this CloudSecretBackend.
-func (mg *CloudSecretBackend) SetConditions(c ...xpv1.Condition) {
+func (mg *CloudSecretBackend) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetManagementPolicies of this CloudSecretBackend.
-func (mg *CloudSecretBackend) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *CloudSecretBackend) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this CloudSecretBackend.
-func (mg *CloudSecretBackend) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+func (mg *CloudSecretBackend) SetProviderConfigReference(r *xpv2.ProviderConfigReference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this CloudSecretBackend.
-func (mg *CloudSecretBackend) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+func (mg *CloudSecretBackend) SetWriteConnectionSecretToReference(r *xpv2.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this CloudSecretCreds.
-func (mg *CloudSecretCreds) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *CloudSecretCreds) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetManagementPolicies of this CloudSecretCreds.
-func (mg *CloudSecretCreds) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *CloudSecretCreds) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this CloudSecretCreds.
-func (mg *CloudSecretCreds) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+func (mg *CloudSecretCreds) GetProviderConfigReference() *xpv2.ProviderConfigReference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this CloudSecretCreds.
-func (mg *CloudSecretCreds) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+func (mg *CloudSecretCreds) GetWriteConnectionSecretToReference() *xpv2.LocalSecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this CloudSecretCreds.
-func (mg *CloudSecretCreds) SetConditions(c ...xpv1.Condition) {
+func (mg *CloudSecretCreds) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetManagementPolicies of this CloudSecretCreds.
-func (mg *CloudSecretCreds) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *CloudSecretCreds) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this CloudSecretCreds.
-func (mg *CloudSecretCreds) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+func (mg *CloudSecretCreds) SetProviderConfigReference(r *xpv2.ProviderConfigReference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this CloudSecretCreds.
-func (mg *CloudSecretCreds) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+func (mg *CloudSecretCreds) SetWriteConnectionSecretToReference(r *xpv2.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this CloudSecretRole.
-func (mg *CloudSecretRole) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *CloudSecretRole) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetManagementPolicies of this CloudSecretRole.
-func (mg *CloudSecretRole) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *CloudSecretRole) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this CloudSecretRole.
-func (mg *CloudSecretRole) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+func (mg *CloudSecretRole) GetProviderConfigReference() *xpv2.ProviderConfigReference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this CloudSecretRole.
-func (mg *CloudSecretRole) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+func (mg *CloudSecretRole) GetWriteConnectionSecretToReference() *xpv2.LocalSecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this CloudSecretRole.
-func (mg *CloudSecretRole) SetConditions(c ...xpv1.Condition) {
+func (mg *CloudSecretRole) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetManagementPolicies of this CloudSecretRole.
-func (mg *CloudSecretRole) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *CloudSecretRole) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this CloudSecretRole.
-func (mg *CloudSecretRole) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+func (mg *CloudSecretRole) SetProviderConfigReference(r *xpv2.ProviderConfigReference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this CloudSecretRole.
-func (mg *CloudSecretRole) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+func (mg *CloudSecretRole) SetWriteConnectionSecretToReference(r *xpv2.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }

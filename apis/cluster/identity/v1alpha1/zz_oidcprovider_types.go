@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type OidcProviderInitParameters struct {
@@ -25,11 +25,11 @@ type OidcProviderInitParameters struct {
 
 	// References to OidcClient in identity to populate allowedClientIds.
 	// +kubebuilder:validation:Optional
-	AllowedClientIdsRefs []v1.Reference `json:"allowedClientIdsRefs,omitempty" tf:"-"`
+	AllowedClientIdsRefs []v2.Reference `json:"allowedClientIdsRefs,omitempty" tf:"-"`
 
 	// Selector for a list of OidcClient in identity to populate allowedClientIds.
 	// +kubebuilder:validation:Optional
-	AllowedClientIdsSelector *v1.Selector `json:"allowedClientIdsSelector,omitempty" tf:"-"`
+	AllowedClientIdsSelector *v2.Selector `json:"allowedClientIdsSelector,omitempty" tf:"-"`
 
 	// Set to true if the issuer endpoint uses HTTPS.
 	// Set to true if the issuer endpoint uses HTTPS.
@@ -59,11 +59,11 @@ type OidcProviderInitParameters struct {
 
 	// References to OidcScope in identity to populate scopesSupported.
 	// +kubebuilder:validation:Optional
-	ScopesSupportedRefs []v1.Reference `json:"scopesSupportedRefs,omitempty" tf:"-"`
+	ScopesSupportedRefs []v2.Reference `json:"scopesSupportedRefs,omitempty" tf:"-"`
 
 	// Selector for a list of OidcScope in identity to populate scopesSupported.
 	// +kubebuilder:validation:Optional
-	ScopesSupportedSelector *v1.Selector `json:"scopesSupportedSelector,omitempty" tf:"-"`
+	ScopesSupportedSelector *v2.Selector `json:"scopesSupportedSelector,omitempty" tf:"-"`
 }
 
 type OidcProviderObservation struct {
@@ -120,11 +120,11 @@ type OidcProviderParameters struct {
 
 	// References to OidcClient in identity to populate allowedClientIds.
 	// +kubebuilder:validation:Optional
-	AllowedClientIdsRefs []v1.Reference `json:"allowedClientIdsRefs,omitempty" tf:"-"`
+	AllowedClientIdsRefs []v2.Reference `json:"allowedClientIdsRefs,omitempty" tf:"-"`
 
 	// Selector for a list of OidcClient in identity to populate allowedClientIds.
 	// +kubebuilder:validation:Optional
-	AllowedClientIdsSelector *v1.Selector `json:"allowedClientIdsSelector,omitempty" tf:"-"`
+	AllowedClientIdsSelector *v2.Selector `json:"allowedClientIdsSelector,omitempty" tf:"-"`
 
 	// Set to true if the issuer endpoint uses HTTPS.
 	// Set to true if the issuer endpoint uses HTTPS.
@@ -159,17 +159,17 @@ type OidcProviderParameters struct {
 
 	// References to OidcScope in identity to populate scopesSupported.
 	// +kubebuilder:validation:Optional
-	ScopesSupportedRefs []v1.Reference `json:"scopesSupportedRefs,omitempty" tf:"-"`
+	ScopesSupportedRefs []v2.Reference `json:"scopesSupportedRefs,omitempty" tf:"-"`
 
 	// Selector for a list of OidcScope in identity to populate scopesSupported.
 	// +kubebuilder:validation:Optional
-	ScopesSupportedSelector *v1.Selector `json:"scopesSupportedSelector,omitempty" tf:"-"`
+	ScopesSupportedSelector *v2.Selector `json:"scopesSupportedSelector,omitempty" tf:"-"`
 }
 
 // OidcProviderSpec defines the desired state of OidcProvider
 type OidcProviderSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     OidcProviderParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   OidcProviderParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -185,8 +185,8 @@ type OidcProviderSpec struct {
 
 // OidcProviderStatus defines the observed state of OidcProvider.
 type OidcProviderStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        OidcProviderObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               OidcProviderObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

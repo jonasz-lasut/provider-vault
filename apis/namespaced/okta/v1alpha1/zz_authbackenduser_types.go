@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type AuthBackendUserInitParameters struct {
@@ -100,8 +99,8 @@ type AuthBackendUserSpec struct {
 
 // AuthBackendUserStatus defines the observed state of AuthBackendUser.
 type AuthBackendUserStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        AuthBackendUserObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               AuthBackendUserObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

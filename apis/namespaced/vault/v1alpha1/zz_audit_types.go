@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type AuditInitParameters struct {
@@ -134,8 +133,8 @@ type AuditSpec struct {
 
 // AuditStatus defines the observed state of Audit.
 type AuditStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        AuditObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               AuditObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

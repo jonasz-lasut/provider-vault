@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type RoleInitParameters struct {
@@ -35,11 +34,11 @@ type RoleInitParameters struct {
 
 	// Reference to a Mount in vault to populate path.
 	// +kubebuilder:validation:Optional
-	PathRef *v1.NamespacedReference `json:"pathRef,omitempty" tf:"-"`
+	PathRef *v2.NamespacedReference `json:"pathRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate path.
 	// +kubebuilder:validation:Optional
-	PathSelector *v1.NamespacedSelector `json:"pathSelector,omitempty" tf:"-"`
+	PathSelector *v2.NamespacedSelector `json:"pathSelector,omitempty" tf:"-"`
 
 	// A comma separated string or slice of transformations to use.
 	// A comma separated string or slice of transformations to use.
@@ -93,11 +92,11 @@ type RoleParameters struct {
 
 	// Reference to a Mount in vault to populate path.
 	// +kubebuilder:validation:Optional
-	PathRef *v1.NamespacedReference `json:"pathRef,omitempty" tf:"-"`
+	PathRef *v2.NamespacedReference `json:"pathRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate path.
 	// +kubebuilder:validation:Optional
-	PathSelector *v1.NamespacedSelector `json:"pathSelector,omitempty" tf:"-"`
+	PathSelector *v2.NamespacedSelector `json:"pathSelector,omitempty" tf:"-"`
 
 	// A comma separated string or slice of transformations to use.
 	// A comma separated string or slice of transformations to use.
@@ -124,8 +123,8 @@ type RoleSpec struct {
 
 // RoleStatus defines the observed state of Role.
 type RoleStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        RoleObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               RoleObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

@@ -9,7 +9,7 @@ Copyright 2022 Upbound Inc.
 package v1alpha1
 
 import (
-	"github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	"github.com/crossplane/crossplane/apis/v2/core/v2"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 )
 
@@ -49,17 +49,17 @@ func (in *CassandraInitParameters) DeepCopyInto(out *CassandraInitParameters) {
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PemBundleSecretRef != nil {
 		in, out := &in.PemBundleSecretRef, &out.PemBundleSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PemJSONSecretRef != nil {
 		in, out := &in.PemJSONSecretRef, &out.PemJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Port != nil {
@@ -236,17 +236,17 @@ func (in *CassandraParameters) DeepCopyInto(out *CassandraParameters) {
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PemBundleSecretRef != nil {
 		in, out := &in.PemBundleSecretRef, &out.PemBundleSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PemJSONSecretRef != nil {
 		in, out := &in.PemJSONSecretRef, &out.PemJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Port != nil {
@@ -306,7 +306,7 @@ func (in *CouchbaseInitParameters) DeepCopyInto(out *CouchbaseInitParameters) {
 	*out = *in
 	if in.Base64PemSecretRef != nil {
 		in, out := &in.Base64PemSecretRef, &out.Base64PemSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.BucketName != nil {
@@ -330,7 +330,7 @@ func (in *CouchbaseInitParameters) DeepCopyInto(out *CouchbaseInitParameters) {
 		*out = new(bool)
 		**out = **in
 	}
-	in.PasswordSecretRef.DeepCopyInto(&out.PasswordSecretRef)
+	out.PasswordSecretRef = in.PasswordSecretRef
 	if in.TLS != nil {
 		in, out := &in.TLS, &out.TLS
 		*out = new(bool)
@@ -414,7 +414,7 @@ func (in *CouchbaseParameters) DeepCopyInto(out *CouchbaseParameters) {
 	*out = *in
 	if in.Base64PemSecretRef != nil {
 		in, out := &in.Base64PemSecretRef, &out.Base64PemSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.BucketName != nil {
@@ -438,7 +438,7 @@ func (in *CouchbaseParameters) DeepCopyInto(out *CouchbaseParameters) {
 		*out = new(bool)
 		**out = **in
 	}
-	in.PasswordSecretRef.DeepCopyInto(&out.PasswordSecretRef)
+	out.PasswordSecretRef = in.PasswordSecretRef
 	if in.TLS != nil {
 		in, out := &in.TLS, &out.TLS
 		*out = new(bool)
@@ -494,7 +494,7 @@ func (in *ElasticsearchInitParameters) DeepCopyInto(out *ElasticsearchInitParame
 		*out = new(bool)
 		**out = **in
 	}
-	in.PasswordSecretRef.DeepCopyInto(&out.PasswordSecretRef)
+	out.PasswordSecretRef = in.PasswordSecretRef
 	if in.TLSServerName != nil {
 		in, out := &in.TLSServerName, &out.TLSServerName
 		*out = new(string)
@@ -615,7 +615,7 @@ func (in *ElasticsearchParameters) DeepCopyInto(out *ElasticsearchParameters) {
 		*out = new(bool)
 		**out = **in
 	}
-	in.PasswordSecretRef.DeepCopyInto(&out.PasswordSecretRef)
+	out.PasswordSecretRef = in.PasswordSecretRef
 	if in.TLSServerName != nil {
 		in, out := &in.TLSServerName, &out.TLSServerName
 		*out = new(string)
@@ -678,7 +678,7 @@ func (in *HanaInitParameters) DeepCopyInto(out *HanaInitParameters) {
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -803,7 +803,7 @@ func (in *HanaParameters) DeepCopyInto(out *HanaParameters) {
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -856,15 +856,15 @@ func (in *InfluxdbInitParameters) DeepCopyInto(out *InfluxdbInitParameters) {
 		*out = new(bool)
 		**out = **in
 	}
-	in.PasswordSecretRef.DeepCopyInto(&out.PasswordSecretRef)
+	out.PasswordSecretRef = in.PasswordSecretRef
 	if in.PemBundleSecretRef != nil {
 		in, out := &in.PemBundleSecretRef, &out.PemBundleSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PemJSONSecretRef != nil {
 		in, out := &in.PemJSONSecretRef, &out.PemJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Port != nil {
@@ -967,15 +967,15 @@ func (in *InfluxdbParameters) DeepCopyInto(out *InfluxdbParameters) {
 		*out = new(bool)
 		**out = **in
 	}
-	in.PasswordSecretRef.DeepCopyInto(&out.PasswordSecretRef)
+	out.PasswordSecretRef = in.PasswordSecretRef
 	if in.PemBundleSecretRef != nil {
 		in, out := &in.PemBundleSecretRef, &out.PemBundleSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PemJSONSecretRef != nil {
 		in, out := &in.PemJSONSecretRef, &out.PemJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Port != nil {
@@ -1035,7 +1035,7 @@ func (in *MongodbInitParameters) DeepCopyInto(out *MongodbInitParameters) {
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -1055,7 +1055,7 @@ func (in *MongodbInitParameters) DeepCopyInto(out *MongodbInitParameters) {
 	}
 	if in.TLSCertificateKeySecretRef != nil {
 		in, out := &in.TLSCertificateKeySecretRef, &out.TLSCertificateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Username != nil {
@@ -1175,7 +1175,7 @@ func (in *MongodbParameters) DeepCopyInto(out *MongodbParameters) {
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -1195,7 +1195,7 @@ func (in *MongodbParameters) DeepCopyInto(out *MongodbParameters) {
 	}
 	if in.TLSCertificateKeySecretRef != nil {
 		in, out := &in.TLSCertificateKeySecretRef, &out.TLSCertificateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Username != nil {
@@ -1228,7 +1228,7 @@ func (in *MongodbParameters) DeepCopy() *MongodbParameters {
 // DeepCopyInto is an autogenerated deepcopy function, copying the receiver, writing into out. in must be non-nil.
 func (in *MongodbatlasInitParameters) DeepCopyInto(out *MongodbatlasInitParameters) {
 	*out = *in
-	in.PrivateKeySecretRef.DeepCopyInto(&out.PrivateKeySecretRef)
+	out.PrivateKeySecretRef = in.PrivateKeySecretRef
 	if in.ProjectID != nil {
 		in, out := &in.ProjectID, &out.ProjectID
 		*out = new(string)
@@ -1289,7 +1289,7 @@ func (in *MongodbatlasObservation) DeepCopy() *MongodbatlasObservation {
 // DeepCopyInto is an autogenerated deepcopy function, copying the receiver, writing into out. in must be non-nil.
 func (in *MongodbatlasParameters) DeepCopyInto(out *MongodbatlasParameters) {
 	*out = *in
-	in.PrivateKeySecretRef.DeepCopyInto(&out.PrivateKeySecretRef)
+	out.PrivateKeySecretRef = in.PrivateKeySecretRef
 	if in.ProjectID != nil {
 		in, out := &in.ProjectID, &out.ProjectID
 		*out = new(string)
@@ -1352,7 +1352,7 @@ func (in *MssqlInitParameters) DeepCopyInto(out *MssqlInitParameters) {
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -1487,7 +1487,7 @@ func (in *MssqlParameters) DeepCopyInto(out *MssqlParameters) {
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -1552,7 +1552,7 @@ func (in *MySQLAuroraInitParameters) DeepCopyInto(out *MySQLAuroraInitParameters
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -1567,7 +1567,7 @@ func (in *MySQLAuroraInitParameters) DeepCopyInto(out *MySQLAuroraInitParameters
 	}
 	if in.ServiceAccountJSONSecretRef != nil {
 		in, out := &in.ServiceAccountJSONSecretRef, &out.ServiceAccountJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.TLSCA != nil {
@@ -1577,7 +1577,7 @@ func (in *MySQLAuroraInitParameters) DeepCopyInto(out *MySQLAuroraInitParameters
 	}
 	if in.TLSCertificateKeySecretRef != nil {
 		in, out := &in.TLSCertificateKeySecretRef, &out.TLSCertificateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Username != nil {
@@ -1697,7 +1697,7 @@ func (in *MySQLAuroraParameters) DeepCopyInto(out *MySQLAuroraParameters) {
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -1712,7 +1712,7 @@ func (in *MySQLAuroraParameters) DeepCopyInto(out *MySQLAuroraParameters) {
 	}
 	if in.ServiceAccountJSONSecretRef != nil {
 		in, out := &in.ServiceAccountJSONSecretRef, &out.ServiceAccountJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.TLSCA != nil {
@@ -1722,7 +1722,7 @@ func (in *MySQLAuroraParameters) DeepCopyInto(out *MySQLAuroraParameters) {
 	}
 	if in.TLSCertificateKeySecretRef != nil {
 		in, out := &in.TLSCertificateKeySecretRef, &out.TLSCertificateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Username != nil {
@@ -1777,7 +1777,7 @@ func (in *MySQLInitParameters) DeepCopyInto(out *MySQLInitParameters) {
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -1792,7 +1792,7 @@ func (in *MySQLInitParameters) DeepCopyInto(out *MySQLInitParameters) {
 	}
 	if in.ServiceAccountJSONSecretRef != nil {
 		in, out := &in.ServiceAccountJSONSecretRef, &out.ServiceAccountJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.TLSCA != nil {
@@ -1802,7 +1802,7 @@ func (in *MySQLInitParameters) DeepCopyInto(out *MySQLInitParameters) {
 	}
 	if in.TLSCertificateKeySecretRef != nil {
 		in, out := &in.TLSCertificateKeySecretRef, &out.TLSCertificateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Username != nil {
@@ -1857,7 +1857,7 @@ func (in *MySQLLegacyInitParameters) DeepCopyInto(out *MySQLLegacyInitParameters
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -1872,7 +1872,7 @@ func (in *MySQLLegacyInitParameters) DeepCopyInto(out *MySQLLegacyInitParameters
 	}
 	if in.ServiceAccountJSONSecretRef != nil {
 		in, out := &in.ServiceAccountJSONSecretRef, &out.ServiceAccountJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.TLSCA != nil {
@@ -1882,7 +1882,7 @@ func (in *MySQLLegacyInitParameters) DeepCopyInto(out *MySQLLegacyInitParameters
 	}
 	if in.TLSCertificateKeySecretRef != nil {
 		in, out := &in.TLSCertificateKeySecretRef, &out.TLSCertificateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Username != nil {
@@ -2002,7 +2002,7 @@ func (in *MySQLLegacyParameters) DeepCopyInto(out *MySQLLegacyParameters) {
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -2017,7 +2017,7 @@ func (in *MySQLLegacyParameters) DeepCopyInto(out *MySQLLegacyParameters) {
 	}
 	if in.ServiceAccountJSONSecretRef != nil {
 		in, out := &in.ServiceAccountJSONSecretRef, &out.ServiceAccountJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.TLSCA != nil {
@@ -2027,7 +2027,7 @@ func (in *MySQLLegacyParameters) DeepCopyInto(out *MySQLLegacyParameters) {
 	}
 	if in.TLSCertificateKeySecretRef != nil {
 		in, out := &in.TLSCertificateKeySecretRef, &out.TLSCertificateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Username != nil {
@@ -2147,7 +2147,7 @@ func (in *MySQLParameters) DeepCopyInto(out *MySQLParameters) {
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -2162,7 +2162,7 @@ func (in *MySQLParameters) DeepCopyInto(out *MySQLParameters) {
 	}
 	if in.ServiceAccountJSONSecretRef != nil {
 		in, out := &in.ServiceAccountJSONSecretRef, &out.ServiceAccountJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.TLSCA != nil {
@@ -2172,7 +2172,7 @@ func (in *MySQLParameters) DeepCopyInto(out *MySQLParameters) {
 	}
 	if in.TLSCertificateKeySecretRef != nil {
 		in, out := &in.TLSCertificateKeySecretRef, &out.TLSCertificateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Username != nil {
@@ -2227,7 +2227,7 @@ func (in *MySQLRDSInitParameters) DeepCopyInto(out *MySQLRDSInitParameters) {
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -2242,7 +2242,7 @@ func (in *MySQLRDSInitParameters) DeepCopyInto(out *MySQLRDSInitParameters) {
 	}
 	if in.ServiceAccountJSONSecretRef != nil {
 		in, out := &in.ServiceAccountJSONSecretRef, &out.ServiceAccountJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.TLSCA != nil {
@@ -2252,7 +2252,7 @@ func (in *MySQLRDSInitParameters) DeepCopyInto(out *MySQLRDSInitParameters) {
 	}
 	if in.TLSCertificateKeySecretRef != nil {
 		in, out := &in.TLSCertificateKeySecretRef, &out.TLSCertificateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Username != nil {
@@ -2372,7 +2372,7 @@ func (in *MySQLRDSParameters) DeepCopyInto(out *MySQLRDSParameters) {
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -2387,7 +2387,7 @@ func (in *MySQLRDSParameters) DeepCopyInto(out *MySQLRDSParameters) {
 	}
 	if in.ServiceAccountJSONSecretRef != nil {
 		in, out := &in.ServiceAccountJSONSecretRef, &out.ServiceAccountJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.TLSCA != nil {
@@ -2397,7 +2397,7 @@ func (in *MySQLRDSParameters) DeepCopyInto(out *MySQLRDSParameters) {
 	}
 	if in.TLSCertificateKeySecretRef != nil {
 		in, out := &in.TLSCertificateKeySecretRef, &out.TLSCertificateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Username != nil {
@@ -2452,7 +2452,7 @@ func (in *OracleInitParameters) DeepCopyInto(out *OracleInitParameters) {
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -2597,7 +2597,7 @@ func (in *OracleParameters) DeepCopyInto(out *OracleParameters) {
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -2682,7 +2682,7 @@ func (in *PostgresqlInitParameters) DeepCopyInto(out *PostgresqlInitParameters) 
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -2697,7 +2697,7 @@ func (in *PostgresqlInitParameters) DeepCopyInto(out *PostgresqlInitParameters) 
 	}
 	if in.PrivateKeySecretRef != nil {
 		in, out := &in.PrivateKeySecretRef, &out.PrivateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.SelfManaged != nil {
@@ -2707,7 +2707,7 @@ func (in *PostgresqlInitParameters) DeepCopyInto(out *PostgresqlInitParameters) 
 	}
 	if in.ServiceAccountJSONSecretRef != nil {
 		in, out := &in.ServiceAccountJSONSecretRef, &out.ServiceAccountJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.TLSCA != nil {
@@ -2867,7 +2867,7 @@ func (in *PostgresqlParameters) DeepCopyInto(out *PostgresqlParameters) {
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -2882,7 +2882,7 @@ func (in *PostgresqlParameters) DeepCopyInto(out *PostgresqlParameters) {
 	}
 	if in.PrivateKeySecretRef != nil {
 		in, out := &in.PrivateKeySecretRef, &out.PrivateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.SelfManaged != nil {
@@ -2892,7 +2892,7 @@ func (in *PostgresqlParameters) DeepCopyInto(out *PostgresqlParameters) {
 	}
 	if in.ServiceAccountJSONSecretRef != nil {
 		in, out := &in.ServiceAccountJSONSecretRef, &out.ServiceAccountJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.TLSCA != nil {
@@ -2932,7 +2932,7 @@ func (in *RedisElasticacheInitParameters) DeepCopyInto(out *RedisElasticacheInit
 	*out = *in
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Region != nil {
@@ -2947,7 +2947,7 @@ func (in *RedisElasticacheInitParameters) DeepCopyInto(out *RedisElasticacheInit
 	}
 	if in.UsernameSecretRef != nil {
 		in, out := &in.UsernameSecretRef, &out.UsernameSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 }
@@ -2992,7 +2992,7 @@ func (in *RedisElasticacheParameters) DeepCopyInto(out *RedisElasticacheParamete
 	*out = *in
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Region != nil {
@@ -3007,7 +3007,7 @@ func (in *RedisElasticacheParameters) DeepCopyInto(out *RedisElasticacheParamete
 	}
 	if in.UsernameSecretRef != nil {
 		in, out := &in.UsernameSecretRef, &out.UsernameSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 }
@@ -3040,7 +3040,7 @@ func (in *RedisInitParameters) DeepCopyInto(out *RedisInitParameters) {
 		*out = new(bool)
 		**out = **in
 	}
-	in.PasswordSecretRef.DeepCopyInto(&out.PasswordSecretRef)
+	out.PasswordSecretRef = in.PasswordSecretRef
 	if in.Port != nil {
 		in, out := &in.Port, &out.Port
 		*out = new(float64)
@@ -3131,7 +3131,7 @@ func (in *RedisParameters) DeepCopyInto(out *RedisParameters) {
 		*out = new(bool)
 		**out = **in
 	}
-	in.PasswordSecretRef.DeepCopyInto(&out.PasswordSecretRef)
+	out.PasswordSecretRef = in.PasswordSecretRef
 	if in.Port != nil {
 		in, out := &in.Port, &out.Port
 		*out = new(float64)
@@ -3189,7 +3189,7 @@ func (in *RedshiftInitParameters) DeepCopyInto(out *RedshiftInitParameters) {
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -3314,7 +3314,7 @@ func (in *RedshiftParameters) DeepCopyInto(out *RedshiftParameters) {
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -3397,12 +3397,12 @@ func (in *SecretBackendConnectionInitParameters) DeepCopyInto(out *SecretBackend
 	}
 	if in.BackendRef != nil {
 		in, out := &in.BackendRef, &out.BackendRef
-		*out = new(v1.Reference)
+		*out = new(v2.Reference)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.BackendSelector != nil {
 		in, out := &in.BackendSelector, &out.BackendSelector
-		*out = new(v1.Selector)
+		*out = new(v2.Selector)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.Cassandra != nil {
@@ -3922,12 +3922,12 @@ func (in *SecretBackendConnectionParameters) DeepCopyInto(out *SecretBackendConn
 	}
 	if in.BackendRef != nil {
 		in, out := &in.BackendRef, &out.BackendRef
-		*out = new(v1.Reference)
+		*out = new(v2.Reference)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.BackendSelector != nil {
 		in, out := &in.BackendSelector, &out.BackendSelector
-		*out = new(v1.Selector)
+		*out = new(v2.Selector)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.Cassandra != nil {
@@ -4153,7 +4153,7 @@ func (in *SecretBackendConnectionParameters) DeepCopy() *SecretBackendConnection
 // DeepCopyInto is an autogenerated deepcopy function, copying the receiver, writing into out. in must be non-nil.
 func (in *SecretBackendConnectionSpec) DeepCopyInto(out *SecretBackendConnectionSpec) {
 	*out = *in
-	in.ResourceSpec.DeepCopyInto(&out.ResourceSpec)
+	in.ClusterManagedResourceSpec.DeepCopyInto(&out.ClusterManagedResourceSpec)
 	in.ForProvider.DeepCopyInto(&out.ForProvider)
 	in.InitProvider.DeepCopyInto(&out.InitProvider)
 }
@@ -4171,7 +4171,7 @@ func (in *SecretBackendConnectionSpec) DeepCopy() *SecretBackendConnectionSpec {
 // DeepCopyInto is an autogenerated deepcopy function, copying the receiver, writing into out. in must be non-nil.
 func (in *SecretBackendConnectionStatus) DeepCopyInto(out *SecretBackendConnectionStatus) {
 	*out = *in
-	in.ResourceStatus.DeepCopyInto(&out.ResourceStatus)
+	in.ManagedResourceStatus.DeepCopyInto(&out.ManagedResourceStatus)
 	in.AtProvider.DeepCopyInto(&out.AtProvider)
 }
 
@@ -4222,12 +4222,12 @@ func (in *SecretBackendRoleInitParameters) DeepCopyInto(out *SecretBackendRoleIn
 	}
 	if in.BackendRef != nil {
 		in, out := &in.BackendRef, &out.BackendRef
-		*out = new(v1.Reference)
+		*out = new(v2.Reference)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.BackendSelector != nil {
 		in, out := &in.BackendSelector, &out.BackendSelector
-		*out = new(v1.Selector)
+		*out = new(v2.Selector)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.CreationStatements != nil {
@@ -4269,12 +4269,12 @@ func (in *SecretBackendRoleInitParameters) DeepCopyInto(out *SecretBackendRoleIn
 	}
 	if in.DBNameRef != nil {
 		in, out := &in.DBNameRef, &out.DBNameRef
-		*out = new(v1.Reference)
+		*out = new(v2.Reference)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.DBNameSelector != nil {
 		in, out := &in.DBNameSelector, &out.DBNameSelector
-		*out = new(v1.Selector)
+		*out = new(v2.Selector)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.DefaultTTL != nil {
@@ -4499,12 +4499,12 @@ func (in *SecretBackendRoleParameters) DeepCopyInto(out *SecretBackendRoleParame
 	}
 	if in.BackendRef != nil {
 		in, out := &in.BackendRef, &out.BackendRef
-		*out = new(v1.Reference)
+		*out = new(v2.Reference)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.BackendSelector != nil {
 		in, out := &in.BackendSelector, &out.BackendSelector
-		*out = new(v1.Selector)
+		*out = new(v2.Selector)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.CreationStatements != nil {
@@ -4546,12 +4546,12 @@ func (in *SecretBackendRoleParameters) DeepCopyInto(out *SecretBackendRoleParame
 	}
 	if in.DBNameRef != nil {
 		in, out := &in.DBNameRef, &out.DBNameRef
-		*out = new(v1.Reference)
+		*out = new(v2.Reference)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.DBNameSelector != nil {
 		in, out := &in.DBNameSelector, &out.DBNameSelector
-		*out = new(v1.Selector)
+		*out = new(v2.Selector)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.DefaultTTL != nil {
@@ -4622,7 +4622,7 @@ func (in *SecretBackendRoleParameters) DeepCopy() *SecretBackendRoleParameters {
 // DeepCopyInto is an autogenerated deepcopy function, copying the receiver, writing into out. in must be non-nil.
 func (in *SecretBackendRoleSpec) DeepCopyInto(out *SecretBackendRoleSpec) {
 	*out = *in
-	in.ResourceSpec.DeepCopyInto(&out.ResourceSpec)
+	in.ClusterManagedResourceSpec.DeepCopyInto(&out.ClusterManagedResourceSpec)
 	in.ForProvider.DeepCopyInto(&out.ForProvider)
 	in.InitProvider.DeepCopyInto(&out.InitProvider)
 }
@@ -4640,7 +4640,7 @@ func (in *SecretBackendRoleSpec) DeepCopy() *SecretBackendRoleSpec {
 // DeepCopyInto is an autogenerated deepcopy function, copying the receiver, writing into out. in must be non-nil.
 func (in *SecretBackendRoleStatus) DeepCopyInto(out *SecretBackendRoleStatus) {
 	*out = *in
-	in.ResourceStatus.DeepCopyInto(&out.ResourceStatus)
+	in.ManagedResourceStatus.DeepCopyInto(&out.ManagedResourceStatus)
 	in.AtProvider.DeepCopyInto(&out.AtProvider)
 }
 
@@ -4691,12 +4691,12 @@ func (in *SecretBackendStaticRoleInitParameters) DeepCopyInto(out *SecretBackend
 	}
 	if in.BackendRef != nil {
 		in, out := &in.BackendRef, &out.BackendRef
-		*out = new(v1.Reference)
+		*out = new(v2.Reference)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.BackendSelector != nil {
 		in, out := &in.BackendSelector, &out.BackendSelector
-		*out = new(v1.Selector)
+		*out = new(v2.Selector)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.CredentialConfig != nil {
@@ -4727,12 +4727,12 @@ func (in *SecretBackendStaticRoleInitParameters) DeepCopyInto(out *SecretBackend
 	}
 	if in.DBNameRef != nil {
 		in, out := &in.DBNameRef, &out.DBNameRef
-		*out = new(v1.Reference)
+		*out = new(v2.Reference)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.DBNameSelector != nil {
 		in, out := &in.DBNameSelector, &out.DBNameSelector
-		*out = new(v1.Selector)
+		*out = new(v2.Selector)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.Name != nil {
@@ -4783,7 +4783,7 @@ func (in *SecretBackendStaticRoleInitParameters) DeepCopyInto(out *SecretBackend
 	}
 	if in.SelfManagedPasswordSecretRef != nil {
 		in, out := &in.SelfManagedPasswordSecretRef, &out.SelfManagedPasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.SkipImportRotation != nil {
@@ -4957,12 +4957,12 @@ func (in *SecretBackendStaticRoleParameters) DeepCopyInto(out *SecretBackendStat
 	}
 	if in.BackendRef != nil {
 		in, out := &in.BackendRef, &out.BackendRef
-		*out = new(v1.Reference)
+		*out = new(v2.Reference)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.BackendSelector != nil {
 		in, out := &in.BackendSelector, &out.BackendSelector
-		*out = new(v1.Selector)
+		*out = new(v2.Selector)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.CredentialConfig != nil {
@@ -4993,12 +4993,12 @@ func (in *SecretBackendStaticRoleParameters) DeepCopyInto(out *SecretBackendStat
 	}
 	if in.DBNameRef != nil {
 		in, out := &in.DBNameRef, &out.DBNameRef
-		*out = new(v1.Reference)
+		*out = new(v2.Reference)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.DBNameSelector != nil {
 		in, out := &in.DBNameSelector, &out.DBNameSelector
-		*out = new(v1.Selector)
+		*out = new(v2.Selector)
 		(*in).DeepCopyInto(*out)
 	}
 	if in.Name != nil {
@@ -5049,7 +5049,7 @@ func (in *SecretBackendStaticRoleParameters) DeepCopyInto(out *SecretBackendStat
 	}
 	if in.SelfManagedPasswordSecretRef != nil {
 		in, out := &in.SelfManagedPasswordSecretRef, &out.SelfManagedPasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.SkipImportRotation != nil {
@@ -5077,7 +5077,7 @@ func (in *SecretBackendStaticRoleParameters) DeepCopy() *SecretBackendStaticRole
 // DeepCopyInto is an autogenerated deepcopy function, copying the receiver, writing into out. in must be non-nil.
 func (in *SecretBackendStaticRoleSpec) DeepCopyInto(out *SecretBackendStaticRoleSpec) {
 	*out = *in
-	in.ResourceSpec.DeepCopyInto(&out.ResourceSpec)
+	in.ClusterManagedResourceSpec.DeepCopyInto(&out.ClusterManagedResourceSpec)
 	in.ForProvider.DeepCopyInto(&out.ForProvider)
 	in.InitProvider.DeepCopyInto(&out.InitProvider)
 }
@@ -5095,7 +5095,7 @@ func (in *SecretBackendStaticRoleSpec) DeepCopy() *SecretBackendStaticRoleSpec {
 // DeepCopyInto is an autogenerated deepcopy function, copying the receiver, writing into out. in must be non-nil.
 func (in *SecretBackendStaticRoleStatus) DeepCopyInto(out *SecretBackendStaticRoleStatus) {
 	*out = *in
-	in.ResourceStatus.DeepCopyInto(&out.ResourceStatus)
+	in.ManagedResourceStatus.DeepCopyInto(&out.ManagedResourceStatus)
 	in.AtProvider.DeepCopyInto(&out.AtProvider)
 }
 
@@ -5214,17 +5214,17 @@ func (in *SecretsMountCassandraInitParameters) DeepCopyInto(out *SecretsMountCas
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PemBundleSecretRef != nil {
 		in, out := &in.PemBundleSecretRef, &out.PemBundleSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PemJSONSecretRef != nil {
 		in, out := &in.PemJSONSecretRef, &out.PemJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PluginName != nil {
@@ -5577,17 +5577,17 @@ func (in *SecretsMountCassandraParameters) DeepCopyInto(out *SecretsMountCassand
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PemBundleSecretRef != nil {
 		in, out := &in.PemBundleSecretRef, &out.PemBundleSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PemJSONSecretRef != nil {
 		in, out := &in.PemJSONSecretRef, &out.PemJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PluginName != nil {
@@ -5704,7 +5704,7 @@ func (in *SecretsMountCouchbaseInitParameters) DeepCopyInto(out *SecretsMountCou
 	}
 	if in.Base64PemSecretRef != nil {
 		in, out := &in.Base64PemSecretRef, &out.Base64PemSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.BucketName != nil {
@@ -5759,7 +5759,7 @@ func (in *SecretsMountCouchbaseInitParameters) DeepCopyInto(out *SecretsMountCou
 		*out = new(string)
 		**out = **in
 	}
-	in.PasswordSecretRef.DeepCopyInto(&out.PasswordSecretRef)
+	out.PasswordSecretRef = in.PasswordSecretRef
 	if in.PluginName != nil {
 		in, out := &in.PluginName, &out.PluginName
 		*out = new(string)
@@ -5988,7 +5988,7 @@ func (in *SecretsMountCouchbaseParameters) DeepCopyInto(out *SecretsMountCouchba
 	}
 	if in.Base64PemSecretRef != nil {
 		in, out := &in.Base64PemSecretRef, &out.Base64PemSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.BucketName != nil {
@@ -6043,7 +6043,7 @@ func (in *SecretsMountCouchbaseParameters) DeepCopyInto(out *SecretsMountCouchba
 		*out = new(string)
 		**out = **in
 	}
-	in.PasswordSecretRef.DeepCopyInto(&out.PasswordSecretRef)
+	out.PasswordSecretRef = in.PasswordSecretRef
 	if in.PluginName != nil {
 		in, out := &in.PluginName, &out.PluginName
 		*out = new(string)
@@ -6187,7 +6187,7 @@ func (in *SecretsMountElasticsearchInitParameters) DeepCopyInto(out *SecretsMoun
 		*out = new(string)
 		**out = **in
 	}
-	in.PasswordSecretRef.DeepCopyInto(&out.PasswordSecretRef)
+	out.PasswordSecretRef = in.PasswordSecretRef
 	if in.PluginName != nil {
 		in, out := &in.PluginName, &out.PluginName
 		*out = new(string)
@@ -6484,7 +6484,7 @@ func (in *SecretsMountElasticsearchParameters) DeepCopyInto(out *SecretsMountEla
 		*out = new(string)
 		**out = **in
 	}
-	in.PasswordSecretRef.DeepCopyInto(&out.PasswordSecretRef)
+	out.PasswordSecretRef = in.PasswordSecretRef
 	if in.PluginName != nil {
 		in, out := &in.PluginName, &out.PluginName
 		*out = new(string)
@@ -6635,7 +6635,7 @@ func (in *SecretsMountHanaInitParameters) DeepCopyInto(out *SecretsMountHanaInit
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -6936,7 +6936,7 @@ func (in *SecretsMountHanaParameters) DeepCopyInto(out *SecretsMountHanaParamete
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -7077,15 +7077,15 @@ func (in *SecretsMountInfluxdbInitParameters) DeepCopyInto(out *SecretsMountInfl
 		*out = new(string)
 		**out = **in
 	}
-	in.PasswordSecretRef.DeepCopyInto(&out.PasswordSecretRef)
+	out.PasswordSecretRef = in.PasswordSecretRef
 	if in.PemBundleSecretRef != nil {
 		in, out := &in.PemBundleSecretRef, &out.PemBundleSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PemJSONSecretRef != nil {
 		in, out := &in.PemJSONSecretRef, &out.PemJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PluginName != nil {
@@ -7364,15 +7364,15 @@ func (in *SecretsMountInfluxdbParameters) DeepCopyInto(out *SecretsMountInfluxdb
 		*out = new(string)
 		**out = **in
 	}
-	in.PasswordSecretRef.DeepCopyInto(&out.PasswordSecretRef)
+	out.PasswordSecretRef = in.PasswordSecretRef
 	if in.PemBundleSecretRef != nil {
 		in, out := &in.PemBundleSecretRef, &out.PemBundleSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PemJSONSecretRef != nil {
 		in, out := &in.PemJSONSecretRef, &out.PemJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PluginName != nil {
@@ -7835,7 +7835,7 @@ func (in *SecretsMountMongodbInitParameters) DeepCopyInto(out *SecretsMountMongo
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -7896,7 +7896,7 @@ func (in *SecretsMountMongodbInitParameters) DeepCopyInto(out *SecretsMountMongo
 	}
 	if in.TLSCertificateKeySecretRef != nil {
 		in, out := &in.TLSCertificateKeySecretRef, &out.TLSCertificateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Username != nil {
@@ -8151,7 +8151,7 @@ func (in *SecretsMountMongodbParameters) DeepCopyInto(out *SecretsMountMongodbPa
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -8212,7 +8212,7 @@ func (in *SecretsMountMongodbParameters) DeepCopyInto(out *SecretsMountMongodbPa
 	}
 	if in.TLSCertificateKeySecretRef != nil {
 		in, out := &in.TLSCertificateKeySecretRef, &out.TLSCertificateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Username != nil {
@@ -8302,7 +8302,7 @@ func (in *SecretsMountMongodbatlasInitParameters) DeepCopyInto(out *SecretsMount
 		*out = new(string)
 		**out = **in
 	}
-	in.PrivateKeySecretRef.DeepCopyInto(&out.PrivateKeySecretRef)
+	out.PrivateKeySecretRef = in.PrivateKeySecretRef
 	if in.ProjectID != nil {
 		in, out := &in.ProjectID, &out.ProjectID
 		*out = new(string)
@@ -8539,7 +8539,7 @@ func (in *SecretsMountMongodbatlasParameters) DeepCopyInto(out *SecretsMountMong
 		*out = new(string)
 		**out = **in
 	}
-	in.PrivateKeySecretRef.DeepCopyInto(&out.PrivateKeySecretRef)
+	out.PrivateKeySecretRef = in.PrivateKeySecretRef
 	if in.ProjectID != nil {
 		in, out := &in.ProjectID, &out.ProjectID
 		*out = new(string)
@@ -8680,7 +8680,7 @@ func (in *SecretsMountMssqlInitParameters) DeepCopyInto(out *SecretsMountMssqlIn
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -8991,7 +8991,7 @@ func (in *SecretsMountMssqlParameters) DeepCopyInto(out *SecretsMountMssqlParame
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -9144,7 +9144,7 @@ func (in *SecretsMountMySQLAuroraInitParameters) DeepCopyInto(out *SecretsMountM
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -9195,7 +9195,7 @@ func (in *SecretsMountMySQLAuroraInitParameters) DeepCopyInto(out *SecretsMountM
 	}
 	if in.ServiceAccountJSONSecretRef != nil {
 		in, out := &in.ServiceAccountJSONSecretRef, &out.ServiceAccountJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.SkipStaticRoleImportRotation != nil {
@@ -9210,7 +9210,7 @@ func (in *SecretsMountMySQLAuroraInitParameters) DeepCopyInto(out *SecretsMountM
 	}
 	if in.TLSCertificateKeySecretRef != nil {
 		in, out := &in.TLSCertificateKeySecretRef, &out.TLSCertificateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Username != nil {
@@ -9465,7 +9465,7 @@ func (in *SecretsMountMySQLAuroraParameters) DeepCopyInto(out *SecretsMountMySQL
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -9516,7 +9516,7 @@ func (in *SecretsMountMySQLAuroraParameters) DeepCopyInto(out *SecretsMountMySQL
 	}
 	if in.ServiceAccountJSONSecretRef != nil {
 		in, out := &in.ServiceAccountJSONSecretRef, &out.ServiceAccountJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.SkipStaticRoleImportRotation != nil {
@@ -9531,7 +9531,7 @@ func (in *SecretsMountMySQLAuroraParameters) DeepCopyInto(out *SecretsMountMySQL
 	}
 	if in.TLSCertificateKeySecretRef != nil {
 		in, out := &in.TLSCertificateKeySecretRef, &out.TLSCertificateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Username != nil {
@@ -9633,7 +9633,7 @@ func (in *SecretsMountMySQLInitParameters) DeepCopyInto(out *SecretsMountMySQLIn
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -9684,7 +9684,7 @@ func (in *SecretsMountMySQLInitParameters) DeepCopyInto(out *SecretsMountMySQLIn
 	}
 	if in.ServiceAccountJSONSecretRef != nil {
 		in, out := &in.ServiceAccountJSONSecretRef, &out.ServiceAccountJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.SkipStaticRoleImportRotation != nil {
@@ -9699,7 +9699,7 @@ func (in *SecretsMountMySQLInitParameters) DeepCopyInto(out *SecretsMountMySQLIn
 	}
 	if in.TLSCertificateKeySecretRef != nil {
 		in, out := &in.TLSCertificateKeySecretRef, &out.TLSCertificateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Username != nil {
@@ -9801,7 +9801,7 @@ func (in *SecretsMountMySQLLegacyInitParameters) DeepCopyInto(out *SecretsMountM
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -9852,7 +9852,7 @@ func (in *SecretsMountMySQLLegacyInitParameters) DeepCopyInto(out *SecretsMountM
 	}
 	if in.ServiceAccountJSONSecretRef != nil {
 		in, out := &in.ServiceAccountJSONSecretRef, &out.ServiceAccountJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.SkipStaticRoleImportRotation != nil {
@@ -9867,7 +9867,7 @@ func (in *SecretsMountMySQLLegacyInitParameters) DeepCopyInto(out *SecretsMountM
 	}
 	if in.TLSCertificateKeySecretRef != nil {
 		in, out := &in.TLSCertificateKeySecretRef, &out.TLSCertificateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Username != nil {
@@ -10122,7 +10122,7 @@ func (in *SecretsMountMySQLLegacyParameters) DeepCopyInto(out *SecretsMountMySQL
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -10173,7 +10173,7 @@ func (in *SecretsMountMySQLLegacyParameters) DeepCopyInto(out *SecretsMountMySQL
 	}
 	if in.ServiceAccountJSONSecretRef != nil {
 		in, out := &in.ServiceAccountJSONSecretRef, &out.ServiceAccountJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.SkipStaticRoleImportRotation != nil {
@@ -10188,7 +10188,7 @@ func (in *SecretsMountMySQLLegacyParameters) DeepCopyInto(out *SecretsMountMySQL
 	}
 	if in.TLSCertificateKeySecretRef != nil {
 		in, out := &in.TLSCertificateKeySecretRef, &out.TLSCertificateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Username != nil {
@@ -10443,7 +10443,7 @@ func (in *SecretsMountMySQLParameters) DeepCopyInto(out *SecretsMountMySQLParame
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -10494,7 +10494,7 @@ func (in *SecretsMountMySQLParameters) DeepCopyInto(out *SecretsMountMySQLParame
 	}
 	if in.ServiceAccountJSONSecretRef != nil {
 		in, out := &in.ServiceAccountJSONSecretRef, &out.ServiceAccountJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.SkipStaticRoleImportRotation != nil {
@@ -10509,7 +10509,7 @@ func (in *SecretsMountMySQLParameters) DeepCopyInto(out *SecretsMountMySQLParame
 	}
 	if in.TLSCertificateKeySecretRef != nil {
 		in, out := &in.TLSCertificateKeySecretRef, &out.TLSCertificateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Username != nil {
@@ -10611,7 +10611,7 @@ func (in *SecretsMountMySQLRDSInitParameters) DeepCopyInto(out *SecretsMountMySQ
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -10662,7 +10662,7 @@ func (in *SecretsMountMySQLRDSInitParameters) DeepCopyInto(out *SecretsMountMySQ
 	}
 	if in.ServiceAccountJSONSecretRef != nil {
 		in, out := &in.ServiceAccountJSONSecretRef, &out.ServiceAccountJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.SkipStaticRoleImportRotation != nil {
@@ -10677,7 +10677,7 @@ func (in *SecretsMountMySQLRDSInitParameters) DeepCopyInto(out *SecretsMountMySQ
 	}
 	if in.TLSCertificateKeySecretRef != nil {
 		in, out := &in.TLSCertificateKeySecretRef, &out.TLSCertificateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Username != nil {
@@ -10932,7 +10932,7 @@ func (in *SecretsMountMySQLRDSParameters) DeepCopyInto(out *SecretsMountMySQLRDS
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -10983,7 +10983,7 @@ func (in *SecretsMountMySQLRDSParameters) DeepCopyInto(out *SecretsMountMySQLRDS
 	}
 	if in.ServiceAccountJSONSecretRef != nil {
 		in, out := &in.ServiceAccountJSONSecretRef, &out.ServiceAccountJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.SkipStaticRoleImportRotation != nil {
@@ -10998,7 +10998,7 @@ func (in *SecretsMountMySQLRDSParameters) DeepCopyInto(out *SecretsMountMySQLRDS
 	}
 	if in.TLSCertificateKeySecretRef != nil {
 		in, out := &in.TLSCertificateKeySecretRef, &out.TLSCertificateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.Username != nil {
@@ -11398,7 +11398,7 @@ func (in *SecretsMountOracleInitParameters) DeepCopyInto(out *SecretsMountOracle
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -11719,7 +11719,7 @@ func (in *SecretsMountOracleParameters) DeepCopyInto(out *SecretsMountOraclePara
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -12175,7 +12175,7 @@ func (in *SecretsMountPostgresqlInitParameters) DeepCopyInto(out *SecretsMountPo
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -12200,7 +12200,7 @@ func (in *SecretsMountPostgresqlInitParameters) DeepCopyInto(out *SecretsMountPo
 	}
 	if in.PrivateKeySecretRef != nil {
 		in, out := &in.PrivateKeySecretRef, &out.PrivateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.RootRotationStatements != nil {
@@ -12236,7 +12236,7 @@ func (in *SecretsMountPostgresqlInitParameters) DeepCopyInto(out *SecretsMountPo
 	}
 	if in.ServiceAccountJSONSecretRef != nil {
 		in, out := &in.ServiceAccountJSONSecretRef, &out.ServiceAccountJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.SkipStaticRoleImportRotation != nil {
@@ -12536,7 +12536,7 @@ func (in *SecretsMountPostgresqlParameters) DeepCopyInto(out *SecretsMountPostgr
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -12561,7 +12561,7 @@ func (in *SecretsMountPostgresqlParameters) DeepCopyInto(out *SecretsMountPostgr
 	}
 	if in.PrivateKeySecretRef != nil {
 		in, out := &in.PrivateKeySecretRef, &out.PrivateKeySecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.RootRotationStatements != nil {
@@ -12597,7 +12597,7 @@ func (in *SecretsMountPostgresqlParameters) DeepCopyInto(out *SecretsMountPostgr
 	}
 	if in.ServiceAccountJSONSecretRef != nil {
 		in, out := &in.ServiceAccountJSONSecretRef, &out.ServiceAccountJSONSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.SkipStaticRoleImportRotation != nil {
@@ -12689,7 +12689,7 @@ func (in *SecretsMountRedisElasticacheInitParameters) DeepCopyInto(out *SecretsM
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PluginName != nil {
@@ -12745,7 +12745,7 @@ func (in *SecretsMountRedisElasticacheInitParameters) DeepCopyInto(out *SecretsM
 	}
 	if in.UsernameSecretRef != nil {
 		in, out := &in.UsernameSecretRef, &out.UsernameSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.VerifyConnection != nil {
@@ -12925,7 +12925,7 @@ func (in *SecretsMountRedisElasticacheParameters) DeepCopyInto(out *SecretsMount
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PluginName != nil {
@@ -12981,7 +12981,7 @@ func (in *SecretsMountRedisElasticacheParameters) DeepCopyInto(out *SecretsMount
 	}
 	if in.UsernameSecretRef != nil {
 		in, out := &in.UsernameSecretRef, &out.UsernameSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.VerifyConnection != nil {
@@ -13061,7 +13061,7 @@ func (in *SecretsMountRedisInitParameters) DeepCopyInto(out *SecretsMountRedisIn
 		*out = new(string)
 		**out = **in
 	}
-	in.PasswordSecretRef.DeepCopyInto(&out.PasswordSecretRef)
+	out.PasswordSecretRef = in.PasswordSecretRef
 	if in.PluginName != nil {
 		in, out := &in.PluginName, &out.PluginName
 		*out = new(string)
@@ -13328,7 +13328,7 @@ func (in *SecretsMountRedisParameters) DeepCopyInto(out *SecretsMountRedisParame
 		*out = new(string)
 		**out = **in
 	}
-	in.PasswordSecretRef.DeepCopyInto(&out.PasswordSecretRef)
+	out.PasswordSecretRef = in.PasswordSecretRef
 	if in.PluginName != nil {
 		in, out := &in.PluginName, &out.PluginName
 		*out = new(string)
@@ -13474,7 +13474,7 @@ func (in *SecretsMountRedshiftInitParameters) DeepCopyInto(out *SecretsMountReds
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -13775,7 +13775,7 @@ func (in *SecretsMountRedshiftParameters) DeepCopyInto(out *SecretsMountRedshift
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -13923,7 +13923,7 @@ func (in *SecretsMountSnowflakeInitParameters) DeepCopyInto(out *SecretsMountSno
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -13948,7 +13948,7 @@ func (in *SecretsMountSnowflakeInitParameters) DeepCopyInto(out *SecretsMountSno
 	}
 	if in.PrivateKeyWoSecretRef != nil {
 		in, out := &in.PrivateKeyWoSecretRef, &out.PrivateKeyWoSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PrivateKeyWoVersion != nil {
@@ -14229,7 +14229,7 @@ func (in *SecretsMountSnowflakeParameters) DeepCopyInto(out *SecretsMountSnowfla
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -14254,7 +14254,7 @@ func (in *SecretsMountSnowflakeParameters) DeepCopyInto(out *SecretsMountSnowfla
 	}
 	if in.PrivateKeyWoSecretRef != nil {
 		in, out := &in.PrivateKeyWoSecretRef, &out.PrivateKeyWoSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PrivateKeyWoVersion != nil {
@@ -14323,7 +14323,7 @@ func (in *SecretsMountSnowflakeParameters) DeepCopy() *SecretsMountSnowflakePara
 // DeepCopyInto is an autogenerated deepcopy function, copying the receiver, writing into out. in must be non-nil.
 func (in *SecretsMountSpec) DeepCopyInto(out *SecretsMountSpec) {
 	*out = *in
-	in.ResourceSpec.DeepCopyInto(&out.ResourceSpec)
+	in.ClusterManagedResourceSpec.DeepCopyInto(&out.ClusterManagedResourceSpec)
 	in.ForProvider.DeepCopyInto(&out.ForProvider)
 	in.InitProvider.DeepCopyInto(&out.InitProvider)
 }
@@ -14341,7 +14341,7 @@ func (in *SecretsMountSpec) DeepCopy() *SecretsMountSpec {
 // DeepCopyInto is an autogenerated deepcopy function, copying the receiver, writing into out. in must be non-nil.
 func (in *SecretsMountStatus) DeepCopyInto(out *SecretsMountStatus) {
 	*out = *in
-	in.ResourceStatus.DeepCopyInto(&out.ResourceStatus)
+	in.ManagedResourceStatus.DeepCopyInto(&out.ManagedResourceStatus)
 	in.AtProvider.DeepCopyInto(&out.AtProvider)
 }
 
@@ -14380,7 +14380,7 @@ func (in *SnowflakeInitParameters) DeepCopyInto(out *SnowflakeInitParameters) {
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -14395,7 +14395,7 @@ func (in *SnowflakeInitParameters) DeepCopyInto(out *SnowflakeInitParameters) {
 	}
 	if in.PrivateKeyWoSecretRef != nil {
 		in, out := &in.PrivateKeyWoSecretRef, &out.PrivateKeyWoSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PrivateKeyWoVersion != nil {
@@ -14510,7 +14510,7 @@ func (in *SnowflakeParameters) DeepCopyInto(out *SnowflakeParameters) {
 	}
 	if in.PasswordSecretRef != nil {
 		in, out := &in.PasswordSecretRef, &out.PasswordSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PasswordWo != nil {
@@ -14525,7 +14525,7 @@ func (in *SnowflakeParameters) DeepCopyInto(out *SnowflakeParameters) {
 	}
 	if in.PrivateKeyWoSecretRef != nil {
 		in, out := &in.PrivateKeyWoSecretRef, &out.PrivateKeyWoSecretRef
-		*out = new(v1.SecretKeySelector)
+		*out = new(v2.SecretKeySelector)
 		**out = **in
 	}
 	if in.PrivateKeyWoVersion != nil {

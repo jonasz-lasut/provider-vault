@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretRoleInitParameters struct {
@@ -24,11 +23,11 @@ type SecretRoleInitParameters struct {
 
 	// Reference to a SecretBackend in nomad to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a SecretBackend in nomad to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// Specifies if the generated token should be global. Defaults to
 	// false.
@@ -105,11 +104,11 @@ type SecretRoleParameters struct {
 
 	// Reference to a SecretBackend in nomad to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a SecretBackend in nomad to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// Specifies if the generated token should be global. Defaults to
 	// false.
@@ -163,8 +162,8 @@ type SecretRoleSpec struct {
 
 // SecretRoleStatus defines the observed state of SecretRole.
 type SecretRoleStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretRoleObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretRoleObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

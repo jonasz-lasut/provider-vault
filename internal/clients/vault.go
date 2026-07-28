@@ -15,7 +15,7 @@ import (
 	"k8s.io/apimachinery/pkg/types"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	xpv1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	xpv2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	tfsdk "github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
 	"github.com/hashicorp/terraform-provider-vault/xpprovider"
@@ -74,7 +74,7 @@ const (
 	// Service account token path
 	serviceAccountTokenPath = "/var/run/secrets/kubernetes.io/serviceaccount/token"
 
-	credentialsSourceKubernetes xpv1.CredentialsSource = "Kubernetes"
+	credentialsSourceKubernetes xpv2.CredentialsSource = "Kubernetes"
 )
 
 // TerraformSetupBuilder builds Terraform a terraform.SetupFn function which

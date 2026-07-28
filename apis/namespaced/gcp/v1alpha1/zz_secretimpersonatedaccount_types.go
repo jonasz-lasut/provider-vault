@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretImpersonatedAccountInitParameters struct {
@@ -24,11 +23,11 @@ type SecretImpersonatedAccountInitParameters struct {
 
 	// Reference to a SecretBackend in gcp to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a SecretBackend in gcp to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// Name of the Impersonated Account to create
 	// Name of the Impersonated Account to create
@@ -97,11 +96,11 @@ type SecretImpersonatedAccountParameters struct {
 
 	// Reference to a SecretBackend in gcp to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a SecretBackend in gcp to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// Name of the Impersonated Account to create
 	// Name of the Impersonated Account to create
@@ -149,8 +148,8 @@ type SecretImpersonatedAccountSpec struct {
 
 // SecretImpersonatedAccountStatus defines the observed state of SecretImpersonatedAccount.
 type SecretImpersonatedAccountStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretImpersonatedAccountObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretImpersonatedAccountObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

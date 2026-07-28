@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretBackendInitParameters struct {
@@ -36,18 +35,18 @@ type SecretBackendInitParameters struct {
 
 	// The OAuth2 client id to connect to Azure.
 	// The client id for credentials to query the Azure APIs. Currently read permissions to query compute resources are required.
-	ClientIDSecretRef *v1.LocalSecretKeySelector `json:"clientIdSecretRef,omitempty" tf:"-"`
+	ClientIDSecretRef *v2.LocalSecretKeySelector `json:"clientIdSecretRef,omitempty" tf:"-"`
 
 	// The OAuth2 client secret to connect to Azure.
 	// Conflicts with client_secret_wo.
 	// The client secret for credentials to query the Azure APIs
-	ClientSecretSecretRef *v1.LocalSecretKeySelector `json:"clientSecretSecretRef,omitempty" tf:"-"`
+	ClientSecretSecretRef *v2.LocalSecretKeySelector `json:"clientSecretSecretRef,omitempty" tf:"-"`
 
 	// The OAuth2 client secret to connect to Azure.
 	// This is a write-only field and will not be read back from Vault.
 	// Conflicts with client_secret.
 	// The client secret for credentials to query the Azure APIs. This is a write-only field and will not be read back from Vault.
-	ClientSecretWoSecretRef *v1.LocalSecretKeySelector `json:"clientSecretWoSecretRef,omitempty" tf:"-"`
+	ClientSecretWoSecretRef *v2.LocalSecretKeySelector `json:"clientSecretWoSecretRef,omitempty" tf:"-"`
 
 	// A version counter for the write-only client_secret_wo field.
 	// Incrementing this value will trigger an update to the client secret.
@@ -172,11 +171,11 @@ type SecretBackendInitParameters struct {
 
 	// The subscription id for the Azure Active Directory.
 	// The subscription id for the Azure Active Directory.
-	SubscriptionIDSecretRef v1.LocalSecretKeySelector `json:"subscriptionIdSecretRef" tf:"-"`
+	SubscriptionIDSecretRef v2.LocalSecretKeySelector `json:"subscriptionIdSecretRef" tf:"-"`
 
 	// The tenant id for the Azure Active Directory.
 	// The tenant id for the Azure Active Directory organization.
-	TenantIDSecretRef v1.LocalSecretKeySelector `json:"tenantIdSecretRef" tf:"-"`
+	TenantIDSecretRef v2.LocalSecretKeySelector `json:"tenantIdSecretRef" tf:"-"`
 }
 
 type SecretBackendObservation struct {
@@ -353,20 +352,20 @@ type SecretBackendParameters struct {
 	// The OAuth2 client id to connect to Azure.
 	// The client id for credentials to query the Azure APIs. Currently read permissions to query compute resources are required.
 	// +kubebuilder:validation:Optional
-	ClientIDSecretRef *v1.LocalSecretKeySelector `json:"clientIdSecretRef,omitempty" tf:"-"`
+	ClientIDSecretRef *v2.LocalSecretKeySelector `json:"clientIdSecretRef,omitempty" tf:"-"`
 
 	// The OAuth2 client secret to connect to Azure.
 	// Conflicts with client_secret_wo.
 	// The client secret for credentials to query the Azure APIs
 	// +kubebuilder:validation:Optional
-	ClientSecretSecretRef *v1.LocalSecretKeySelector `json:"clientSecretSecretRef,omitempty" tf:"-"`
+	ClientSecretSecretRef *v2.LocalSecretKeySelector `json:"clientSecretSecretRef,omitempty" tf:"-"`
 
 	// The OAuth2 client secret to connect to Azure.
 	// This is a write-only field and will not be read back from Vault.
 	// Conflicts with client_secret.
 	// The client secret for credentials to query the Azure APIs. This is a write-only field and will not be read back from Vault.
 	// +kubebuilder:validation:Optional
-	ClientSecretWoSecretRef *v1.LocalSecretKeySelector `json:"clientSecretWoSecretRef,omitempty" tf:"-"`
+	ClientSecretWoSecretRef *v2.LocalSecretKeySelector `json:"clientSecretWoSecretRef,omitempty" tf:"-"`
 
 	// A version counter for the write-only client_secret_wo field.
 	// Incrementing this value will trigger an update to the client secret.
@@ -517,12 +516,12 @@ type SecretBackendParameters struct {
 	// The subscription id for the Azure Active Directory.
 	// The subscription id for the Azure Active Directory.
 	// +kubebuilder:validation:Optional
-	SubscriptionIDSecretRef v1.LocalSecretKeySelector `json:"subscriptionIdSecretRef" tf:"-"`
+	SubscriptionIDSecretRef v2.LocalSecretKeySelector `json:"subscriptionIdSecretRef" tf:"-"`
 
 	// The tenant id for the Azure Active Directory.
 	// The tenant id for the Azure Active Directory organization.
 	// +kubebuilder:validation:Optional
-	TenantIDSecretRef v1.LocalSecretKeySelector `json:"tenantIdSecretRef" tf:"-"`
+	TenantIDSecretRef v2.LocalSecretKeySelector `json:"tenantIdSecretRef" tf:"-"`
 }
 
 // SecretBackendSpec defines the desired state of SecretBackend
@@ -544,8 +543,8 @@ type SecretBackendSpec struct {
 
 // SecretBackendStatus defines the observed state of SecretBackend.
 type SecretBackendStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretBackendObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretBackendObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

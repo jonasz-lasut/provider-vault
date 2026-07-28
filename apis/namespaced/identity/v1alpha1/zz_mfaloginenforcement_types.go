@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type MfaLoginEnforcementInitParameters struct {
@@ -45,11 +44,11 @@ type MfaLoginEnforcementInitParameters struct {
 
 	// References to MfaDuo in identity to populate mfaMethodIds.
 	// +kubebuilder:validation:Optional
-	MfaMethodIdsRefs []v1.NamespacedReference `json:"mfaMethodIdsRefs,omitempty" tf:"-"`
+	MfaMethodIdsRefs []v2.NamespacedReference `json:"mfaMethodIdsRefs,omitempty" tf:"-"`
 
 	// Selector for a list of MfaDuo in identity to populate mfaMethodIds.
 	// +kubebuilder:validation:Optional
-	MfaMethodIdsSelector *v1.NamespacedSelector `json:"mfaMethodIdsSelector,omitempty" tf:"-"`
+	MfaMethodIdsSelector *v2.NamespacedSelector `json:"mfaMethodIdsSelector,omitempty" tf:"-"`
 
 	// Login enforcement name.
 	// Login enforcement name.
@@ -146,11 +145,11 @@ type MfaLoginEnforcementParameters struct {
 
 	// References to MfaDuo in identity to populate mfaMethodIds.
 	// +kubebuilder:validation:Optional
-	MfaMethodIdsRefs []v1.NamespacedReference `json:"mfaMethodIdsRefs,omitempty" tf:"-"`
+	MfaMethodIdsRefs []v2.NamespacedReference `json:"mfaMethodIdsRefs,omitempty" tf:"-"`
 
 	// Selector for a list of MfaDuo in identity to populate mfaMethodIds.
 	// +kubebuilder:validation:Optional
-	MfaMethodIdsSelector *v1.NamespacedSelector `json:"mfaMethodIdsSelector,omitempty" tf:"-"`
+	MfaMethodIdsSelector *v2.NamespacedSelector `json:"mfaMethodIdsSelector,omitempty" tf:"-"`
 
 	// Login enforcement name.
 	// Login enforcement name.
@@ -182,8 +181,8 @@ type MfaLoginEnforcementSpec struct {
 
 // MfaLoginEnforcementStatus defines the observed state of MfaLoginEnforcement.
 type MfaLoginEnforcementStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        MfaLoginEnforcementObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               MfaLoginEnforcementObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

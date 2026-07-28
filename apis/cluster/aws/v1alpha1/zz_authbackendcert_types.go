@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type AuthBackendCertInitParameters struct {
@@ -31,11 +31,11 @@ type AuthBackendCertInitParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// The name of the certificate.
 	// Name of the certificate to configure.
@@ -109,11 +109,11 @@ type AuthBackendCertParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// The name of the certificate.
 	// Name of the certificate to configure.
@@ -138,8 +138,8 @@ type AuthBackendCertParameters struct {
 
 // AuthBackendCertSpec defines the desired state of AuthBackendCert
 type AuthBackendCertSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     AuthBackendCertParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   AuthBackendCertParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -155,8 +155,8 @@ type AuthBackendCertSpec struct {
 
 // AuthBackendCertStatus defines the observed state of AuthBackendCert.
 type AuthBackendCertStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        AuthBackendCertObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               AuthBackendCertObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

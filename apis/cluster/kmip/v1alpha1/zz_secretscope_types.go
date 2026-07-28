@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretScopeInitParameters struct {
@@ -35,11 +35,11 @@ type SecretScopeInitParameters struct {
 
 	// Reference to a SecretBackend in kmip to populate path.
 	// +kubebuilder:validation:Optional
-	PathRef *v1.Reference `json:"pathRef,omitempty" tf:"-"`
+	PathRef *v2.Reference `json:"pathRef,omitempty" tf:"-"`
 
 	// Selector for a SecretBackend in kmip to populate path.
 	// +kubebuilder:validation:Optional
-	PathSelector *v1.Selector `json:"pathSelector,omitempty" tf:"-"`
+	PathSelector *v2.Selector `json:"pathSelector,omitempty" tf:"-"`
 
 	// Name of the scope.
 	// Name of the scope
@@ -96,11 +96,11 @@ type SecretScopeParameters struct {
 
 	// Reference to a SecretBackend in kmip to populate path.
 	// +kubebuilder:validation:Optional
-	PathRef *v1.Reference `json:"pathRef,omitempty" tf:"-"`
+	PathRef *v2.Reference `json:"pathRef,omitempty" tf:"-"`
 
 	// Selector for a SecretBackend in kmip to populate path.
 	// +kubebuilder:validation:Optional
-	PathSelector *v1.Selector `json:"pathSelector,omitempty" tf:"-"`
+	PathSelector *v2.Selector `json:"pathSelector,omitempty" tf:"-"`
 
 	// Name of the scope.
 	// Name of the scope
@@ -110,8 +110,8 @@ type SecretScopeParameters struct {
 
 // SecretScopeSpec defines the desired state of SecretScope
 type SecretScopeSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     SecretScopeParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   SecretScopeParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -127,8 +127,8 @@ type SecretScopeSpec struct {
 
 // SecretScopeStatus defines the observed state of SecretScope.
 type SecretScopeStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretScopeObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretScopeObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

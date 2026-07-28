@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretBackendIntermediateSetSignedInitParameters struct {
@@ -24,11 +23,11 @@ type SecretBackendIntermediateSetSignedInitParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// Specifies the PEM encoded certificate. May optionally append additional
 	// CA certificates to populate the whole chain, which will then enable returning the full chain from
@@ -40,11 +39,11 @@ type SecretBackendIntermediateSetSignedInitParameters struct {
 
 	// Reference to a SecretBackendRootSignIntermediate in pki to populate certificate.
 	// +kubebuilder:validation:Optional
-	CertificateRef *v1.NamespacedReference `json:"certificateRef,omitempty" tf:"-"`
+	CertificateRef *v2.NamespacedReference `json:"certificateRef,omitempty" tf:"-"`
 
 	// Selector for a SecretBackendRootSignIntermediate in pki to populate certificate.
 	// +kubebuilder:validation:Optional
-	CertificateSelector *v1.NamespacedSelector `json:"certificateSelector,omitempty" tf:"-"`
+	CertificateSelector *v2.NamespacedSelector `json:"certificateSelector,omitempty" tf:"-"`
 
 	// The namespace to provision the resource in.
 	// The value should not contain leading or trailing forward slashes.
@@ -96,11 +95,11 @@ type SecretBackendIntermediateSetSignedParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// Specifies the PEM encoded certificate. May optionally append additional
 	// CA certificates to populate the whole chain, which will then enable returning the full chain from
@@ -113,11 +112,11 @@ type SecretBackendIntermediateSetSignedParameters struct {
 
 	// Reference to a SecretBackendRootSignIntermediate in pki to populate certificate.
 	// +kubebuilder:validation:Optional
-	CertificateRef *v1.NamespacedReference `json:"certificateRef,omitempty" tf:"-"`
+	CertificateRef *v2.NamespacedReference `json:"certificateRef,omitempty" tf:"-"`
 
 	// Selector for a SecretBackendRootSignIntermediate in pki to populate certificate.
 	// +kubebuilder:validation:Optional
-	CertificateSelector *v1.NamespacedSelector `json:"certificateSelector,omitempty" tf:"-"`
+	CertificateSelector *v2.NamespacedSelector `json:"certificateSelector,omitempty" tf:"-"`
 
 	// The namespace to provision the resource in.
 	// The value should not contain leading or trailing forward slashes.
@@ -147,8 +146,8 @@ type SecretBackendIntermediateSetSignedSpec struct {
 
 // SecretBackendIntermediateSetSignedStatus defines the observed state of SecretBackendIntermediateSetSigned.
 type SecretBackendIntermediateSetSignedStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretBackendIntermediateSetSignedObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretBackendIntermediateSetSignedObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

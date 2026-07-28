@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type AuthBackendInitParameters struct {
@@ -74,11 +73,11 @@ type AuthBackendInitParameters struct {
 
 	// Client Secret used for OIDC backends. Note: This field is stored in state. For enhanced security, use oidc_client_secret_wo instead.
 	// Client Secret used for OIDC
-	OidcClientSecretSecretRef *v1.LocalSecretKeySelector `json:"oidcClientSecretSecretRef,omitempty" tf:"-"`
+	OidcClientSecretSecretRef *v2.LocalSecretKeySelector `json:"oidcClientSecretSecretRef,omitempty" tf:"-"`
 
 	// Write-only Client Secret used for OIDC backends. Mutually exclusive with oidc_client_secret. Must be used with oidc_client_secret_wo_version. To rotate the secret, update the value and increment oidc_client_secret_wo_version.
 	// Write-only Client Secret used for OIDC. This field is recommended over oidc_client_secret for enhanced security.
-	OidcClientSecretWoSecretRef *v1.LocalSecretKeySelector `json:"oidcClientSecretWoSecretRef,omitempty" tf:"-"`
+	OidcClientSecretWoSecretRef *v2.LocalSecretKeySelector `json:"oidcClientSecretWoSecretRef,omitempty" tf:"-"`
 
 	// Version counter for the write-only oidc_client_secret_wo field. Increment this value to trigger an update of the client secret in Vault. Required when using oidc_client_secret_wo.
 	// Version counter for write-only oidc_client_secret field. Increment this value to force update of the secret.
@@ -290,12 +289,12 @@ type AuthBackendParameters struct {
 	// Client Secret used for OIDC backends. Note: This field is stored in state. For enhanced security, use oidc_client_secret_wo instead.
 	// Client Secret used for OIDC
 	// +kubebuilder:validation:Optional
-	OidcClientSecretSecretRef *v1.LocalSecretKeySelector `json:"oidcClientSecretSecretRef,omitempty" tf:"-"`
+	OidcClientSecretSecretRef *v2.LocalSecretKeySelector `json:"oidcClientSecretSecretRef,omitempty" tf:"-"`
 
 	// Write-only Client Secret used for OIDC backends. Mutually exclusive with oidc_client_secret. Must be used with oidc_client_secret_wo_version. To rotate the secret, update the value and increment oidc_client_secret_wo_version.
 	// Write-only Client Secret used for OIDC. This field is recommended over oidc_client_secret for enhanced security.
 	// +kubebuilder:validation:Optional
-	OidcClientSecretWoSecretRef *v1.LocalSecretKeySelector `json:"oidcClientSecretWoSecretRef,omitempty" tf:"-"`
+	OidcClientSecretWoSecretRef *v2.LocalSecretKeySelector `json:"oidcClientSecretWoSecretRef,omitempty" tf:"-"`
 
 	// Version counter for the write-only oidc_client_secret_wo field. Increment this value to trigger an update of the client secret in Vault. Required when using oidc_client_secret_wo.
 	// Version counter for write-only oidc_client_secret field. Increment this value to force update of the secret.
@@ -480,8 +479,8 @@ type AuthBackendSpec struct {
 
 // AuthBackendStatus defines the observed state of AuthBackend.
 type AuthBackendStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        AuthBackendObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               AuthBackendObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

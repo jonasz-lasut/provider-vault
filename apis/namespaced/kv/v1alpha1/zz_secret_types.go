@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretInitParameters struct {
@@ -19,7 +18,7 @@ type SecretInitParameters struct {
 	// JSON-encoded string that will be
 	// written as the secret data at the given path.
 	// JSON-encoded secret data to write.
-	DataJSONSecretRef v1.LocalSecretKeySelector `json:"dataJsonSecretRef" tf:"-"`
+	DataJSONSecretRef v2.LocalSecretKeySelector `json:"dataJsonSecretRef" tf:"-"`
 
 	// The namespace to provision the resource in.
 	// The value should not contain leading or trailing forward slashes.
@@ -54,7 +53,7 @@ type SecretParameters struct {
 	// written as the secret data at the given path.
 	// JSON-encoded secret data to write.
 	// +kubebuilder:validation:Optional
-	DataJSONSecretRef v1.LocalSecretKeySelector `json:"dataJsonSecretRef" tf:"-"`
+	DataJSONSecretRef v2.LocalSecretKeySelector `json:"dataJsonSecretRef" tf:"-"`
 
 	// The namespace to provision the resource in.
 	// The value should not contain leading or trailing forward slashes.
@@ -89,8 +88,8 @@ type SecretSpec struct {
 
 // SecretStatus defines the observed state of Secret.
 type SecretStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

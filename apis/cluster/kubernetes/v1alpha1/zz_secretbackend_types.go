@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretBackendInitParameters struct {
@@ -123,12 +123,12 @@ type SecretBackendInitParameters struct {
 	// secrets engine to manage Kubernetes credentials. Defaults to the local pod’s JWT if Vault
 	// is running in Kubernetes.
 	// The JSON web token of the service account used by the secrets engine to manage Kubernetes credentials. Defaults to the local pod’s JWT if found.
-	ServiceAccountJwtSecretRef *v1.SecretKeySelector `json:"serviceAccountJwtSecretRef,omitempty" tf:"-"`
+	ServiceAccountJwtSecretRef *v2.SecretKeySelector `json:"serviceAccountJwtSecretRef,omitempty" tf:"-"`
 
 	// Write-only JSON web token of the service account used by the secrets engine to manage Kubernetes credentials. This value is not stored in state.
 	// Note: This property is write-only and will not be read from the API.
 	// Write-only JSON web token of the service account used by the secrets engine to manage Kubernetes credentials. This value will not be stored in state.
-	ServiceAccountJwtWoSecretRef *v1.SecretKeySelector `json:"serviceAccountJwtWoSecretRef,omitempty" tf:"-"`
+	ServiceAccountJwtWoSecretRef *v2.SecretKeySelector `json:"serviceAccountJwtWoSecretRef,omitempty" tf:"-"`
 
 	// Version counter for service_account_jwt_wo. Increment to force an update.
 	// For more information about write-only attributes, see
@@ -388,13 +388,13 @@ type SecretBackendParameters struct {
 	// is running in Kubernetes.
 	// The JSON web token of the service account used by the secrets engine to manage Kubernetes credentials. Defaults to the local pod’s JWT if found.
 	// +kubebuilder:validation:Optional
-	ServiceAccountJwtSecretRef *v1.SecretKeySelector `json:"serviceAccountJwtSecretRef,omitempty" tf:"-"`
+	ServiceAccountJwtSecretRef *v2.SecretKeySelector `json:"serviceAccountJwtSecretRef,omitempty" tf:"-"`
 
 	// Write-only JSON web token of the service account used by the secrets engine to manage Kubernetes credentials. This value is not stored in state.
 	// Note: This property is write-only and will not be read from the API.
 	// Write-only JSON web token of the service account used by the secrets engine to manage Kubernetes credentials. This value will not be stored in state.
 	// +kubebuilder:validation:Optional
-	ServiceAccountJwtWoSecretRef *v1.SecretKeySelector `json:"serviceAccountJwtWoSecretRef,omitempty" tf:"-"`
+	ServiceAccountJwtWoSecretRef *v2.SecretKeySelector `json:"serviceAccountJwtWoSecretRef,omitempty" tf:"-"`
 
 	// Version counter for service_account_jwt_wo. Increment to force an update.
 	// For more information about write-only attributes, see
@@ -406,8 +406,8 @@ type SecretBackendParameters struct {
 
 // SecretBackendSpec defines the desired state of SecretBackend
 type SecretBackendSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     SecretBackendParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   SecretBackendParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -423,8 +423,8 @@ type SecretBackendSpec struct {
 
 // SecretBackendStatus defines the observed state of SecretBackend.
 type SecretBackendStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretBackendObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretBackendObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretBackendRoleInitParameters struct {
@@ -37,11 +37,11 @@ type SecretBackendRoleInitParameters struct {
 
 	// Reference to a SecretBackend in kubernetes to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a SecretBackend in kubernetes to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// Additional annotations to apply to all generated
 	// Kubernetes objects.
@@ -230,11 +230,11 @@ type SecretBackendRoleParameters struct {
 
 	// Reference to a SecretBackend in kubernetes to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a SecretBackend in kubernetes to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// Additional annotations to apply to all generated
 	// Kubernetes objects.
@@ -319,8 +319,8 @@ type SecretBackendRoleParameters struct {
 
 // SecretBackendRoleSpec defines the desired state of SecretBackendRole
 type SecretBackendRoleSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     SecretBackendRoleParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   SecretBackendRoleParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -336,8 +336,8 @@ type SecretBackendRoleSpec struct {
 
 // SecretBackendRoleStatus defines the observed state of SecretBackendRole.
 type SecretBackendRoleStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretBackendRoleObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretBackendRoleObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

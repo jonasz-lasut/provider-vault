@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type DuoInitParameters struct {
@@ -21,7 +21,7 @@ type DuoInitParameters struct {
 
 	// Integration key for Duo.
 	// Integration key for Duo.
-	IntegrationKeySecretRef v1.SecretKeySelector `json:"integrationKeySecretRef" tf:"-"`
+	IntegrationKeySecretRef v2.SecretKeySelector `json:"integrationKeySecretRef" tf:"-"`
 
 	// The mount to tie this method to for use in automatic mappings. The mapping will use the Name field of Aliases associated with this mount as the username in the mapping.
 	// The mount to tie this method to for use in automatic mappings. The mapping will use the Name field of Aliases associated with this mount as the username in the mapping.
@@ -31,11 +31,11 @@ type DuoInitParameters struct {
 
 	// Reference to a Backend in auth to populate mountAccessor.
 	// +kubebuilder:validation:Optional
-	MountAccessorRef *v1.Reference `json:"mountAccessorRef,omitempty" tf:"-"`
+	MountAccessorRef *v2.Reference `json:"mountAccessorRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate mountAccessor.
 	// +kubebuilder:validation:Optional
-	MountAccessorSelector *v1.Selector `json:"mountAccessorSelector,omitempty" tf:"-"`
+	MountAccessorSelector *v2.Selector `json:"mountAccessorSelector,omitempty" tf:"-"`
 
 	// (string: <required>) – Name of the MFA method.
 	// Name of the MFA method.
@@ -54,7 +54,7 @@ type DuoInitParameters struct {
 
 	// Secret key for Duo.
 	// Secret key for Duo.
-	SecretKeySecretRef v1.SecretKeySelector `json:"secretKeySecretRef" tf:"-"`
+	SecretKeySecretRef v2.SecretKeySelector `json:"secretKeySecretRef" tf:"-"`
 
 	// A format string for mapping Identity names to MFA method names. Values to substitute should be placed in {{}}. For example, "{{alias.name}}@example.com". If blank, the Alias's Name field will be used as-is. Currently-supported mappings:
 	// A format string for mapping Identity names to MFA method names. Values to substitute should be placed in `{{}}`.
@@ -103,7 +103,7 @@ type DuoParameters struct {
 	// Integration key for Duo.
 	// Integration key for Duo.
 	// +kubebuilder:validation:Optional
-	IntegrationKeySecretRef v1.SecretKeySelector `json:"integrationKeySecretRef" tf:"-"`
+	IntegrationKeySecretRef v2.SecretKeySelector `json:"integrationKeySecretRef" tf:"-"`
 
 	// The mount to tie this method to for use in automatic mappings. The mapping will use the Name field of Aliases associated with this mount as the username in the mapping.
 	// The mount to tie this method to for use in automatic mappings. The mapping will use the Name field of Aliases associated with this mount as the username in the mapping.
@@ -114,11 +114,11 @@ type DuoParameters struct {
 
 	// Reference to a Backend in auth to populate mountAccessor.
 	// +kubebuilder:validation:Optional
-	MountAccessorRef *v1.Reference `json:"mountAccessorRef,omitempty" tf:"-"`
+	MountAccessorRef *v2.Reference `json:"mountAccessorRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate mountAccessor.
 	// +kubebuilder:validation:Optional
-	MountAccessorSelector *v1.Selector `json:"mountAccessorSelector,omitempty" tf:"-"`
+	MountAccessorSelector *v2.Selector `json:"mountAccessorSelector,omitempty" tf:"-"`
 
 	// (string: <required>) – Name of the MFA method.
 	// Name of the MFA method.
@@ -141,7 +141,7 @@ type DuoParameters struct {
 	// Secret key for Duo.
 	// Secret key for Duo.
 	// +kubebuilder:validation:Optional
-	SecretKeySecretRef v1.SecretKeySelector `json:"secretKeySecretRef" tf:"-"`
+	SecretKeySecretRef v2.SecretKeySelector `json:"secretKeySecretRef" tf:"-"`
 
 	// A format string for mapping Identity names to MFA method names. Values to substitute should be placed in {{}}. For example, "{{alias.name}}@example.com". If blank, the Alias's Name field will be used as-is. Currently-supported mappings:
 	// A format string for mapping Identity names to MFA method names. Values to substitute should be placed in `{{}}`.
@@ -151,8 +151,8 @@ type DuoParameters struct {
 
 // DuoSpec defines the desired state of Duo
 type DuoSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     DuoParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   DuoParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -168,8 +168,8 @@ type DuoSpec struct {
 
 // DuoStatus defines the observed state of Duo.
 type DuoStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        DuoObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               DuoObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

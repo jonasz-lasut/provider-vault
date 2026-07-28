@@ -10,16 +10,16 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type AuthBackendInitParameters struct {
 
 	// The Okta API token. This is required to query Okta for user group membership. If this is not supplied only locally configured groups will be enabled.
-	APITokenSecretRef *v1.SecretKeySelector `json:"apiTokenSecretRef,omitempty" tf:"-"`
+	APITokenSecretRef *v2.SecretKeySelector `json:"apiTokenSecretRef,omitempty" tf:"-"`
 
 	// Write-only Okta API token. This is required to query Okta for user group membership. If this is not supplied only locally configured groups will be enabled.
-	APITokenWoSecretRef *v1.SecretKeySelector `json:"apiTokenWoSecretRef,omitempty" tf:"-"`
+	APITokenWoSecretRef *v2.SecretKeySelector `json:"apiTokenWoSecretRef,omitempty" tf:"-"`
 
 	// Version counter for write-only api_token.
 	APITokenWoVersion *float64 `json:"apiTokenWoVersion,omitempty" tf:"api_token_wo_version,omitempty"`
@@ -79,7 +79,7 @@ type AuthBackendInitParameters struct {
 	TokenPolicies []*string `json:"tokenPolicies,omitempty" tf:"token_policies,omitempty"`
 
 	// The Okta API token. This is required to query Okta for user group membership. If this is not supplied only locally configured groups will be enabled. Use api_token instead.
-	TokenSecretRef *v1.SecretKeySelector `json:"tokenSecretRef,omitempty" tf:"-"`
+	TokenSecretRef *v2.SecretKeySelector `json:"tokenSecretRef,omitempty" tf:"-"`
 
 	// The initial ttl of the token to generate in seconds
 	TokenTTL *float64 `json:"tokenTtl,omitempty" tf:"token_ttl,omitempty"`
@@ -171,11 +171,11 @@ type AuthBackendParameters struct {
 
 	// The Okta API token. This is required to query Okta for user group membership. If this is not supplied only locally configured groups will be enabled.
 	// +kubebuilder:validation:Optional
-	APITokenSecretRef *v1.SecretKeySelector `json:"apiTokenSecretRef,omitempty" tf:"-"`
+	APITokenSecretRef *v2.SecretKeySelector `json:"apiTokenSecretRef,omitempty" tf:"-"`
 
 	// Write-only Okta API token. This is required to query Okta for user group membership. If this is not supplied only locally configured groups will be enabled.
 	// +kubebuilder:validation:Optional
-	APITokenWoSecretRef *v1.SecretKeySelector `json:"apiTokenWoSecretRef,omitempty" tf:"-"`
+	APITokenWoSecretRef *v2.SecretKeySelector `json:"apiTokenWoSecretRef,omitempty" tf:"-"`
 
 	// Version counter for write-only api_token.
 	// +kubebuilder:validation:Optional
@@ -254,7 +254,7 @@ type AuthBackendParameters struct {
 
 	// The Okta API token. This is required to query Okta for user group membership. If this is not supplied only locally configured groups will be enabled. Use api_token instead.
 	// +kubebuilder:validation:Optional
-	TokenSecretRef *v1.SecretKeySelector `json:"tokenSecretRef,omitempty" tf:"-"`
+	TokenSecretRef *v2.SecretKeySelector `json:"tokenSecretRef,omitempty" tf:"-"`
 
 	// The initial ttl of the token to generate in seconds
 	// +kubebuilder:validation:Optional
@@ -396,8 +396,8 @@ type UserParameters struct {
 
 // AuthBackendSpec defines the desired state of AuthBackend
 type AuthBackendSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     AuthBackendParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   AuthBackendParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -413,8 +413,8 @@ type AuthBackendSpec struct {
 
 // AuthBackendStatus defines the observed state of AuthBackend.
 type AuthBackendStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        AuthBackendObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               AuthBackendObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

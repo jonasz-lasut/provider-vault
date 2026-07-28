@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type GroupMemberGroupIdsInitParameters struct {
@@ -29,11 +28,11 @@ type GroupMemberGroupIdsInitParameters struct {
 
 	// Reference to a Group in identity to populate groupId.
 	// +kubebuilder:validation:Optional
-	GroupIDRef *v1.NamespacedReference `json:"groupIdRef,omitempty" tf:"-"`
+	GroupIDRef *v2.NamespacedReference `json:"groupIdRef,omitempty" tf:"-"`
 
 	// Selector for a Group in identity to populate groupId.
 	// +kubebuilder:validation:Optional
-	GroupIDSelector *v1.NamespacedSelector `json:"groupIdSelector,omitempty" tf:"-"`
+	GroupIDSelector *v2.NamespacedSelector `json:"groupIdSelector,omitempty" tf:"-"`
 
 	// List of member groups that belong to the group
 	// Group IDs to be assigned as group members.
@@ -44,11 +43,11 @@ type GroupMemberGroupIdsInitParameters struct {
 
 	// References to Group in identity to populate memberGroupIds.
 	// +kubebuilder:validation:Optional
-	MemberGroupIdsRefs []v1.NamespacedReference `json:"memberGroupIdsRefs,omitempty" tf:"-"`
+	MemberGroupIdsRefs []v2.NamespacedReference `json:"memberGroupIdsRefs,omitempty" tf:"-"`
 
 	// Selector for a list of Group in identity to populate memberGroupIds.
 	// +kubebuilder:validation:Optional
-	MemberGroupIdsSelector *v1.NamespacedSelector `json:"memberGroupIdsSelector,omitempty" tf:"-"`
+	MemberGroupIdsSelector *v2.NamespacedSelector `json:"memberGroupIdsSelector,omitempty" tf:"-"`
 
 	// The namespace to provision the resource in.
 	// The value should not contain leading or trailing forward slashes.
@@ -101,11 +100,11 @@ type GroupMemberGroupIdsParameters struct {
 
 	// Reference to a Group in identity to populate groupId.
 	// +kubebuilder:validation:Optional
-	GroupIDRef *v1.NamespacedReference `json:"groupIdRef,omitempty" tf:"-"`
+	GroupIDRef *v2.NamespacedReference `json:"groupIdRef,omitempty" tf:"-"`
 
 	// Selector for a Group in identity to populate groupId.
 	// +kubebuilder:validation:Optional
-	GroupIDSelector *v1.NamespacedSelector `json:"groupIdSelector,omitempty" tf:"-"`
+	GroupIDSelector *v2.NamespacedSelector `json:"groupIdSelector,omitempty" tf:"-"`
 
 	// List of member groups that belong to the group
 	// Group IDs to be assigned as group members.
@@ -117,11 +116,11 @@ type GroupMemberGroupIdsParameters struct {
 
 	// References to Group in identity to populate memberGroupIds.
 	// +kubebuilder:validation:Optional
-	MemberGroupIdsRefs []v1.NamespacedReference `json:"memberGroupIdsRefs,omitempty" tf:"-"`
+	MemberGroupIdsRefs []v2.NamespacedReference `json:"memberGroupIdsRefs,omitempty" tf:"-"`
 
 	// Selector for a list of Group in identity to populate memberGroupIds.
 	// +kubebuilder:validation:Optional
-	MemberGroupIdsSelector *v1.NamespacedSelector `json:"memberGroupIdsSelector,omitempty" tf:"-"`
+	MemberGroupIdsSelector *v2.NamespacedSelector `json:"memberGroupIdsSelector,omitempty" tf:"-"`
 
 	// The namespace to provision the resource in.
 	// The value should not contain leading or trailing forward slashes.
@@ -151,8 +150,8 @@ type GroupMemberGroupIdsSpec struct {
 
 // GroupMemberGroupIdsStatus defines the observed state of GroupMemberGroupIds.
 type GroupMemberGroupIdsStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        GroupMemberGroupIdsObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               GroupMemberGroupIdsObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

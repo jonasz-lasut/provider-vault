@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type EndpointInitParameters struct {
@@ -19,7 +18,7 @@ type EndpointInitParameters struct {
 	// String containing a JSON-encoded object that will be
 	// written to the given path as the secret data.
 	// JSON-encoded data to write.
-	DataJSONSecretRef v1.LocalSecretKeySelector `json:"dataJsonSecretRef" tf:"-"`
+	DataJSONSecretRef v2.LocalSecretKeySelector `json:"dataJsonSecretRef" tf:"-"`
 
 	// True/false. Set this to true if your
 	// vault authentication is not able to delete the data or if the endpoint
@@ -143,7 +142,7 @@ type EndpointParameters struct {
 	// written to the given path as the secret data.
 	// JSON-encoded data to write.
 	// +kubebuilder:validation:Optional
-	DataJSONSecretRef v1.LocalSecretKeySelector `json:"dataJsonSecretRef" tf:"-"`
+	DataJSONSecretRef v2.LocalSecretKeySelector `json:"dataJsonSecretRef" tf:"-"`
 
 	// True/false. Set this to true if your
 	// vault authentication is not able to delete the data or if the endpoint
@@ -219,8 +218,8 @@ type EndpointSpec struct {
 
 // EndpointStatus defines the observed state of Endpoint.
 type EndpointStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        EndpointObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               EndpointObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

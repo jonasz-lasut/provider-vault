@@ -5,554 +5,554 @@ Copyright 2022 Upbound Inc.
 
 package v1alpha1
 
-import xpv1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+import xpv2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 
 // GetCondition of this AuthBackendCert.
-func (mg *AuthBackendCert) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *AuthBackendCert) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetDeletionPolicy of this AuthBackendCert.
-func (mg *AuthBackendCert) GetDeletionPolicy() xpv1.DeletionPolicy {
+func (mg *AuthBackendCert) GetDeletionPolicy() xpv2.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
 // GetManagementPolicies of this AuthBackendCert.
-func (mg *AuthBackendCert) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *AuthBackendCert) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this AuthBackendCert.
-func (mg *AuthBackendCert) GetProviderConfigReference() *xpv1.Reference {
+func (mg *AuthBackendCert) GetProviderConfigReference() *xpv2.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this AuthBackendCert.
-func (mg *AuthBackendCert) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+func (mg *AuthBackendCert) GetWriteConnectionSecretToReference() *xpv2.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this AuthBackendCert.
-func (mg *AuthBackendCert) SetConditions(c ...xpv1.Condition) {
+func (mg *AuthBackendCert) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetDeletionPolicy of this AuthBackendCert.
-func (mg *AuthBackendCert) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+func (mg *AuthBackendCert) SetDeletionPolicy(r xpv2.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
 // SetManagementPolicies of this AuthBackendCert.
-func (mg *AuthBackendCert) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *AuthBackendCert) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this AuthBackendCert.
-func (mg *AuthBackendCert) SetProviderConfigReference(r *xpv1.Reference) {
+func (mg *AuthBackendCert) SetProviderConfigReference(r *xpv2.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this AuthBackendCert.
-func (mg *AuthBackendCert) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+func (mg *AuthBackendCert) SetWriteConnectionSecretToReference(r *xpv2.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this AuthBackendClient.
-func (mg *AuthBackendClient) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *AuthBackendClient) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetDeletionPolicy of this AuthBackendClient.
-func (mg *AuthBackendClient) GetDeletionPolicy() xpv1.DeletionPolicy {
+func (mg *AuthBackendClient) GetDeletionPolicy() xpv2.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
 // GetManagementPolicies of this AuthBackendClient.
-func (mg *AuthBackendClient) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *AuthBackendClient) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this AuthBackendClient.
-func (mg *AuthBackendClient) GetProviderConfigReference() *xpv1.Reference {
+func (mg *AuthBackendClient) GetProviderConfigReference() *xpv2.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this AuthBackendClient.
-func (mg *AuthBackendClient) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+func (mg *AuthBackendClient) GetWriteConnectionSecretToReference() *xpv2.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this AuthBackendClient.
-func (mg *AuthBackendClient) SetConditions(c ...xpv1.Condition) {
+func (mg *AuthBackendClient) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetDeletionPolicy of this AuthBackendClient.
-func (mg *AuthBackendClient) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+func (mg *AuthBackendClient) SetDeletionPolicy(r xpv2.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
 // SetManagementPolicies of this AuthBackendClient.
-func (mg *AuthBackendClient) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *AuthBackendClient) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this AuthBackendClient.
-func (mg *AuthBackendClient) SetProviderConfigReference(r *xpv1.Reference) {
+func (mg *AuthBackendClient) SetProviderConfigReference(r *xpv2.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this AuthBackendClient.
-func (mg *AuthBackendClient) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+func (mg *AuthBackendClient) SetWriteConnectionSecretToReference(r *xpv2.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this AuthBackendConfigIdentity.
-func (mg *AuthBackendConfigIdentity) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *AuthBackendConfigIdentity) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetDeletionPolicy of this AuthBackendConfigIdentity.
-func (mg *AuthBackendConfigIdentity) GetDeletionPolicy() xpv1.DeletionPolicy {
+func (mg *AuthBackendConfigIdentity) GetDeletionPolicy() xpv2.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
 // GetManagementPolicies of this AuthBackendConfigIdentity.
-func (mg *AuthBackendConfigIdentity) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *AuthBackendConfigIdentity) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this AuthBackendConfigIdentity.
-func (mg *AuthBackendConfigIdentity) GetProviderConfigReference() *xpv1.Reference {
+func (mg *AuthBackendConfigIdentity) GetProviderConfigReference() *xpv2.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this AuthBackendConfigIdentity.
-func (mg *AuthBackendConfigIdentity) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+func (mg *AuthBackendConfigIdentity) GetWriteConnectionSecretToReference() *xpv2.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this AuthBackendConfigIdentity.
-func (mg *AuthBackendConfigIdentity) SetConditions(c ...xpv1.Condition) {
+func (mg *AuthBackendConfigIdentity) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetDeletionPolicy of this AuthBackendConfigIdentity.
-func (mg *AuthBackendConfigIdentity) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+func (mg *AuthBackendConfigIdentity) SetDeletionPolicy(r xpv2.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
 // SetManagementPolicies of this AuthBackendConfigIdentity.
-func (mg *AuthBackendConfigIdentity) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *AuthBackendConfigIdentity) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this AuthBackendConfigIdentity.
-func (mg *AuthBackendConfigIdentity) SetProviderConfigReference(r *xpv1.Reference) {
+func (mg *AuthBackendConfigIdentity) SetProviderConfigReference(r *xpv2.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this AuthBackendConfigIdentity.
-func (mg *AuthBackendConfigIdentity) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+func (mg *AuthBackendConfigIdentity) SetWriteConnectionSecretToReference(r *xpv2.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this AuthBackendIdentityWhitelist.
-func (mg *AuthBackendIdentityWhitelist) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *AuthBackendIdentityWhitelist) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetDeletionPolicy of this AuthBackendIdentityWhitelist.
-func (mg *AuthBackendIdentityWhitelist) GetDeletionPolicy() xpv1.DeletionPolicy {
+func (mg *AuthBackendIdentityWhitelist) GetDeletionPolicy() xpv2.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
 // GetManagementPolicies of this AuthBackendIdentityWhitelist.
-func (mg *AuthBackendIdentityWhitelist) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *AuthBackendIdentityWhitelist) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this AuthBackendIdentityWhitelist.
-func (mg *AuthBackendIdentityWhitelist) GetProviderConfigReference() *xpv1.Reference {
+func (mg *AuthBackendIdentityWhitelist) GetProviderConfigReference() *xpv2.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this AuthBackendIdentityWhitelist.
-func (mg *AuthBackendIdentityWhitelist) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+func (mg *AuthBackendIdentityWhitelist) GetWriteConnectionSecretToReference() *xpv2.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this AuthBackendIdentityWhitelist.
-func (mg *AuthBackendIdentityWhitelist) SetConditions(c ...xpv1.Condition) {
+func (mg *AuthBackendIdentityWhitelist) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetDeletionPolicy of this AuthBackendIdentityWhitelist.
-func (mg *AuthBackendIdentityWhitelist) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+func (mg *AuthBackendIdentityWhitelist) SetDeletionPolicy(r xpv2.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
 // SetManagementPolicies of this AuthBackendIdentityWhitelist.
-func (mg *AuthBackendIdentityWhitelist) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *AuthBackendIdentityWhitelist) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this AuthBackendIdentityWhitelist.
-func (mg *AuthBackendIdentityWhitelist) SetProviderConfigReference(r *xpv1.Reference) {
+func (mg *AuthBackendIdentityWhitelist) SetProviderConfigReference(r *xpv2.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this AuthBackendIdentityWhitelist.
-func (mg *AuthBackendIdentityWhitelist) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+func (mg *AuthBackendIdentityWhitelist) SetWriteConnectionSecretToReference(r *xpv2.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this AuthBackendLogin.
-func (mg *AuthBackendLogin) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *AuthBackendLogin) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetDeletionPolicy of this AuthBackendLogin.
-func (mg *AuthBackendLogin) GetDeletionPolicy() xpv1.DeletionPolicy {
+func (mg *AuthBackendLogin) GetDeletionPolicy() xpv2.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
 // GetManagementPolicies of this AuthBackendLogin.
-func (mg *AuthBackendLogin) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *AuthBackendLogin) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this AuthBackendLogin.
-func (mg *AuthBackendLogin) GetProviderConfigReference() *xpv1.Reference {
+func (mg *AuthBackendLogin) GetProviderConfigReference() *xpv2.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this AuthBackendLogin.
-func (mg *AuthBackendLogin) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+func (mg *AuthBackendLogin) GetWriteConnectionSecretToReference() *xpv2.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this AuthBackendLogin.
-func (mg *AuthBackendLogin) SetConditions(c ...xpv1.Condition) {
+func (mg *AuthBackendLogin) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetDeletionPolicy of this AuthBackendLogin.
-func (mg *AuthBackendLogin) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+func (mg *AuthBackendLogin) SetDeletionPolicy(r xpv2.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
 // SetManagementPolicies of this AuthBackendLogin.
-func (mg *AuthBackendLogin) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *AuthBackendLogin) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this AuthBackendLogin.
-func (mg *AuthBackendLogin) SetProviderConfigReference(r *xpv1.Reference) {
+func (mg *AuthBackendLogin) SetProviderConfigReference(r *xpv2.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this AuthBackendLogin.
-func (mg *AuthBackendLogin) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+func (mg *AuthBackendLogin) SetWriteConnectionSecretToReference(r *xpv2.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this AuthBackendRole.
-func (mg *AuthBackendRole) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *AuthBackendRole) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetDeletionPolicy of this AuthBackendRole.
-func (mg *AuthBackendRole) GetDeletionPolicy() xpv1.DeletionPolicy {
+func (mg *AuthBackendRole) GetDeletionPolicy() xpv2.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
 // GetManagementPolicies of this AuthBackendRole.
-func (mg *AuthBackendRole) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *AuthBackendRole) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this AuthBackendRole.
-func (mg *AuthBackendRole) GetProviderConfigReference() *xpv1.Reference {
+func (mg *AuthBackendRole) GetProviderConfigReference() *xpv2.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this AuthBackendRole.
-func (mg *AuthBackendRole) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+func (mg *AuthBackendRole) GetWriteConnectionSecretToReference() *xpv2.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this AuthBackendRole.
-func (mg *AuthBackendRole) SetConditions(c ...xpv1.Condition) {
+func (mg *AuthBackendRole) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetDeletionPolicy of this AuthBackendRole.
-func (mg *AuthBackendRole) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+func (mg *AuthBackendRole) SetDeletionPolicy(r xpv2.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
 // SetManagementPolicies of this AuthBackendRole.
-func (mg *AuthBackendRole) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *AuthBackendRole) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this AuthBackendRole.
-func (mg *AuthBackendRole) SetProviderConfigReference(r *xpv1.Reference) {
+func (mg *AuthBackendRole) SetProviderConfigReference(r *xpv2.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this AuthBackendRole.
-func (mg *AuthBackendRole) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+func (mg *AuthBackendRole) SetWriteConnectionSecretToReference(r *xpv2.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this AuthBackendRoleTag.
-func (mg *AuthBackendRoleTag) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *AuthBackendRoleTag) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetDeletionPolicy of this AuthBackendRoleTag.
-func (mg *AuthBackendRoleTag) GetDeletionPolicy() xpv1.DeletionPolicy {
+func (mg *AuthBackendRoleTag) GetDeletionPolicy() xpv2.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
 // GetManagementPolicies of this AuthBackendRoleTag.
-func (mg *AuthBackendRoleTag) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *AuthBackendRoleTag) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this AuthBackendRoleTag.
-func (mg *AuthBackendRoleTag) GetProviderConfigReference() *xpv1.Reference {
+func (mg *AuthBackendRoleTag) GetProviderConfigReference() *xpv2.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this AuthBackendRoleTag.
-func (mg *AuthBackendRoleTag) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+func (mg *AuthBackendRoleTag) GetWriteConnectionSecretToReference() *xpv2.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this AuthBackendRoleTag.
-func (mg *AuthBackendRoleTag) SetConditions(c ...xpv1.Condition) {
+func (mg *AuthBackendRoleTag) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetDeletionPolicy of this AuthBackendRoleTag.
-func (mg *AuthBackendRoleTag) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+func (mg *AuthBackendRoleTag) SetDeletionPolicy(r xpv2.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
 // SetManagementPolicies of this AuthBackendRoleTag.
-func (mg *AuthBackendRoleTag) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *AuthBackendRoleTag) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this AuthBackendRoleTag.
-func (mg *AuthBackendRoleTag) SetProviderConfigReference(r *xpv1.Reference) {
+func (mg *AuthBackendRoleTag) SetProviderConfigReference(r *xpv2.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this AuthBackendRoleTag.
-func (mg *AuthBackendRoleTag) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+func (mg *AuthBackendRoleTag) SetWriteConnectionSecretToReference(r *xpv2.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this AuthBackendRoletagBlacklist.
-func (mg *AuthBackendRoletagBlacklist) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *AuthBackendRoletagBlacklist) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetDeletionPolicy of this AuthBackendRoletagBlacklist.
-func (mg *AuthBackendRoletagBlacklist) GetDeletionPolicy() xpv1.DeletionPolicy {
+func (mg *AuthBackendRoletagBlacklist) GetDeletionPolicy() xpv2.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
 // GetManagementPolicies of this AuthBackendRoletagBlacklist.
-func (mg *AuthBackendRoletagBlacklist) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *AuthBackendRoletagBlacklist) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this AuthBackendRoletagBlacklist.
-func (mg *AuthBackendRoletagBlacklist) GetProviderConfigReference() *xpv1.Reference {
+func (mg *AuthBackendRoletagBlacklist) GetProviderConfigReference() *xpv2.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this AuthBackendRoletagBlacklist.
-func (mg *AuthBackendRoletagBlacklist) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+func (mg *AuthBackendRoletagBlacklist) GetWriteConnectionSecretToReference() *xpv2.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this AuthBackendRoletagBlacklist.
-func (mg *AuthBackendRoletagBlacklist) SetConditions(c ...xpv1.Condition) {
+func (mg *AuthBackendRoletagBlacklist) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetDeletionPolicy of this AuthBackendRoletagBlacklist.
-func (mg *AuthBackendRoletagBlacklist) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+func (mg *AuthBackendRoletagBlacklist) SetDeletionPolicy(r xpv2.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
 // SetManagementPolicies of this AuthBackendRoletagBlacklist.
-func (mg *AuthBackendRoletagBlacklist) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *AuthBackendRoletagBlacklist) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this AuthBackendRoletagBlacklist.
-func (mg *AuthBackendRoletagBlacklist) SetProviderConfigReference(r *xpv1.Reference) {
+func (mg *AuthBackendRoletagBlacklist) SetProviderConfigReference(r *xpv2.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this AuthBackendRoletagBlacklist.
-func (mg *AuthBackendRoletagBlacklist) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+func (mg *AuthBackendRoletagBlacklist) SetWriteConnectionSecretToReference(r *xpv2.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this AuthBackendStsRole.
-func (mg *AuthBackendStsRole) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *AuthBackendStsRole) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetDeletionPolicy of this AuthBackendStsRole.
-func (mg *AuthBackendStsRole) GetDeletionPolicy() xpv1.DeletionPolicy {
+func (mg *AuthBackendStsRole) GetDeletionPolicy() xpv2.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
 // GetManagementPolicies of this AuthBackendStsRole.
-func (mg *AuthBackendStsRole) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *AuthBackendStsRole) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this AuthBackendStsRole.
-func (mg *AuthBackendStsRole) GetProviderConfigReference() *xpv1.Reference {
+func (mg *AuthBackendStsRole) GetProviderConfigReference() *xpv2.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this AuthBackendStsRole.
-func (mg *AuthBackendStsRole) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+func (mg *AuthBackendStsRole) GetWriteConnectionSecretToReference() *xpv2.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this AuthBackendStsRole.
-func (mg *AuthBackendStsRole) SetConditions(c ...xpv1.Condition) {
+func (mg *AuthBackendStsRole) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetDeletionPolicy of this AuthBackendStsRole.
-func (mg *AuthBackendStsRole) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+func (mg *AuthBackendStsRole) SetDeletionPolicy(r xpv2.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
 // SetManagementPolicies of this AuthBackendStsRole.
-func (mg *AuthBackendStsRole) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *AuthBackendStsRole) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this AuthBackendStsRole.
-func (mg *AuthBackendStsRole) SetProviderConfigReference(r *xpv1.Reference) {
+func (mg *AuthBackendStsRole) SetProviderConfigReference(r *xpv2.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this AuthBackendStsRole.
-func (mg *AuthBackendStsRole) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+func (mg *AuthBackendStsRole) SetWriteConnectionSecretToReference(r *xpv2.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this SecretBackend.
-func (mg *SecretBackend) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *SecretBackend) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetDeletionPolicy of this SecretBackend.
-func (mg *SecretBackend) GetDeletionPolicy() xpv1.DeletionPolicy {
+func (mg *SecretBackend) GetDeletionPolicy() xpv2.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
 // GetManagementPolicies of this SecretBackend.
-func (mg *SecretBackend) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *SecretBackend) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this SecretBackend.
-func (mg *SecretBackend) GetProviderConfigReference() *xpv1.Reference {
+func (mg *SecretBackend) GetProviderConfigReference() *xpv2.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this SecretBackend.
-func (mg *SecretBackend) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+func (mg *SecretBackend) GetWriteConnectionSecretToReference() *xpv2.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this SecretBackend.
-func (mg *SecretBackend) SetConditions(c ...xpv1.Condition) {
+func (mg *SecretBackend) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetDeletionPolicy of this SecretBackend.
-func (mg *SecretBackend) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+func (mg *SecretBackend) SetDeletionPolicy(r xpv2.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
 // SetManagementPolicies of this SecretBackend.
-func (mg *SecretBackend) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *SecretBackend) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this SecretBackend.
-func (mg *SecretBackend) SetProviderConfigReference(r *xpv1.Reference) {
+func (mg *SecretBackend) SetProviderConfigReference(r *xpv2.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this SecretBackend.
-func (mg *SecretBackend) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+func (mg *SecretBackend) SetWriteConnectionSecretToReference(r *xpv2.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this SecretBackendRole.
-func (mg *SecretBackendRole) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *SecretBackendRole) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetDeletionPolicy of this SecretBackendRole.
-func (mg *SecretBackendRole) GetDeletionPolicy() xpv1.DeletionPolicy {
+func (mg *SecretBackendRole) GetDeletionPolicy() xpv2.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
 // GetManagementPolicies of this SecretBackendRole.
-func (mg *SecretBackendRole) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *SecretBackendRole) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this SecretBackendRole.
-func (mg *SecretBackendRole) GetProviderConfigReference() *xpv1.Reference {
+func (mg *SecretBackendRole) GetProviderConfigReference() *xpv2.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this SecretBackendRole.
-func (mg *SecretBackendRole) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+func (mg *SecretBackendRole) GetWriteConnectionSecretToReference() *xpv2.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this SecretBackendRole.
-func (mg *SecretBackendRole) SetConditions(c ...xpv1.Condition) {
+func (mg *SecretBackendRole) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetDeletionPolicy of this SecretBackendRole.
-func (mg *SecretBackendRole) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+func (mg *SecretBackendRole) SetDeletionPolicy(r xpv2.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
 // SetManagementPolicies of this SecretBackendRole.
-func (mg *SecretBackendRole) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *SecretBackendRole) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this SecretBackendRole.
-func (mg *SecretBackendRole) SetProviderConfigReference(r *xpv1.Reference) {
+func (mg *SecretBackendRole) SetProviderConfigReference(r *xpv2.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this SecretBackendRole.
-func (mg *SecretBackendRole) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+func (mg *SecretBackendRole) SetWriteConnectionSecretToReference(r *xpv2.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
