@@ -25,15 +25,6 @@ import (
 	features "github.com/upbound/provider-vault/v4/internal/features"
 )
 
-// SetupWebhookWithManager registers the conversion webhook for Team.
-func SetupWebhookWithManager(mgr ctrl.Manager) error {
-	if err := ctrl.NewWebhookManagedBy(mgr, &v1alpha1.Team{}).
-		Complete(); err != nil {
-		return errors.Wrap(err, "cannot register webhook for the kind v1alpha1.Team")
-	}
-	return nil
-}
-
 // SetupGated adds a controller that reconciles Team managed resources.
 func SetupGated(mgr ctrl.Manager, o tjcontroller.Options) error {
 	o.Options.Gate.Register(func() {

@@ -25,15 +25,6 @@ import (
 	features "github.com/upbound/provider-vault/v4/internal/features"
 )
 
-// SetupWebhookWithManager registers the conversion webhook for SecretBackendConnection.
-func SetupWebhookWithManager(mgr ctrl.Manager) error {
-	if err := ctrl.NewWebhookManagedBy(mgr, &v1alpha1.SecretBackendConnection{}).
-		Complete(); err != nil {
-		return errors.Wrap(err, "cannot register webhook for the kind v1alpha1.SecretBackendConnection")
-	}
-	return nil
-}
-
 // SetupGated adds a controller that reconciles SecretBackendConnection managed resources.
 func SetupGated(mgr ctrl.Manager, o tjcontroller.Options) error {
 	o.Options.Gate.Register(func() {
