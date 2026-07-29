@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretBackendCAInitParameters struct {
@@ -23,11 +23,11 @@ type SecretBackendCAInitParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// Whether Vault should generate the signing key pair internally. Defaults to true
 	// Whether Vault should generate the signing key pair internally.
@@ -58,7 +58,7 @@ type SecretBackendCAInitParameters struct {
 
 	// The private key part the SSH CA key pair; required if generate_signing_key is false.
 	// Private key part the SSH CA key pair; required if generate_signing_key is false.
-	PrivateKeySecretRef *v1.SecretKeySelector `json:"privateKeySecretRef,omitempty" tf:"-"`
+	PrivateKeySecretRef *v2.SecretKeySelector `json:"privateKeySecretRef,omitempty" tf:"-"`
 
 	// The public key part the SSH CA key pair; required if generate_signing_key is false.
 	// Public key part the SSH CA key pair; required if generate_signing_key is false.
@@ -116,11 +116,11 @@ type SecretBackendCAParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// Whether Vault should generate the signing key pair internally. Defaults to true
 	// Whether Vault should generate the signing key pair internally.
@@ -158,7 +158,7 @@ type SecretBackendCAParameters struct {
 	// The private key part the SSH CA key pair; required if generate_signing_key is false.
 	// Private key part the SSH CA key pair; required if generate_signing_key is false.
 	// +kubebuilder:validation:Optional
-	PrivateKeySecretRef *v1.SecretKeySelector `json:"privateKeySecretRef,omitempty" tf:"-"`
+	PrivateKeySecretRef *v2.SecretKeySelector `json:"privateKeySecretRef,omitempty" tf:"-"`
 
 	// The public key part the SSH CA key pair; required if generate_signing_key is false.
 	// Public key part the SSH CA key pair; required if generate_signing_key is false.
@@ -168,8 +168,8 @@ type SecretBackendCAParameters struct {
 
 // SecretBackendCASpec defines the desired state of SecretBackendCA
 type SecretBackendCASpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     SecretBackendCAParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   SecretBackendCAParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -185,8 +185,8 @@ type SecretBackendCASpec struct {
 
 // SecretBackendCAStatus defines the observed state of SecretBackendCA.
 type SecretBackendCAStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretBackendCAObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretBackendCAObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type OidcAssignmentInitParameters struct {
@@ -24,11 +24,11 @@ type OidcAssignmentInitParameters struct {
 
 	// References to Entity in identity to populate entityIds.
 	// +kubebuilder:validation:Optional
-	EntityIdsRefs []v1.Reference `json:"entityIdsRefs,omitempty" tf:"-"`
+	EntityIdsRefs []v2.Reference `json:"entityIdsRefs,omitempty" tf:"-"`
 
 	// Selector for a list of Entity in identity to populate entityIds.
 	// +kubebuilder:validation:Optional
-	EntityIdsSelector *v1.Selector `json:"entityIdsSelector,omitempty" tf:"-"`
+	EntityIdsSelector *v2.Selector `json:"entityIdsSelector,omitempty" tf:"-"`
 
 	// A set of Vault group IDs.
 	// A list of Vault group IDs.
@@ -39,11 +39,11 @@ type OidcAssignmentInitParameters struct {
 
 	// References to Group in identity to populate groupIds.
 	// +kubebuilder:validation:Optional
-	GroupIdsRefs []v1.Reference `json:"groupIdsRefs,omitempty" tf:"-"`
+	GroupIdsRefs []v2.Reference `json:"groupIdsRefs,omitempty" tf:"-"`
 
 	// Selector for a list of Group in identity to populate groupIds.
 	// +kubebuilder:validation:Optional
-	GroupIdsSelector *v1.Selector `json:"groupIdsSelector,omitempty" tf:"-"`
+	GroupIdsSelector *v2.Selector `json:"groupIdsSelector,omitempty" tf:"-"`
 
 	// The name of the assignment.
 	// The name of the assignment.
@@ -95,11 +95,11 @@ type OidcAssignmentParameters struct {
 
 	// References to Entity in identity to populate entityIds.
 	// +kubebuilder:validation:Optional
-	EntityIdsRefs []v1.Reference `json:"entityIdsRefs,omitempty" tf:"-"`
+	EntityIdsRefs []v2.Reference `json:"entityIdsRefs,omitempty" tf:"-"`
 
 	// Selector for a list of Entity in identity to populate entityIds.
 	// +kubebuilder:validation:Optional
-	EntityIdsSelector *v1.Selector `json:"entityIdsSelector,omitempty" tf:"-"`
+	EntityIdsSelector *v2.Selector `json:"entityIdsSelector,omitempty" tf:"-"`
 
 	// A set of Vault group IDs.
 	// A list of Vault group IDs.
@@ -111,11 +111,11 @@ type OidcAssignmentParameters struct {
 
 	// References to Group in identity to populate groupIds.
 	// +kubebuilder:validation:Optional
-	GroupIdsRefs []v1.Reference `json:"groupIdsRefs,omitempty" tf:"-"`
+	GroupIdsRefs []v2.Reference `json:"groupIdsRefs,omitempty" tf:"-"`
 
 	// Selector for a list of Group in identity to populate groupIds.
 	// +kubebuilder:validation:Optional
-	GroupIdsSelector *v1.Selector `json:"groupIdsSelector,omitempty" tf:"-"`
+	GroupIdsSelector *v2.Selector `json:"groupIdsSelector,omitempty" tf:"-"`
 
 	// The name of the assignment.
 	// The name of the assignment.
@@ -133,8 +133,8 @@ type OidcAssignmentParameters struct {
 
 // OidcAssignmentSpec defines the desired state of OidcAssignment
 type OidcAssignmentSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     OidcAssignmentParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   OidcAssignmentParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -150,8 +150,8 @@ type OidcAssignmentSpec struct {
 
 // OidcAssignmentStatus defines the observed state of OidcAssignment.
 type OidcAssignmentStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        OidcAssignmentObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               OidcAssignmentObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

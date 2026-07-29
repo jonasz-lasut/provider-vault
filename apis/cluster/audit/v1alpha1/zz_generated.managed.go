@@ -5,54 +5,54 @@ Copyright 2022 Upbound Inc.
 
 package v1alpha1
 
-import xpv1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+import xpv2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 
 // GetCondition of this RequestHeader.
-func (mg *RequestHeader) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *RequestHeader) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetDeletionPolicy of this RequestHeader.
-func (mg *RequestHeader) GetDeletionPolicy() xpv1.DeletionPolicy {
+func (mg *RequestHeader) GetDeletionPolicy() xpv2.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
 // GetManagementPolicies of this RequestHeader.
-func (mg *RequestHeader) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *RequestHeader) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this RequestHeader.
-func (mg *RequestHeader) GetProviderConfigReference() *xpv1.Reference {
+func (mg *RequestHeader) GetProviderConfigReference() *xpv2.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this RequestHeader.
-func (mg *RequestHeader) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+func (mg *RequestHeader) GetWriteConnectionSecretToReference() *xpv2.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this RequestHeader.
-func (mg *RequestHeader) SetConditions(c ...xpv1.Condition) {
+func (mg *RequestHeader) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetDeletionPolicy of this RequestHeader.
-func (mg *RequestHeader) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+func (mg *RequestHeader) SetDeletionPolicy(r xpv2.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
 // SetManagementPolicies of this RequestHeader.
-func (mg *RequestHeader) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *RequestHeader) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this RequestHeader.
-func (mg *RequestHeader) SetProviderConfigReference(r *xpv1.Reference) {
+func (mg *RequestHeader) SetProviderConfigReference(r *xpv2.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this RequestHeader.
-func (mg *RequestHeader) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+func (mg *RequestHeader) SetWriteConnectionSecretToReference(r *xpv2.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }

@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretsMountCassandraInitParameters struct {
@@ -62,16 +61,16 @@ type SecretsMountCassandraInitParameters struct {
 
 	// The password to authenticate with.
 	// The password to use when authenticating with Cassandra.
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// Concatenated PEM blocks configuring the certificate
 	// chain.
 	// Concatenated PEM blocks containing a certificate and private key; a certificate, private key, and issuing CA certificate; or just a CA certificate.
-	PemBundleSecretRef *v1.LocalSecretKeySelector `json:"pemBundleSecretRef,omitempty" tf:"-"`
+	PemBundleSecretRef *v2.LocalSecretKeySelector `json:"pemBundleSecretRef,omitempty" tf:"-"`
 
 	// A JSON structure configuring the certificate chain.
 	// Specifies JSON containing a certificate and private key; a certificate, private key, and issuing CA certificate; or just a CA certificate.
-	PemJSONSecretRef *v1.LocalSecretKeySelector `json:"pemJsonSecretRef,omitempty" tf:"-"`
+	PemJSONSecretRef *v2.LocalSecretKeySelector `json:"pemJsonSecretRef,omitempty" tf:"-"`
 
 	// Specifies the name of the plugin to use.
 	// Specifies the name of the plugin to use for this connection. Must be prefixed with the name of one of the supported database engine types.
@@ -318,18 +317,18 @@ type SecretsMountCassandraParameters struct {
 	// The password to authenticate with.
 	// The password to use when authenticating with Cassandra.
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// Concatenated PEM blocks configuring the certificate
 	// chain.
 	// Concatenated PEM blocks containing a certificate and private key; a certificate, private key, and issuing CA certificate; or just a CA certificate.
 	// +kubebuilder:validation:Optional
-	PemBundleSecretRef *v1.LocalSecretKeySelector `json:"pemBundleSecretRef,omitempty" tf:"-"`
+	PemBundleSecretRef *v2.LocalSecretKeySelector `json:"pemBundleSecretRef,omitempty" tf:"-"`
 
 	// A JSON structure configuring the certificate chain.
 	// Specifies JSON containing a certificate and private key; a certificate, private key, and issuing CA certificate; or just a CA certificate.
 	// +kubebuilder:validation:Optional
-	PemJSONSecretRef *v1.LocalSecretKeySelector `json:"pemJsonSecretRef,omitempty" tf:"-"`
+	PemJSONSecretRef *v2.LocalSecretKeySelector `json:"pemJsonSecretRef,omitempty" tf:"-"`
 
 	// Specifies the name of the plugin to use.
 	// Specifies the name of the plugin to use for this connection. Must be prefixed with the name of one of the supported database engine types.
@@ -426,7 +425,7 @@ type SecretsMountCouchbaseInitParameters struct {
 
 	// Required if tls is true. Specifies the certificate authority of the Couchbase server, as a PEM certificate that has been base64 encoded.
 	// Required if `tls` is `true`. Specifies the certificate authority of the Couchbase server, as a PEM certificate that has been base64 encoded.
-	Base64PemSecretRef *v1.LocalSecretKeySelector `json:"base64PemSecretRef,omitempty" tf:"-"`
+	Base64PemSecretRef *v2.LocalSecretKeySelector `json:"base64PemSecretRef,omitempty" tf:"-"`
 
 	// Required for Couchbase versions prior to 6.5.0. This is only used to verify vault's connection to the server.
 	// Required for Couchbase versions prior to 6.5.0. This is only used to verify vault's connection to the server.
@@ -460,7 +459,7 @@ type SecretsMountCouchbaseInitParameters struct {
 
 	// The password to authenticate with.
 	// Specifies the password corresponding to the given username.
-	PasswordSecretRef v1.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
+	PasswordSecretRef v2.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
 	// Specifies the name of the plugin to use.
 	// Specifies the name of the plugin to use for this connection. Must be prefixed with the name of one of the supported database engine types.
@@ -610,7 +609,7 @@ type SecretsMountCouchbaseParameters struct {
 	// Required if tls is true. Specifies the certificate authority of the Couchbase server, as a PEM certificate that has been base64 encoded.
 	// Required if `tls` is `true`. Specifies the certificate authority of the Couchbase server, as a PEM certificate that has been base64 encoded.
 	// +kubebuilder:validation:Optional
-	Base64PemSecretRef *v1.LocalSecretKeySelector `json:"base64PemSecretRef,omitempty" tf:"-"`
+	Base64PemSecretRef *v2.LocalSecretKeySelector `json:"base64PemSecretRef,omitempty" tf:"-"`
 
 	// Required for Couchbase versions prior to 6.5.0. This is only used to verify vault's connection to the server.
 	// Required for Couchbase versions prior to 6.5.0. This is only used to verify vault's connection to the server.
@@ -652,7 +651,7 @@ type SecretsMountCouchbaseParameters struct {
 	// The password to authenticate with.
 	// Specifies the password corresponding to the given username.
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef v1.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
+	PasswordSecretRef v2.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
 	// Specifies the name of the plugin to use.
 	// Specifies the name of the plugin to use for this connection. Must be prefixed with the name of one of the supported database engine types.
@@ -761,7 +760,7 @@ type SecretsMountElasticsearchInitParameters struct {
 
 	// The password to authenticate with.
 	// The password to be used in the connection URL
-	PasswordSecretRef v1.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
+	PasswordSecretRef v2.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
 	// Specifies the name of the plugin to use.
 	// Specifies the name of the plugin to use for this connection. Must be prefixed with the name of one of the supported database engine types.
@@ -974,7 +973,7 @@ type SecretsMountElasticsearchParameters struct {
 	// The password to authenticate with.
 	// The password to be used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef v1.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
+	PasswordSecretRef v2.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
 	// Specifies the name of the plugin to use.
 	// Specifies the name of the plugin to use for this connection. Must be prefixed with the name of one of the supported database engine types.
@@ -1093,7 +1092,7 @@ type SecretsMountHanaInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -1314,7 +1313,7 @@ type SecretsMountHanaParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -1423,16 +1422,16 @@ type SecretsMountInfluxdbInitParameters struct {
 
 	// The password to authenticate with.
 	// Specifies the password corresponding to the given username.
-	PasswordSecretRef v1.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
+	PasswordSecretRef v2.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
 	// Concatenated PEM blocks configuring the certificate
 	// chain.
 	// Concatenated PEM blocks containing a certificate and private key; a certificate, private key, and issuing CA certificate; or just a CA certificate.
-	PemBundleSecretRef *v1.LocalSecretKeySelector `json:"pemBundleSecretRef,omitempty" tf:"-"`
+	PemBundleSecretRef *v2.LocalSecretKeySelector `json:"pemBundleSecretRef,omitempty" tf:"-"`
 
 	// A JSON structure configuring the certificate chain.
 	// Specifies JSON containing a certificate and private key; a certificate, private key, and issuing CA certificate; or just a CA certificate.
-	PemJSONSecretRef *v1.LocalSecretKeySelector `json:"pemJsonSecretRef,omitempty" tf:"-"`
+	PemJSONSecretRef *v2.LocalSecretKeySelector `json:"pemJsonSecretRef,omitempty" tf:"-"`
 
 	// Specifies the name of the plugin to use.
 	// Specifies the name of the plugin to use for this connection. Must be prefixed with the name of one of the supported database engine types.
@@ -1631,18 +1630,18 @@ type SecretsMountInfluxdbParameters struct {
 	// The password to authenticate with.
 	// Specifies the password corresponding to the given username.
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef v1.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
+	PasswordSecretRef v2.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
 	// Concatenated PEM blocks configuring the certificate
 	// chain.
 	// Concatenated PEM blocks containing a certificate and private key; a certificate, private key, and issuing CA certificate; or just a CA certificate.
 	// +kubebuilder:validation:Optional
-	PemBundleSecretRef *v1.LocalSecretKeySelector `json:"pemBundleSecretRef,omitempty" tf:"-"`
+	PemBundleSecretRef *v2.LocalSecretKeySelector `json:"pemBundleSecretRef,omitempty" tf:"-"`
 
 	// A JSON structure configuring the certificate chain.
 	// Specifies JSON containing a certificate and private key; a certificate, private key, and issuing CA certificate; or just a CA certificate.
 	// +kubebuilder:validation:Optional
-	PemJSONSecretRef *v1.LocalSecretKeySelector `json:"pemJsonSecretRef,omitempty" tf:"-"`
+	PemJSONSecretRef *v2.LocalSecretKeySelector `json:"pemJsonSecretRef,omitempty" tf:"-"`
 
 	// Specifies the name of the plugin to use.
 	// Specifies the name of the plugin to use for this connection. Must be prefixed with the name of one of the supported database engine types.
@@ -1921,7 +1920,7 @@ type SecretsMountMongodbInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -1970,7 +1969,7 @@ type SecretsMountMongodbInitParameters struct {
 
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
 	// The x509 certificate and private key bundle for connecting to the database. Must be PEM encoded.
-	TLSCertificateKeySecretRef *v1.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
+	TLSCertificateKeySecretRef *v2.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
 
 	// The username to authenticate with.
 	// The root credential username used in the connection URL
@@ -2151,7 +2150,7 @@ type SecretsMountMongodbParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -2211,7 +2210,7 @@ type SecretsMountMongodbParameters struct {
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
 	// The x509 certificate and private key bundle for connecting to the database. Must be PEM encoded.
 	// +kubebuilder:validation:Optional
-	TLSCertificateKeySecretRef *v1.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
+	TLSCertificateKeySecretRef *v2.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
 
 	// The username to authenticate with.
 	// The root credential username used in the connection URL
@@ -2268,7 +2267,7 @@ type SecretsMountMongodbatlasInitParameters struct {
 
 	// The Private Programmatic API Key used to connect with MongoDB Atlas API.
 	// The Private Programmatic API Key used to connect with MongoDB Atlas API.
-	PrivateKeySecretRef v1.LocalSecretKeySelector `json:"privateKeySecretRef" tf:"-"`
+	PrivateKeySecretRef v2.LocalSecretKeySelector `json:"privateKeySecretRef" tf:"-"`
 
 	// The Project ID the Database User should be created within.
 	// The Project ID the Database User should be created within.
@@ -2428,7 +2427,7 @@ type SecretsMountMongodbatlasParameters struct {
 	// The Private Programmatic API Key used to connect with MongoDB Atlas API.
 	// The Private Programmatic API Key used to connect with MongoDB Atlas API.
 	// +kubebuilder:validation:Optional
-	PrivateKeySecretRef v1.LocalSecretKeySelector `json:"privateKeySecretRef" tf:"-"`
+	PrivateKeySecretRef v2.LocalSecretKeySelector `json:"privateKeySecretRef" tf:"-"`
 
 	// The Project ID the Database User should be created within.
 	// The Project ID the Database User should be created within.
@@ -2537,7 +2536,7 @@ type SecretsMountMssqlInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -2771,7 +2770,7 @@ type SecretsMountMssqlParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -2889,7 +2888,7 @@ type SecretsMountMySQLAuroraInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -2929,7 +2928,7 @@ type SecretsMountMySQLAuroraInitParameters struct {
 	RotationWindow *float64 `json:"rotationWindow,omitempty" tf:"rotation_window,omitempty"`
 
 	// A JSON encoded credential for use with IAM authorization
-	ServiceAccountJSONSecretRef *v1.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
+	ServiceAccountJSONSecretRef *v2.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
 
 	// Specifies if a given static account's password should be rotated on creation of the static roles associated with this database config. This can be overridden at the role-level by the static role's skip_import_rotation field. The default is false. Requires Vault Enterprise 1.19+.
 	// Skip rotation of static role credentials on import.
@@ -2941,7 +2940,7 @@ type SecretsMountMySQLAuroraInitParameters struct {
 
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
-	TLSCertificateKeySecretRef *v1.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
+	TLSCertificateKeySecretRef *v2.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
 
 	// The username to authenticate with.
 	// The root credential username used in the connection URL
@@ -3123,7 +3122,7 @@ type SecretsMountMySQLAuroraParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -3172,7 +3171,7 @@ type SecretsMountMySQLAuroraParameters struct {
 
 	// A JSON encoded credential for use with IAM authorization
 	// +kubebuilder:validation:Optional
-	ServiceAccountJSONSecretRef *v1.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
+	ServiceAccountJSONSecretRef *v2.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
 
 	// Specifies if a given static account's password should be rotated on creation of the static roles associated with this database config. This can be overridden at the role-level by the static role's skip_import_rotation field. The default is false. Requires Vault Enterprise 1.19+.
 	// Skip rotation of static role credentials on import.
@@ -3187,7 +3186,7 @@ type SecretsMountMySQLAuroraParameters struct {
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
 	// +kubebuilder:validation:Optional
-	TLSCertificateKeySecretRef *v1.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
+	TLSCertificateKeySecretRef *v2.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
 
 	// The username to authenticate with.
 	// The root credential username used in the connection URL
@@ -3255,7 +3254,7 @@ type SecretsMountMySQLInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -3295,7 +3294,7 @@ type SecretsMountMySQLInitParameters struct {
 	RotationWindow *float64 `json:"rotationWindow,omitempty" tf:"rotation_window,omitempty"`
 
 	// A JSON encoded credential for use with IAM authorization
-	ServiceAccountJSONSecretRef *v1.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
+	ServiceAccountJSONSecretRef *v2.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
 
 	// Specifies if a given static account's password should be rotated on creation of the static roles associated with this database config. This can be overridden at the role-level by the static role's skip_import_rotation field. The default is false. Requires Vault Enterprise 1.19+.
 	// Skip rotation of static role credentials on import.
@@ -3307,7 +3306,7 @@ type SecretsMountMySQLInitParameters struct {
 
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
-	TLSCertificateKeySecretRef *v1.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
+	TLSCertificateKeySecretRef *v2.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
 
 	// The username to authenticate with.
 	// The root credential username used in the connection URL
@@ -3372,7 +3371,7 @@ type SecretsMountMySQLLegacyInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -3412,7 +3411,7 @@ type SecretsMountMySQLLegacyInitParameters struct {
 	RotationWindow *float64 `json:"rotationWindow,omitempty" tf:"rotation_window,omitempty"`
 
 	// A JSON encoded credential for use with IAM authorization
-	ServiceAccountJSONSecretRef *v1.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
+	ServiceAccountJSONSecretRef *v2.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
 
 	// Specifies if a given static account's password should be rotated on creation of the static roles associated with this database config. This can be overridden at the role-level by the static role's skip_import_rotation field. The default is false. Requires Vault Enterprise 1.19+.
 	// Skip rotation of static role credentials on import.
@@ -3424,7 +3423,7 @@ type SecretsMountMySQLLegacyInitParameters struct {
 
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
-	TLSCertificateKeySecretRef *v1.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
+	TLSCertificateKeySecretRef *v2.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
 
 	// The username to authenticate with.
 	// The root credential username used in the connection URL
@@ -3606,7 +3605,7 @@ type SecretsMountMySQLLegacyParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -3655,7 +3654,7 @@ type SecretsMountMySQLLegacyParameters struct {
 
 	// A JSON encoded credential for use with IAM authorization
 	// +kubebuilder:validation:Optional
-	ServiceAccountJSONSecretRef *v1.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
+	ServiceAccountJSONSecretRef *v2.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
 
 	// Specifies if a given static account's password should be rotated on creation of the static roles associated with this database config. This can be overridden at the role-level by the static role's skip_import_rotation field. The default is false. Requires Vault Enterprise 1.19+.
 	// Skip rotation of static role credentials on import.
@@ -3670,7 +3669,7 @@ type SecretsMountMySQLLegacyParameters struct {
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
 	// +kubebuilder:validation:Optional
-	TLSCertificateKeySecretRef *v1.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
+	TLSCertificateKeySecretRef *v2.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
 
 	// The username to authenticate with.
 	// The root credential username used in the connection URL
@@ -3855,7 +3854,7 @@ type SecretsMountMySQLParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -3904,7 +3903,7 @@ type SecretsMountMySQLParameters struct {
 
 	// A JSON encoded credential for use with IAM authorization
 	// +kubebuilder:validation:Optional
-	ServiceAccountJSONSecretRef *v1.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
+	ServiceAccountJSONSecretRef *v2.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
 
 	// Specifies if a given static account's password should be rotated on creation of the static roles associated with this database config. This can be overridden at the role-level by the static role's skip_import_rotation field. The default is false. Requires Vault Enterprise 1.19+.
 	// Skip rotation of static role credentials on import.
@@ -3919,7 +3918,7 @@ type SecretsMountMySQLParameters struct {
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
 	// +kubebuilder:validation:Optional
-	TLSCertificateKeySecretRef *v1.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
+	TLSCertificateKeySecretRef *v2.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
 
 	// The username to authenticate with.
 	// The root credential username used in the connection URL
@@ -3987,7 +3986,7 @@ type SecretsMountMySQLRDSInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -4027,7 +4026,7 @@ type SecretsMountMySQLRDSInitParameters struct {
 	RotationWindow *float64 `json:"rotationWindow,omitempty" tf:"rotation_window,omitempty"`
 
 	// A JSON encoded credential for use with IAM authorization
-	ServiceAccountJSONSecretRef *v1.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
+	ServiceAccountJSONSecretRef *v2.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
 
 	// Specifies if a given static account's password should be rotated on creation of the static roles associated with this database config. This can be overridden at the role-level by the static role's skip_import_rotation field. The default is false. Requires Vault Enterprise 1.19+.
 	// Skip rotation of static role credentials on import.
@@ -4039,7 +4038,7 @@ type SecretsMountMySQLRDSInitParameters struct {
 
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
-	TLSCertificateKeySecretRef *v1.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
+	TLSCertificateKeySecretRef *v2.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
 
 	// The username to authenticate with.
 	// The root credential username used in the connection URL
@@ -4221,7 +4220,7 @@ type SecretsMountMySQLRDSParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -4270,7 +4269,7 @@ type SecretsMountMySQLRDSParameters struct {
 
 	// A JSON encoded credential for use with IAM authorization
 	// +kubebuilder:validation:Optional
-	ServiceAccountJSONSecretRef *v1.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
+	ServiceAccountJSONSecretRef *v2.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
 
 	// Specifies if a given static account's password should be rotated on creation of the static roles associated with this database config. This can be overridden at the role-level by the static role's skip_import_rotation field. The default is false. Requires Vault Enterprise 1.19+.
 	// Skip rotation of static role credentials on import.
@@ -4285,7 +4284,7 @@ type SecretsMountMySQLRDSParameters struct {
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
 	// x509 certificate for connecting to the database. This must be a PEM encoded version of the private key and the certificate combined.
 	// +kubebuilder:validation:Optional
-	TLSCertificateKeySecretRef *v1.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
+	TLSCertificateKeySecretRef *v2.LocalSecretKeySelector `json:"tlsCertificateKeySecretRef,omitempty" tf:"-"`
 
 	// The username to authenticate with.
 	// The root credential username used in the connection URL
@@ -4526,7 +4525,7 @@ type SecretsMountOracleInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -4757,7 +4756,7 @@ type SecretsMountOracleParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -5091,7 +5090,7 @@ type SecretsMountPostgresqlInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -5112,7 +5111,7 @@ type SecretsMountPostgresqlInitParameters struct {
 
 	// The Private Programmatic API Key used to connect with MongoDB Atlas API.
 	// The secret key used for the x509 client certificate. Must be PEM encoded.
-	PrivateKeySecretRef *v1.LocalSecretKeySelector `json:"privateKeySecretRef,omitempty" tf:"-"`
+	PrivateKeySecretRef *v2.LocalSecretKeySelector `json:"privateKeySecretRef,omitempty" tf:"-"`
 
 	// A list of database statements to be executed to rotate the root user's credentials.
 	// A list of database statements to be executed to rotate the root user's credentials.
@@ -5138,7 +5137,7 @@ type SecretsMountPostgresqlInitParameters struct {
 	SelfManaged *bool `json:"selfManaged,omitempty" tf:"self_managed,omitempty"`
 
 	// A JSON encoded credential for use with IAM authorization
-	ServiceAccountJSONSecretRef *v1.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
+	ServiceAccountJSONSecretRef *v2.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
 
 	// Specifies if a given static account's password should be rotated on creation of the static roles associated with this database config. This can be overridden at the role-level by the static role's skip_import_rotation field. The default is false. Requires Vault Enterprise 1.19+.
 	// Skip rotation of static role credentials on import.
@@ -5353,7 +5352,7 @@ type SecretsMountPostgresqlParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -5379,7 +5378,7 @@ type SecretsMountPostgresqlParameters struct {
 	// The Private Programmatic API Key used to connect with MongoDB Atlas API.
 	// The secret key used for the x509 client certificate. Must be PEM encoded.
 	// +kubebuilder:validation:Optional
-	PrivateKeySecretRef *v1.LocalSecretKeySelector `json:"privateKeySecretRef,omitempty" tf:"-"`
+	PrivateKeySecretRef *v2.LocalSecretKeySelector `json:"privateKeySecretRef,omitempty" tf:"-"`
 
 	// A list of database statements to be executed to rotate the root user's credentials.
 	// A list of database statements to be executed to rotate the root user's credentials.
@@ -5411,7 +5410,7 @@ type SecretsMountPostgresqlParameters struct {
 
 	// A JSON encoded credential for use with IAM authorization
 	// +kubebuilder:validation:Optional
-	ServiceAccountJSONSecretRef *v1.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
+	ServiceAccountJSONSecretRef *v2.LocalSecretKeySelector `json:"serviceAccountJsonSecretRef,omitempty" tf:"-"`
 
 	// Specifies if a given static account's password should be rotated on creation of the static roles associated with this database config. This can be overridden at the role-level by the static role's skip_import_rotation field. The default is false. Requires Vault Enterprise 1.19+.
 	// Skip rotation of static role credentials on import.
@@ -5470,7 +5469,7 @@ type SecretsMountRedisElasticacheInitParameters struct {
 
 	// The password to authenticate with.
 	// The AWS secret key id to use to talk to ElastiCache. If omitted the credentials chain provider is used instead.
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// Specifies the name of the plugin to use.
 	// Specifies the name of the plugin to use for this connection. Must be prefixed with the name of one of the supported database engine types.
@@ -5516,7 +5515,7 @@ type SecretsMountRedisElasticacheInitParameters struct {
 
 	// The username to authenticate with.
 	// The AWS access key id to use to talk to ElastiCache. If omitted the credentials chain provider is used instead.
-	UsernameSecretRef *v1.LocalSecretKeySelector `json:"usernameSecretRef,omitempty" tf:"-"`
+	UsernameSecretRef *v2.LocalSecretKeySelector `json:"usernameSecretRef,omitempty" tf:"-"`
 
 	// Whether the connection should be verified on
 	// initial configuration or not.
@@ -5628,7 +5627,7 @@ type SecretsMountRedisElasticacheParameters struct {
 	// The password to authenticate with.
 	// The AWS secret key id to use to talk to ElastiCache. If omitted the credentials chain provider is used instead.
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// Specifies the name of the plugin to use.
 	// Specifies the name of the plugin to use for this connection. Must be prefixed with the name of one of the supported database engine types.
@@ -5684,7 +5683,7 @@ type SecretsMountRedisElasticacheParameters struct {
 	// The username to authenticate with.
 	// The AWS access key id to use to talk to ElastiCache. If omitted the credentials chain provider is used instead.
 	// +kubebuilder:validation:Optional
-	UsernameSecretRef *v1.LocalSecretKeySelector `json:"usernameSecretRef,omitempty" tf:"-"`
+	UsernameSecretRef *v2.LocalSecretKeySelector `json:"usernameSecretRef,omitempty" tf:"-"`
 
 	// Whether the connection should be verified on
 	// initial configuration or not.
@@ -5732,7 +5731,7 @@ type SecretsMountRedisInitParameters struct {
 
 	// The password to authenticate with.
 	// Specifies the password corresponding to the given username.
-	PasswordSecretRef v1.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
+	PasswordSecretRef v2.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
 	// Specifies the name of the plugin to use.
 	// Specifies the name of the plugin to use for this connection. Must be prefixed with the name of one of the supported database engine types.
@@ -5921,7 +5920,7 @@ type SecretsMountRedisParameters struct {
 	// The password to authenticate with.
 	// Specifies the password corresponding to the given username.
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef v1.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
+	PasswordSecretRef v2.LocalSecretKeySelector `json:"passwordSecretRef" tf:"-"`
 
 	// Specifies the name of the plugin to use.
 	// Specifies the name of the plugin to use for this connection. Must be prefixed with the name of one of the supported database engine types.
@@ -6035,7 +6034,7 @@ type SecretsMountRedshiftInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -6256,7 +6255,7 @@ type SecretsMountRedshiftParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -6371,7 +6370,7 @@ type SecretsMountSnowflakeInitParameters struct {
 
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -6391,7 +6390,7 @@ type SecretsMountSnowflakeInitParameters struct {
 	PluginVersion *string `json:"pluginVersion,omitempty" tf:"plugin_version,omitempty"`
 
 	// The private key configured for the admin user in Snowflake.
-	PrivateKeyWoSecretRef *v1.LocalSecretKeySelector `json:"privateKeyWoSecretRef,omitempty" tf:"-"`
+	PrivateKeyWoSecretRef *v2.LocalSecretKeySelector `json:"privateKeyWoSecretRef,omitempty" tf:"-"`
 
 	// Version counter for the private key key-pair credentials write-only field
 	PrivateKeyWoVersion *float64 `json:"privateKeyWoVersion,omitempty" tf:"private_key_wo_version,omitempty"`
@@ -6592,7 +6591,7 @@ type SecretsMountSnowflakeParameters struct {
 	// The password to authenticate with.
 	// The root credential password used in the connection URL
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// The password for the user. Can be updated.
 	// Note: This property is write-only and will not be read from the API.
@@ -6617,7 +6616,7 @@ type SecretsMountSnowflakeParameters struct {
 
 	// The private key configured for the admin user in Snowflake.
 	// +kubebuilder:validation:Optional
-	PrivateKeyWoSecretRef *v1.LocalSecretKeySelector `json:"privateKeyWoSecretRef,omitempty" tf:"-"`
+	PrivateKeyWoSecretRef *v2.LocalSecretKeySelector `json:"privateKeyWoSecretRef,omitempty" tf:"-"`
 
 	// Version counter for the private key key-pair credentials write-only field
 	// +kubebuilder:validation:Optional
@@ -6688,8 +6687,8 @@ type SecretsMountSpec struct {
 
 // SecretsMountStatus defines the observed state of SecretsMount.
 type SecretsMountStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretsMountObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretsMountObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

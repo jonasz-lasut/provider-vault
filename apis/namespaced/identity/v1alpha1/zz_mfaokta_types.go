@@ -10,15 +10,14 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type MfaOktaInitParameters struct {
 
 	// Okta API token.
 	// Okta API token.
-	APITokenSecretRef v1.LocalSecretKeySelector `json:"apiTokenSecretRef" tf:"-"`
+	APITokenSecretRef v2.LocalSecretKeySelector `json:"apiTokenSecretRef" tf:"-"`
 
 	// The base domain to use for API requests.
 	// The base domain to use for API requests.
@@ -98,7 +97,7 @@ type MfaOktaParameters struct {
 	// Okta API token.
 	// Okta API token.
 	// +kubebuilder:validation:Optional
-	APITokenSecretRef v1.LocalSecretKeySelector `json:"apiTokenSecretRef" tf:"-"`
+	APITokenSecretRef v2.LocalSecretKeySelector `json:"apiTokenSecretRef" tf:"-"`
 
 	// The base domain to use for API requests.
 	// The base domain to use for API requests.
@@ -145,8 +144,8 @@ type MfaOktaSpec struct {
 
 // MfaOktaStatus defines the observed state of MfaOkta.
 type MfaOktaStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        MfaOktaObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               MfaOktaObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

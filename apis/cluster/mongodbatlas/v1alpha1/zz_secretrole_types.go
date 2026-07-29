@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretRoleInitParameters struct {
@@ -35,11 +35,11 @@ type SecretRoleInitParameters struct {
 
 	// Reference to a Mount in vault to populate mount.
 	// +kubebuilder:validation:Optional
-	MountRef *v1.Reference `json:"mountRef,omitempty" tf:"-"`
+	MountRef *v2.Reference `json:"mountRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate mount.
 	// +kubebuilder:validation:Optional
-	MountSelector *v1.Selector `json:"mountSelector,omitempty" tf:"-"`
+	MountSelector *v2.Selector `json:"mountSelector,omitempty" tf:"-"`
 
 	// The name of the role.
 	// Name of the role
@@ -155,11 +155,11 @@ type SecretRoleParameters struct {
 
 	// Reference to a Mount in vault to populate mount.
 	// +kubebuilder:validation:Optional
-	MountRef *v1.Reference `json:"mountRef,omitempty" tf:"-"`
+	MountRef *v2.Reference `json:"mountRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate mount.
 	// +kubebuilder:validation:Optional
-	MountSelector *v1.Selector `json:"mountSelector,omitempty" tf:"-"`
+	MountSelector *v2.Selector `json:"mountSelector,omitempty" tf:"-"`
 
 	// The name of the role.
 	// Name of the role
@@ -204,8 +204,8 @@ type SecretRoleParameters struct {
 
 // SecretRoleSpec defines the desired state of SecretRole
 type SecretRoleSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     SecretRoleParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   SecretRoleParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -221,8 +221,8 @@ type SecretRoleSpec struct {
 
 // SecretRoleStatus defines the observed state of SecretRole.
 type SecretRoleStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretRoleObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretRoleObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

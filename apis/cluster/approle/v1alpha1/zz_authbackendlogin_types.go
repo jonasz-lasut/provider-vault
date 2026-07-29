@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type AuthBackendLoginInitParameters struct {
@@ -23,11 +23,11 @@ type AuthBackendLoginInitParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// The namespace to provision the resource in.
 	// The value should not contain leading or trailing forward slashes.
@@ -44,21 +44,21 @@ type AuthBackendLoginInitParameters struct {
 
 	// Reference to a AuthBackendRole in approle to populate roleId.
 	// +kubebuilder:validation:Optional
-	RoleIDRef *v1.Reference `json:"roleIdRef,omitempty" tf:"-"`
+	RoleIDRef *v2.Reference `json:"roleIdRef,omitempty" tf:"-"`
 
 	// Selector for a AuthBackendRole in approle to populate roleId.
 	// +kubebuilder:validation:Optional
-	RoleIDSelector *v1.Selector `json:"roleIdSelector,omitempty" tf:"-"`
+	RoleIDSelector *v2.Selector `json:"roleIdSelector,omitempty" tf:"-"`
 
 	// The secret ID of the role to log in with. Required
 	// unless bind_secret_id is set to false on the role.
 	// The SecretID to log in with. Required unless `bind_secret_id` is set to false on the role.
-	SecretIDSecretRef *v1.SecretKeySelector `json:"secretIdSecretRef,omitempty" tf:"-"`
+	SecretIDSecretRef *v2.SecretKeySelector `json:"secretIdSecretRef,omitempty" tf:"-"`
 
 	// The secret ID of the role to log in with. Write-only attribute that can accept ephemeral values. Required unless bind_secret_id is set to false on the role.
 	// Note: This property is write-only and will not be read from the API.
 	// The SecretID to log in with. Write-only attribute that can accept ephemeral values. Required unless `bind_secret_id` is set to false on the role.
-	SecretIDWoSecretRef *v1.SecretKeySelector `json:"secretIdWoSecretRef,omitempty" tf:"-"`
+	SecretIDWoSecretRef *v2.SecretKeySelector `json:"secretIdWoSecretRef,omitempty" tf:"-"`
 
 	// The version of the secret_id_wo. For more info see updating write-only attributes.
 	// Version counter for the write-only secret_id field. Increment this to trigger re-authentication with a new SecretID.
@@ -124,11 +124,11 @@ type AuthBackendLoginParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// The namespace to provision the resource in.
 	// The value should not contain leading or trailing forward slashes.
@@ -147,23 +147,23 @@ type AuthBackendLoginParameters struct {
 
 	// Reference to a AuthBackendRole in approle to populate roleId.
 	// +kubebuilder:validation:Optional
-	RoleIDRef *v1.Reference `json:"roleIdRef,omitempty" tf:"-"`
+	RoleIDRef *v2.Reference `json:"roleIdRef,omitempty" tf:"-"`
 
 	// Selector for a AuthBackendRole in approle to populate roleId.
 	// +kubebuilder:validation:Optional
-	RoleIDSelector *v1.Selector `json:"roleIdSelector,omitempty" tf:"-"`
+	RoleIDSelector *v2.Selector `json:"roleIdSelector,omitempty" tf:"-"`
 
 	// The secret ID of the role to log in with. Required
 	// unless bind_secret_id is set to false on the role.
 	// The SecretID to log in with. Required unless `bind_secret_id` is set to false on the role.
 	// +kubebuilder:validation:Optional
-	SecretIDSecretRef *v1.SecretKeySelector `json:"secretIdSecretRef,omitempty" tf:"-"`
+	SecretIDSecretRef *v2.SecretKeySelector `json:"secretIdSecretRef,omitempty" tf:"-"`
 
 	// The secret ID of the role to log in with. Write-only attribute that can accept ephemeral values. Required unless bind_secret_id is set to false on the role.
 	// Note: This property is write-only and will not be read from the API.
 	// The SecretID to log in with. Write-only attribute that can accept ephemeral values. Required unless `bind_secret_id` is set to false on the role.
 	// +kubebuilder:validation:Optional
-	SecretIDWoSecretRef *v1.SecretKeySelector `json:"secretIdWoSecretRef,omitempty" tf:"-"`
+	SecretIDWoSecretRef *v2.SecretKeySelector `json:"secretIdWoSecretRef,omitempty" tf:"-"`
 
 	// The version of the secret_id_wo. For more info see updating write-only attributes.
 	// Version counter for the write-only secret_id field. Increment this to trigger re-authentication with a new SecretID.
@@ -173,8 +173,8 @@ type AuthBackendLoginParameters struct {
 
 // AuthBackendLoginSpec defines the desired state of AuthBackendLogin
 type AuthBackendLoginSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     AuthBackendLoginParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   AuthBackendLoginParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -190,8 +190,8 @@ type AuthBackendLoginSpec struct {
 
 // AuthBackendLoginStatus defines the observed state of AuthBackendLogin.
 type AuthBackendLoginStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        AuthBackendLoginObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               AuthBackendLoginObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

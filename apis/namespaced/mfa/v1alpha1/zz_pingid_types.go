@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type PingidInitParameters struct {
@@ -25,11 +24,11 @@ type PingidInitParameters struct {
 
 	// Reference to a Backend in auth to populate mountAccessor.
 	// +kubebuilder:validation:Optional
-	MountAccessorRef *v1.NamespacedReference `json:"mountAccessorRef,omitempty" tf:"-"`
+	MountAccessorRef *v2.NamespacedReference `json:"mountAccessorRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate mountAccessor.
 	// +kubebuilder:validation:Optional
-	MountAccessorSelector *v1.NamespacedSelector `json:"mountAccessorSelector,omitempty" tf:"-"`
+	MountAccessorSelector *v2.NamespacedSelector `json:"mountAccessorSelector,omitempty" tf:"-"`
 
 	// (string: <required>) – Name of the MFA method.
 	// Name of the MFA method.
@@ -127,11 +126,11 @@ type PingidParameters struct {
 
 	// Reference to a Backend in auth to populate mountAccessor.
 	// +kubebuilder:validation:Optional
-	MountAccessorRef *v1.NamespacedReference `json:"mountAccessorRef,omitempty" tf:"-"`
+	MountAccessorRef *v2.NamespacedReference `json:"mountAccessorRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate mountAccessor.
 	// +kubebuilder:validation:Optional
-	MountAccessorSelector *v1.NamespacedSelector `json:"mountAccessorSelector,omitempty" tf:"-"`
+	MountAccessorSelector *v2.NamespacedSelector `json:"mountAccessorSelector,omitempty" tf:"-"`
 
 	// (string: <required>) – Name of the MFA method.
 	// Name of the MFA method.
@@ -179,8 +178,8 @@ type PingidSpec struct {
 
 // PingidStatus defines the observed state of Pingid.
 type PingidStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        PingidObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               PingidObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretBackendInitParameters struct {
@@ -105,13 +104,13 @@ type SecretBackendInitParameters struct {
 	// Specifies the RabbitMQ management administrator password.
 	// Conflicts with password_wo.
 	// Specifies the RabbitMQ management administrator password
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// Specifies the RabbitMQ management administrator password.
 	// This is a write-only field and will not be read back from Vault.
 	// Conflicts with password.
 	// Specifies the RabbitMQ management administrator password. This is a write-only field and will not be read back from Vault.
-	PasswordWoSecretRef *v1.LocalSecretKeySelector `json:"passwordWoSecretRef,omitempty" tf:"-"`
+	PasswordWoSecretRef *v2.LocalSecretKeySelector `json:"passwordWoSecretRef,omitempty" tf:"-"`
 
 	// A version counter for the write-only password_wo field.
 	// Incrementing this value will trigger an update to the password.
@@ -136,7 +135,7 @@ type SecretBackendInitParameters struct {
 
 	// Specifies the RabbitMQ management administrator username.
 	// Specifies the RabbitMQ management administrator username
-	UsernameSecretRef v1.LocalSecretKeySelector `json:"usernameSecretRef" tf:"-"`
+	UsernameSecretRef v2.LocalSecretKeySelector `json:"usernameSecretRef" tf:"-"`
 
 	// Template describing how dynamic usernames are generated.
 	// Template describing how dynamic usernames are generated.
@@ -383,14 +382,14 @@ type SecretBackendParameters struct {
 	// Conflicts with password_wo.
 	// Specifies the RabbitMQ management administrator password
 	// +kubebuilder:validation:Optional
-	PasswordSecretRef *v1.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
+	PasswordSecretRef *v2.LocalSecretKeySelector `json:"passwordSecretRef,omitempty" tf:"-"`
 
 	// Specifies the RabbitMQ management administrator password.
 	// This is a write-only field and will not be read back from Vault.
 	// Conflicts with password.
 	// Specifies the RabbitMQ management administrator password. This is a write-only field and will not be read back from Vault.
 	// +kubebuilder:validation:Optional
-	PasswordWoSecretRef *v1.LocalSecretKeySelector `json:"passwordWoSecretRef,omitempty" tf:"-"`
+	PasswordWoSecretRef *v2.LocalSecretKeySelector `json:"passwordWoSecretRef,omitempty" tf:"-"`
 
 	// A version counter for the write-only password_wo field.
 	// Incrementing this value will trigger an update to the password.
@@ -420,7 +419,7 @@ type SecretBackendParameters struct {
 	// Specifies the RabbitMQ management administrator username.
 	// Specifies the RabbitMQ management administrator username
 	// +kubebuilder:validation:Optional
-	UsernameSecretRef v1.LocalSecretKeySelector `json:"usernameSecretRef" tf:"-"`
+	UsernameSecretRef v2.LocalSecretKeySelector `json:"usernameSecretRef" tf:"-"`
 
 	// Template describing how dynamic usernames are generated.
 	// Template describing how dynamic usernames are generated.
@@ -453,8 +452,8 @@ type SecretBackendSpec struct {
 
 // SecretBackendStatus defines the observed state of SecretBackend.
 type SecretBackendStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretBackendObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretBackendObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

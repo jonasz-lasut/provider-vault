@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type VaultNamespaceInitParameters struct {
@@ -33,11 +32,11 @@ type VaultNamespaceInitParameters struct {
 
 	// Reference to a VaultNamespace in vault to populate namespace.
 	// +kubebuilder:validation:Optional
-	NamespaceRef *v1.NamespacedReference `json:"namespaceRef,omitempty" tf:"-"`
+	NamespaceRef *v2.NamespacedReference `json:"namespaceRef,omitempty" tf:"-"`
 
 	// Selector for a VaultNamespace in vault to populate namespace.
 	// +kubebuilder:validation:Optional
-	NamespaceSelector *v1.NamespacedSelector `json:"namespaceSelector,omitempty" tf:"-"`
+	NamespaceSelector *v2.NamespacedSelector `json:"namespaceSelector,omitempty" tf:"-"`
 
 	// The path of the namespace. Must not have a trailing /.
 	// Namespace path.
@@ -102,11 +101,11 @@ type VaultNamespaceParameters struct {
 
 	// Reference to a VaultNamespace in vault to populate namespace.
 	// +kubebuilder:validation:Optional
-	NamespaceRef *v1.NamespacedReference `json:"namespaceRef,omitempty" tf:"-"`
+	NamespaceRef *v2.NamespacedReference `json:"namespaceRef,omitempty" tf:"-"`
 
 	// Selector for a VaultNamespace in vault to populate namespace.
 	// +kubebuilder:validation:Optional
-	NamespaceSelector *v1.NamespacedSelector `json:"namespaceSelector,omitempty" tf:"-"`
+	NamespaceSelector *v2.NamespacedSelector `json:"namespaceSelector,omitempty" tf:"-"`
 
 	// The path of the namespace. Must not have a trailing /.
 	// Namespace path.
@@ -139,8 +138,8 @@ type VaultNamespaceSpec struct {
 
 // VaultNamespaceStatus defines the observed state of VaultNamespace.
 type VaultNamespaceStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        VaultNamespaceObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               VaultNamespaceObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

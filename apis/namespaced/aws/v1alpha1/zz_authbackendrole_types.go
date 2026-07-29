@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type AuthBackendRoleInitParameters struct {
@@ -41,11 +40,11 @@ type AuthBackendRoleInitParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// If set, defines a constraint on the EC2 instances
 	// that can perform the login operation that they should be using the AMI ID
@@ -467,11 +466,11 @@ type AuthBackendRoleParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// If set, defines a constraint on the EC2 instances
 	// that can perform the login operation that they should be using the AMI ID
@@ -697,8 +696,8 @@ type AuthBackendRoleSpec struct {
 
 // AuthBackendRoleStatus defines the observed state of AuthBackendRole.
 type AuthBackendRoleStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        AuthBackendRoleObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               AuthBackendRoleObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type MfaDuoInitParameters struct {
@@ -21,7 +21,7 @@ type MfaDuoInitParameters struct {
 
 	// Integration key for Duo
 	// Integration key for Duo
-	IntegrationKeySecretRef v1.SecretKeySelector `json:"integrationKeySecretRef" tf:"-"`
+	IntegrationKeySecretRef v2.SecretKeySelector `json:"integrationKeySecretRef" tf:"-"`
 
 	// Target namespace. (requires Enterprise)
 	// Target namespace. (requires Enterprise)
@@ -33,7 +33,7 @@ type MfaDuoInitParameters struct {
 
 	// Secret key for Duo
 	// Secret key for Duo
-	SecretKeySecretRef v1.SecretKeySelector `json:"secretKeySecretRef" tf:"-"`
+	SecretKeySecretRef v2.SecretKeySelector `json:"secretKeySecretRef" tf:"-"`
 
 	// Require passcode upon MFA validation.
 	// Require passcode upon MFA validation.
@@ -106,7 +106,7 @@ type MfaDuoParameters struct {
 	// Integration key for Duo
 	// Integration key for Duo
 	// +kubebuilder:validation:Optional
-	IntegrationKeySecretRef v1.SecretKeySelector `json:"integrationKeySecretRef" tf:"-"`
+	IntegrationKeySecretRef v2.SecretKeySelector `json:"integrationKeySecretRef" tf:"-"`
 
 	// Target namespace. (requires Enterprise)
 	// Target namespace. (requires Enterprise)
@@ -121,7 +121,7 @@ type MfaDuoParameters struct {
 	// Secret key for Duo
 	// Secret key for Duo
 	// +kubebuilder:validation:Optional
-	SecretKeySecretRef v1.SecretKeySelector `json:"secretKeySecretRef" tf:"-"`
+	SecretKeySecretRef v2.SecretKeySelector `json:"secretKeySecretRef" tf:"-"`
 
 	// Require passcode upon MFA validation.
 	// Require passcode upon MFA validation.
@@ -136,8 +136,8 @@ type MfaDuoParameters struct {
 
 // MfaDuoSpec defines the desired state of MfaDuo
 type MfaDuoSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     MfaDuoParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   MfaDuoParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -153,8 +153,8 @@ type MfaDuoSpec struct {
 
 // MfaDuoStatus defines the observed state of MfaDuo.
 type MfaDuoStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        MfaDuoObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               MfaDuoObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

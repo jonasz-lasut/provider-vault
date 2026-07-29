@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretBackendInitParameters struct {
@@ -51,18 +50,18 @@ type SecretBackendInitParameters struct {
 
 	// Client certificate to provide to the Nomad server, must be x509 PEM encoded.
 	// Client certificate used for Nomad's TLS communication, must be x509 PEM encoded and if this is set you need to also set client_key.
-	ClientCertSecretRef *v1.LocalSecretKeySelector `json:"clientCertSecretRef,omitempty" tf:"-"`
+	ClientCertSecretRef *v2.LocalSecretKeySelector `json:"clientCertSecretRef,omitempty" tf:"-"`
 
 	// Client certificate key to provide to the Nomad server, must be x509 PEM encoded.
 	// Conflicts with client_key_wo.
 	// Client key used for Nomad's TLS communication, must be x509 PEM encoded and if this is set you need to also set client_cert.
-	ClientKeySecretRef *v1.LocalSecretKeySelector `json:"clientKeySecretRef,omitempty" tf:"-"`
+	ClientKeySecretRef *v2.LocalSecretKeySelector `json:"clientKeySecretRef,omitempty" tf:"-"`
 
 	// Write-only client certificate key to provide to the Nomad server, must be x509 PEM encoded.
 	// Use this for enhanced security when you don't want the client key to appear in state files. Requires client_key_wo_version. Conflicts with client_key.
 	// Note: This property is write-only and will not be read from the API.
 	// Write-only client key used for Nomad's TLS communication, must be x509 PEM encoded and if this is set you need to also set client_cert.
-	ClientKeyWoSecretRef *v1.LocalSecretKeySelector `json:"clientKeyWoSecretRef,omitempty" tf:"-"`
+	ClientKeyWoSecretRef *v2.LocalSecretKeySelector `json:"clientKeyWoSecretRef,omitempty" tf:"-"`
 
 	// Version counter for the write-only client key. This must be incremented
 	// each time the client_key_wo value is changed to trigger an update. Required when using client_key_wo.
@@ -155,13 +154,13 @@ type SecretBackendInitParameters struct {
 
 	// Specifies the Nomad Management token to use. Conflicts with token_wo.
 	// Specifies the Nomad Management token to use.
-	TokenSecretRef *v1.LocalSecretKeySelector `json:"tokenSecretRef,omitempty" tf:"-"`
+	TokenSecretRef *v2.LocalSecretKeySelector `json:"tokenSecretRef,omitempty" tf:"-"`
 
 	// Write-only Nomad Management token to use.
 	// Use this for enhanced security when you don't want the token to appear in state files. Requires token_wo_version. Conflicts with token.
 	// Note: This property is write-only and will not be read from the API.
 	// Write-only Nomad Management token to use.
-	TokenWoSecretRef *v1.LocalSecretKeySelector `json:"tokenWoSecretRef,omitempty" tf:"-"`
+	TokenWoSecretRef *v2.LocalSecretKeySelector `json:"tokenWoSecretRef,omitempty" tf:"-"`
 
 	// Version counter for the write-only token. This must be incremented each time
 	// the token_wo value is changed to trigger an update. Required when using token_wo.
@@ -349,20 +348,20 @@ type SecretBackendParameters struct {
 	// Client certificate to provide to the Nomad server, must be x509 PEM encoded.
 	// Client certificate used for Nomad's TLS communication, must be x509 PEM encoded and if this is set you need to also set client_key.
 	// +kubebuilder:validation:Optional
-	ClientCertSecretRef *v1.LocalSecretKeySelector `json:"clientCertSecretRef,omitempty" tf:"-"`
+	ClientCertSecretRef *v2.LocalSecretKeySelector `json:"clientCertSecretRef,omitempty" tf:"-"`
 
 	// Client certificate key to provide to the Nomad server, must be x509 PEM encoded.
 	// Conflicts with client_key_wo.
 	// Client key used for Nomad's TLS communication, must be x509 PEM encoded and if this is set you need to also set client_cert.
 	// +kubebuilder:validation:Optional
-	ClientKeySecretRef *v1.LocalSecretKeySelector `json:"clientKeySecretRef,omitempty" tf:"-"`
+	ClientKeySecretRef *v2.LocalSecretKeySelector `json:"clientKeySecretRef,omitempty" tf:"-"`
 
 	// Write-only client certificate key to provide to the Nomad server, must be x509 PEM encoded.
 	// Use this for enhanced security when you don't want the client key to appear in state files. Requires client_key_wo_version. Conflicts with client_key.
 	// Note: This property is write-only and will not be read from the API.
 	// Write-only client key used for Nomad's TLS communication, must be x509 PEM encoded and if this is set you need to also set client_cert.
 	// +kubebuilder:validation:Optional
-	ClientKeyWoSecretRef *v1.LocalSecretKeySelector `json:"clientKeyWoSecretRef,omitempty" tf:"-"`
+	ClientKeyWoSecretRef *v2.LocalSecretKeySelector `json:"clientKeyWoSecretRef,omitempty" tf:"-"`
 
 	// Version counter for the write-only client key. This must be incremented
 	// each time the client_key_wo value is changed to trigger an update. Required when using client_key_wo.
@@ -475,14 +474,14 @@ type SecretBackendParameters struct {
 	// Specifies the Nomad Management token to use. Conflicts with token_wo.
 	// Specifies the Nomad Management token to use.
 	// +kubebuilder:validation:Optional
-	TokenSecretRef *v1.LocalSecretKeySelector `json:"tokenSecretRef,omitempty" tf:"-"`
+	TokenSecretRef *v2.LocalSecretKeySelector `json:"tokenSecretRef,omitempty" tf:"-"`
 
 	// Write-only Nomad Management token to use.
 	// Use this for enhanced security when you don't want the token to appear in state files. Requires token_wo_version. Conflicts with token.
 	// Note: This property is write-only and will not be read from the API.
 	// Write-only Nomad Management token to use.
 	// +kubebuilder:validation:Optional
-	TokenWoSecretRef *v1.LocalSecretKeySelector `json:"tokenWoSecretRef,omitempty" tf:"-"`
+	TokenWoSecretRef *v2.LocalSecretKeySelector `json:"tokenWoSecretRef,omitempty" tf:"-"`
 
 	// Version counter for the write-only token. This must be incremented each time
 	// the token_wo value is changed to trigger an update. Required when using token_wo.
@@ -510,8 +509,8 @@ type SecretBackendSpec struct {
 
 // SecretBackendStatus defines the observed state of SecretBackend.
 type SecretBackendStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretBackendObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretBackendObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type AuthBackendConfigInitParameters struct {
@@ -23,11 +22,11 @@ type AuthBackendConfigInitParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// Disable JWT issuer validation. Allows to skip ISS validation. Requires Vault v1.5.4+ or Vault auth kubernetes plugin v0.7.1+
 	// Optional disable JWT issuer validation. Allows to skip ISS validation.
@@ -62,14 +61,14 @@ type AuthBackendConfigInitParameters struct {
 
 	// A service account JWT (or other token) used as a bearer token to access the TokenReview API to validate other JWTs during login. If not set the JWT used for login will be used to access the API. Conflicts with token_reviewer_jwt_wo.
 	// A service account JWT (or other token) used as a bearer token to access the TokenReview API to validate other JWTs during login. If not set the JWT used for login will be used to access the API.
-	TokenReviewerJwtSecretRef *v1.LocalSecretKeySelector `json:"tokenReviewerJwtSecretRef,omitempty" tf:"-"`
+	TokenReviewerJwtSecretRef *v2.LocalSecretKeySelector `json:"tokenReviewerJwtSecretRef,omitempty" tf:"-"`
 
 	// A write-only service account JWT (or other token) used as a bearer token to access the
 	// TokenReview API to validate other JWTs during login. If not set the JWT used for login will be used to access the API.
 	// Conflicts with token_reviewer_jwt.
 	// Note: This property is write-only and will not be read from the API.
 	// A write-only service account JWT (or other token) used as a bearer token to access the TokenReview API to validate other JWTs during login. If not set the JWT used for login will be used to access the API.
-	TokenReviewerJwtWoSecretRef *v1.LocalSecretKeySelector `json:"tokenReviewerJwtWoSecretRef,omitempty" tf:"-"`
+	TokenReviewerJwtWoSecretRef *v2.LocalSecretKeySelector `json:"tokenReviewerJwtWoSecretRef,omitempty" tf:"-"`
 
 	// The version of token_reviewer_jwt_wo to use during write operations. Required with token_reviewer_jwt_wo. For more info see updating write-only attributes.
 	// The version of token_reviewer_jwt_wo to use during write operations.
@@ -137,11 +136,11 @@ type AuthBackendConfigParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// Disable JWT issuer validation. Allows to skip ISS validation. Requires Vault v1.5.4+ or Vault auth kubernetes plugin v0.7.1+
 	// Optional disable JWT issuer validation. Allows to skip ISS validation.
@@ -184,7 +183,7 @@ type AuthBackendConfigParameters struct {
 	// A service account JWT (or other token) used as a bearer token to access the TokenReview API to validate other JWTs during login. If not set the JWT used for login will be used to access the API. Conflicts with token_reviewer_jwt_wo.
 	// A service account JWT (or other token) used as a bearer token to access the TokenReview API to validate other JWTs during login. If not set the JWT used for login will be used to access the API.
 	// +kubebuilder:validation:Optional
-	TokenReviewerJwtSecretRef *v1.LocalSecretKeySelector `json:"tokenReviewerJwtSecretRef,omitempty" tf:"-"`
+	TokenReviewerJwtSecretRef *v2.LocalSecretKeySelector `json:"tokenReviewerJwtSecretRef,omitempty" tf:"-"`
 
 	// A write-only service account JWT (or other token) used as a bearer token to access the
 	// TokenReview API to validate other JWTs during login. If not set the JWT used for login will be used to access the API.
@@ -192,7 +191,7 @@ type AuthBackendConfigParameters struct {
 	// Note: This property is write-only and will not be read from the API.
 	// A write-only service account JWT (or other token) used as a bearer token to access the TokenReview API to validate other JWTs during login. If not set the JWT used for login will be used to access the API.
 	// +kubebuilder:validation:Optional
-	TokenReviewerJwtWoSecretRef *v1.LocalSecretKeySelector `json:"tokenReviewerJwtWoSecretRef,omitempty" tf:"-"`
+	TokenReviewerJwtWoSecretRef *v2.LocalSecretKeySelector `json:"tokenReviewerJwtWoSecretRef,omitempty" tf:"-"`
 
 	// The version of token_reviewer_jwt_wo to use during write operations. Required with token_reviewer_jwt_wo. For more info see updating write-only attributes.
 	// The version of token_reviewer_jwt_wo to use during write operations.
@@ -224,8 +223,8 @@ type AuthBackendConfigSpec struct {
 
 // AuthBackendConfigStatus defines the observed state of AuthBackendConfig.
 type AuthBackendConfigStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        AuthBackendConfigObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               AuthBackendConfigObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

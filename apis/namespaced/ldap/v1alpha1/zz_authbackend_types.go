@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type AuthBackendInitParameters struct {
@@ -26,10 +25,10 @@ type AuthBackendInitParameters struct {
 
 	Binddn *string `json:"binddn,omitempty" tf:"binddn,omitempty"`
 
-	BindpassSecretRef *v1.LocalSecretKeySelector `json:"bindpassSecretRef,omitempty" tf:"-"`
+	BindpassSecretRef *v2.LocalSecretKeySelector `json:"bindpassSecretRef,omitempty" tf:"-"`
 
 	// Write-only bind password to use for LDAP authentication.
-	BindpassWoSecretRef *v1.LocalSecretKeySelector `json:"bindpassWoSecretRef,omitempty" tf:"-"`
+	BindpassWoSecretRef *v2.LocalSecretKeySelector `json:"bindpassWoSecretRef,omitempty" tf:"-"`
 
 	// Version counter for write-only bind password.
 	BindpassWoVersion *float64 `json:"bindpassWoVersion,omitempty" tf:"bindpass_wo_version,omitempty"`
@@ -40,7 +39,7 @@ type AuthBackendInitParameters struct {
 
 	ClientTLSCert *string `json:"clientTlsCert,omitempty" tf:"client_tls_cert,omitempty"`
 
-	ClientTLSKeySecretRef *v1.LocalSecretKeySelector `json:"clientTlsKeySecretRef,omitempty" tf:"-"`
+	ClientTLSKeySecretRef *v2.LocalSecretKeySelector `json:"clientTlsKeySecretRef,omitempty" tf:"-"`
 
 	ConnectionTimeout *float64 `json:"connectionTimeout,omitempty" tf:"connection_timeout,omitempty"`
 
@@ -290,11 +289,11 @@ type AuthBackendParameters struct {
 	Binddn *string `json:"binddn,omitempty" tf:"binddn,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	BindpassSecretRef *v1.LocalSecretKeySelector `json:"bindpassSecretRef,omitempty" tf:"-"`
+	BindpassSecretRef *v2.LocalSecretKeySelector `json:"bindpassSecretRef,omitempty" tf:"-"`
 
 	// Write-only bind password to use for LDAP authentication.
 	// +kubebuilder:validation:Optional
-	BindpassWoSecretRef *v1.LocalSecretKeySelector `json:"bindpassWoSecretRef,omitempty" tf:"-"`
+	BindpassWoSecretRef *v2.LocalSecretKeySelector `json:"bindpassWoSecretRef,omitempty" tf:"-"`
 
 	// Version counter for write-only bind password.
 	// +kubebuilder:validation:Optional
@@ -310,7 +309,7 @@ type AuthBackendParameters struct {
 	ClientTLSCert *string `json:"clientTlsCert,omitempty" tf:"client_tls_cert,omitempty"`
 
 	// +kubebuilder:validation:Optional
-	ClientTLSKeySecretRef *v1.LocalSecretKeySelector `json:"clientTlsKeySecretRef,omitempty" tf:"-"`
+	ClientTLSKeySecretRef *v2.LocalSecretKeySelector `json:"clientTlsKeySecretRef,omitempty" tf:"-"`
 
 	// +kubebuilder:validation:Optional
 	ConnectionTimeout *float64 `json:"connectionTimeout,omitempty" tf:"connection_timeout,omitempty"`
@@ -537,8 +536,8 @@ type AuthBackendSpec struct {
 
 // AuthBackendStatus defines the observed state of AuthBackend.
 type AuthBackendStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        AuthBackendObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               AuthBackendObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretBackendConfigUrlsInitParameters struct {
@@ -23,11 +23,11 @@ type SecretBackendConfigUrlsInitParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// Specifies the URL values for the CRL Distribution Points field.
 	// Specifies the URL values for the CRL Distribution Points field.
@@ -96,11 +96,11 @@ type SecretBackendConfigUrlsParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// Specifies the URL values for the CRL Distribution Points field.
 	// Specifies the URL values for the CRL Distribution Points field.
@@ -133,8 +133,8 @@ type SecretBackendConfigUrlsParameters struct {
 
 // SecretBackendConfigUrlsSpec defines the desired state of SecretBackendConfigUrls
 type SecretBackendConfigUrlsSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     SecretBackendConfigUrlsParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   SecretBackendConfigUrlsParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -150,8 +150,8 @@ type SecretBackendConfigUrlsSpec struct {
 
 // SecretBackendConfigUrlsStatus defines the observed state of SecretBackendConfigUrls.
 type SecretBackendConfigUrlsStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretBackendConfigUrlsObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretBackendConfigUrlsObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

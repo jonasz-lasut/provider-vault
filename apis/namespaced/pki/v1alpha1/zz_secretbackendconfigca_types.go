@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretBackendConfigCAInitParameters struct {
@@ -24,11 +23,11 @@ type SecretBackendConfigCAInitParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// The namespace to provision the resource in.
 	// The value should not contain leading or trailing forward slashes.
@@ -39,7 +38,7 @@ type SecretBackendConfigCAInitParameters struct {
 
 	// The key and certificate PEM bundle
 	// The key and certificate PEM bundle.
-	PemBundleSecretRef v1.LocalSecretKeySelector `json:"pemBundleSecretRef" tf:"-"`
+	PemBundleSecretRef v2.LocalSecretKeySelector `json:"pemBundleSecretRef" tf:"-"`
 }
 
 type SecretBackendConfigCAObservation struct {
@@ -69,11 +68,11 @@ type SecretBackendConfigCAParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// The namespace to provision the resource in.
 	// The value should not contain leading or trailing forward slashes.
@@ -86,7 +85,7 @@ type SecretBackendConfigCAParameters struct {
 	// The key and certificate PEM bundle
 	// The key and certificate PEM bundle.
 	// +kubebuilder:validation:Optional
-	PemBundleSecretRef v1.LocalSecretKeySelector `json:"pemBundleSecretRef" tf:"-"`
+	PemBundleSecretRef v2.LocalSecretKeySelector `json:"pemBundleSecretRef" tf:"-"`
 }
 
 // SecretBackendConfigCASpec defines the desired state of SecretBackendConfigCA
@@ -108,8 +107,8 @@ type SecretBackendConfigCASpec struct {
 
 // SecretBackendConfigCAStatus defines the observed state of SecretBackendConfigCA.
 type SecretBackendConfigCAStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretBackendConfigCAObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretBackendConfigCAObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

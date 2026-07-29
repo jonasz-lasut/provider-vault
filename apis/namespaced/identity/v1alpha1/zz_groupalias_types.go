@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type GroupAliasInitParameters struct {
@@ -24,11 +23,11 @@ type GroupAliasInitParameters struct {
 
 	// Reference to a Group in identity to populate canonicalId.
 	// +kubebuilder:validation:Optional
-	CanonicalIDRef *v1.NamespacedReference `json:"canonicalIdRef,omitempty" tf:"-"`
+	CanonicalIDRef *v2.NamespacedReference `json:"canonicalIdRef,omitempty" tf:"-"`
 
 	// Selector for a Group in identity to populate canonicalId.
 	// +kubebuilder:validation:Optional
-	CanonicalIDSelector *v1.NamespacedSelector `json:"canonicalIdSelector,omitempty" tf:"-"`
+	CanonicalIDSelector *v2.NamespacedSelector `json:"canonicalIdSelector,omitempty" tf:"-"`
 
 	// Mount accessor of the authentication backend to which this alias belongs to.
 	// Mount accessor to which this alias belongs to.
@@ -38,11 +37,11 @@ type GroupAliasInitParameters struct {
 
 	// Reference to a Backend in auth to populate mountAccessor.
 	// +kubebuilder:validation:Optional
-	MountAccessorRef *v1.NamespacedReference `json:"mountAccessorRef,omitempty" tf:"-"`
+	MountAccessorRef *v2.NamespacedReference `json:"mountAccessorRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate mountAccessor.
 	// +kubebuilder:validation:Optional
-	MountAccessorSelector *v1.NamespacedSelector `json:"mountAccessorSelector,omitempty" tf:"-"`
+	MountAccessorSelector *v2.NamespacedSelector `json:"mountAccessorSelector,omitempty" tf:"-"`
 
 	// Name of the group alias to create.
 	// Name of the group alias.
@@ -92,11 +91,11 @@ type GroupAliasParameters struct {
 
 	// Reference to a Group in identity to populate canonicalId.
 	// +kubebuilder:validation:Optional
-	CanonicalIDRef *v1.NamespacedReference `json:"canonicalIdRef,omitempty" tf:"-"`
+	CanonicalIDRef *v2.NamespacedReference `json:"canonicalIdRef,omitempty" tf:"-"`
 
 	// Selector for a Group in identity to populate canonicalId.
 	// +kubebuilder:validation:Optional
-	CanonicalIDSelector *v1.NamespacedSelector `json:"canonicalIdSelector,omitempty" tf:"-"`
+	CanonicalIDSelector *v2.NamespacedSelector `json:"canonicalIdSelector,omitempty" tf:"-"`
 
 	// Mount accessor of the authentication backend to which this alias belongs to.
 	// Mount accessor to which this alias belongs to.
@@ -107,11 +106,11 @@ type GroupAliasParameters struct {
 
 	// Reference to a Backend in auth to populate mountAccessor.
 	// +kubebuilder:validation:Optional
-	MountAccessorRef *v1.NamespacedReference `json:"mountAccessorRef,omitempty" tf:"-"`
+	MountAccessorRef *v2.NamespacedReference `json:"mountAccessorRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate mountAccessor.
 	// +kubebuilder:validation:Optional
-	MountAccessorSelector *v1.NamespacedSelector `json:"mountAccessorSelector,omitempty" tf:"-"`
+	MountAccessorSelector *v2.NamespacedSelector `json:"mountAccessorSelector,omitempty" tf:"-"`
 
 	// Name of the group alias to create.
 	// Name of the group alias.
@@ -146,8 +145,8 @@ type GroupAliasSpec struct {
 
 // GroupAliasStatus defines the observed state of GroupAlias.
 type GroupAliasStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        GroupAliasObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               GroupAliasObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

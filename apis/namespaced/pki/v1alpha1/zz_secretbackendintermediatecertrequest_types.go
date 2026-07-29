@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretBackendIntermediateCertRequestInitParameters struct {
@@ -35,11 +34,11 @@ type SecretBackendIntermediateCertRequestInitParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// CN of intermediate to create
 	// CN of intermediate to create.
@@ -314,11 +313,11 @@ type SecretBackendIntermediateCertRequestParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// CN of intermediate to create
 	// CN of intermediate to create.
@@ -473,8 +472,8 @@ type SecretBackendIntermediateCertRequestSpec struct {
 
 // SecretBackendIntermediateCertRequestStatus defines the observed state of SecretBackendIntermediateCertRequest.
 type SecretBackendIntermediateCertRequestStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretBackendIntermediateCertRequestObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretBackendIntermediateCertRequestObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

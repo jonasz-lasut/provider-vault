@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretBackendRoleInitParameters struct {
@@ -24,11 +23,11 @@ type SecretBackendRoleInitParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// The database statements to execute when
 	// creating a user.
@@ -56,11 +55,11 @@ type SecretBackendRoleInitParameters struct {
 
 	// Reference to a SecretBackendConnection in database to populate dbName.
 	// +kubebuilder:validation:Optional
-	DBNameRef *v1.NamespacedReference `json:"dbNameRef,omitempty" tf:"-"`
+	DBNameRef *v2.NamespacedReference `json:"dbNameRef,omitempty" tf:"-"`
 
 	// Selector for a SecretBackendConnection in database to populate dbName.
 	// +kubebuilder:validation:Optional
-	DBNameSelector *v1.NamespacedSelector `json:"dbNameSelector,omitempty" tf:"-"`
+	DBNameSelector *v2.NamespacedSelector `json:"dbNameSelector,omitempty" tf:"-"`
 
 	// The default number of seconds for leases for this
 	// role.
@@ -177,11 +176,11 @@ type SecretBackendRoleParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// The database statements to execute when
 	// creating a user.
@@ -213,11 +212,11 @@ type SecretBackendRoleParameters struct {
 
 	// Reference to a SecretBackendConnection in database to populate dbName.
 	// +kubebuilder:validation:Optional
-	DBNameRef *v1.NamespacedReference `json:"dbNameRef,omitempty" tf:"-"`
+	DBNameRef *v2.NamespacedReference `json:"dbNameRef,omitempty" tf:"-"`
 
 	// Selector for a SecretBackendConnection in database to populate dbName.
 	// +kubebuilder:validation:Optional
-	DBNameSelector *v1.NamespacedSelector `json:"dbNameSelector,omitempty" tf:"-"`
+	DBNameSelector *v2.NamespacedSelector `json:"dbNameSelector,omitempty" tf:"-"`
 
 	// The default number of seconds for leases for this
 	// role.
@@ -282,8 +281,8 @@ type SecretBackendRoleSpec struct {
 
 // SecretBackendRoleStatus defines the observed state of SecretBackendRole.
 type SecretBackendRoleStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretBackendRoleObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretBackendRoleObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

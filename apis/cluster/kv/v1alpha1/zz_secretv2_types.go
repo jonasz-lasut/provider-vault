@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type CustomMetadataInitParameters struct {
@@ -101,7 +101,7 @@ type SecretV2InitParameters struct {
 	// JSON-encoded string that will be
 	// written as the secret data at the given path. This is required if data_json_wo is not set.
 	// JSON-encoded secret data to write.
-	DataJSONSecretRef *v1.SecretKeySelector `json:"dataJsonSecretRef,omitempty" tf:"-"`
+	DataJSONSecretRef *v2.SecretKeySelector `json:"dataJsonSecretRef,omitempty" tf:"-"`
 
 	// JSON-encoded string that will be
 	// written as the secret data at the given path. This is required if data_json is not set. Note: This property is write-only and will not be read from the API.
@@ -130,11 +130,11 @@ type SecretV2InitParameters struct {
 
 	// Reference to a Mount in vault to populate mount.
 	// +kubebuilder:validation:Optional
-	MountRef *v1.Reference `json:"mountRef,omitempty" tf:"-"`
+	MountRef *v2.Reference `json:"mountRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate mount.
 	// +kubebuilder:validation:Optional
-	MountSelector *v1.Selector `json:"mountSelector,omitempty" tf:"-"`
+	MountSelector *v2.Selector `json:"mountSelector,omitempty" tf:"-"`
 
 	// Full name of the secret. For a nested secret
 	// the name is the nested path excluding the mount and data
@@ -246,7 +246,7 @@ type SecretV2Parameters struct {
 	// written as the secret data at the given path. This is required if data_json_wo is not set.
 	// JSON-encoded secret data to write.
 	// +kubebuilder:validation:Optional
-	DataJSONSecretRef *v1.SecretKeySelector `json:"dataJsonSecretRef,omitempty" tf:"-"`
+	DataJSONSecretRef *v2.SecretKeySelector `json:"dataJsonSecretRef,omitempty" tf:"-"`
 
 	// JSON-encoded string that will be
 	// written as the secret data at the given path. This is required if data_json is not set. Note: This property is write-only and will not be read from the API.
@@ -280,11 +280,11 @@ type SecretV2Parameters struct {
 
 	// Reference to a Mount in vault to populate mount.
 	// +kubebuilder:validation:Optional
-	MountRef *v1.Reference `json:"mountRef,omitempty" tf:"-"`
+	MountRef *v2.Reference `json:"mountRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate mount.
 	// +kubebuilder:validation:Optional
-	MountSelector *v1.Selector `json:"mountSelector,omitempty" tf:"-"`
+	MountSelector *v2.Selector `json:"mountSelector,omitempty" tf:"-"`
 
 	// Full name of the secret. For a nested secret
 	// the name is the nested path excluding the mount and data
@@ -311,8 +311,8 @@ type SecretV2Parameters struct {
 
 // SecretV2Spec defines the desired state of SecretV2
 type SecretV2Spec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     SecretV2Parameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   SecretV2Parameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -328,8 +328,8 @@ type SecretV2Spec struct {
 
 // SecretV2Status defines the observed state of SecretV2.
 type SecretV2Status struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretV2Observation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretV2Observation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

@@ -5,104 +5,104 @@ Copyright 2022 Upbound Inc.
 
 package v1alpha1
 
-import xpv1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+import xpv2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 
 // GetCondition of this LeaseCount.
-func (mg *LeaseCount) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *LeaseCount) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetDeletionPolicy of this LeaseCount.
-func (mg *LeaseCount) GetDeletionPolicy() xpv1.DeletionPolicy {
+func (mg *LeaseCount) GetDeletionPolicy() xpv2.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
 // GetManagementPolicies of this LeaseCount.
-func (mg *LeaseCount) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *LeaseCount) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this LeaseCount.
-func (mg *LeaseCount) GetProviderConfigReference() *xpv1.Reference {
+func (mg *LeaseCount) GetProviderConfigReference() *xpv2.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this LeaseCount.
-func (mg *LeaseCount) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+func (mg *LeaseCount) GetWriteConnectionSecretToReference() *xpv2.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this LeaseCount.
-func (mg *LeaseCount) SetConditions(c ...xpv1.Condition) {
+func (mg *LeaseCount) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetDeletionPolicy of this LeaseCount.
-func (mg *LeaseCount) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+func (mg *LeaseCount) SetDeletionPolicy(r xpv2.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
 // SetManagementPolicies of this LeaseCount.
-func (mg *LeaseCount) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *LeaseCount) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this LeaseCount.
-func (mg *LeaseCount) SetProviderConfigReference(r *xpv1.Reference) {
+func (mg *LeaseCount) SetProviderConfigReference(r *xpv2.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this LeaseCount.
-func (mg *LeaseCount) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+func (mg *LeaseCount) SetWriteConnectionSecretToReference(r *xpv2.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this RateLimit.
-func (mg *RateLimit) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *RateLimit) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetDeletionPolicy of this RateLimit.
-func (mg *RateLimit) GetDeletionPolicy() xpv1.DeletionPolicy {
+func (mg *RateLimit) GetDeletionPolicy() xpv2.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
 // GetManagementPolicies of this RateLimit.
-func (mg *RateLimit) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *RateLimit) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this RateLimit.
-func (mg *RateLimit) GetProviderConfigReference() *xpv1.Reference {
+func (mg *RateLimit) GetProviderConfigReference() *xpv2.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this RateLimit.
-func (mg *RateLimit) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+func (mg *RateLimit) GetWriteConnectionSecretToReference() *xpv2.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this RateLimit.
-func (mg *RateLimit) SetConditions(c ...xpv1.Condition) {
+func (mg *RateLimit) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetDeletionPolicy of this RateLimit.
-func (mg *RateLimit) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+func (mg *RateLimit) SetDeletionPolicy(r xpv2.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
 // SetManagementPolicies of this RateLimit.
-func (mg *RateLimit) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *RateLimit) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this RateLimit.
-func (mg *RateLimit) SetProviderConfigReference(r *xpv1.Reference) {
+func (mg *RateLimit) SetProviderConfigReference(r *xpv2.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this RateLimit.
-func (mg *RateLimit) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+func (mg *RateLimit) SetWriteConnectionSecretToReference(r *xpv2.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }

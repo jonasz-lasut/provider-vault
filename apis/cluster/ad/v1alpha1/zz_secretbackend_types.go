@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretBackendInitParameters struct {
@@ -31,7 +31,7 @@ type SecretBackendInitParameters struct {
 
 	// Password to use along with binddn when performing user search.
 	// LDAP password for searching for the user DN.
-	BindpassSecretRef v1.SecretKeySelector `json:"bindpassSecretRef" tf:"-"`
+	BindpassSecretRef v2.SecretKeySelector `json:"bindpassSecretRef" tf:"-"`
 
 	// If set, user and group names assigned to policies within the
 	// backend will be case sensitive. Otherwise, names will be normalized to lower case.
@@ -45,11 +45,11 @@ type SecretBackendInitParameters struct {
 
 	// Client certificate to provide to the LDAP server, must be x509 PEM encoded.
 	// Client certificate to provide to the LDAP server, must be x509 PEM encoded.
-	ClientTLSCertSecretRef *v1.SecretKeySelector `json:"clientTlsCertSecretRef,omitempty" tf:"-"`
+	ClientTLSCertSecretRef *v2.SecretKeySelector `json:"clientTlsCertSecretRef,omitempty" tf:"-"`
 
 	// Client certificate key to provide to the LDAP server, must be x509 PEM encoded.
 	// Client certificate key to provide to the LDAP server, must be x509 PEM encoded.
-	ClientTLSKeySecretRef *v1.SecretKeySelector `json:"clientTlsKeySecretRef,omitempty" tf:"-"`
+	ClientTLSKeySecretRef *v2.SecretKeySelector `json:"clientTlsKeySecretRef,omitempty" tf:"-"`
 
 	// Default lease duration for secrets in seconds.
 	// Default lease duration for secrets in seconds
@@ -351,7 +351,7 @@ type SecretBackendParameters struct {
 	// Password to use along with binddn when performing user search.
 	// LDAP password for searching for the user DN.
 	// +kubebuilder:validation:Optional
-	BindpassSecretRef v1.SecretKeySelector `json:"bindpassSecretRef" tf:"-"`
+	BindpassSecretRef v2.SecretKeySelector `json:"bindpassSecretRef" tf:"-"`
 
 	// If set, user and group names assigned to policies within the
 	// backend will be case sensitive. Otherwise, names will be normalized to lower case.
@@ -368,12 +368,12 @@ type SecretBackendParameters struct {
 	// Client certificate to provide to the LDAP server, must be x509 PEM encoded.
 	// Client certificate to provide to the LDAP server, must be x509 PEM encoded.
 	// +kubebuilder:validation:Optional
-	ClientTLSCertSecretRef *v1.SecretKeySelector `json:"clientTlsCertSecretRef,omitempty" tf:"-"`
+	ClientTLSCertSecretRef *v2.SecretKeySelector `json:"clientTlsCertSecretRef,omitempty" tf:"-"`
 
 	// Client certificate key to provide to the LDAP server, must be x509 PEM encoded.
 	// Client certificate key to provide to the LDAP server, must be x509 PEM encoded.
 	// +kubebuilder:validation:Optional
-	ClientTLSKeySecretRef *v1.SecretKeySelector `json:"clientTlsKeySecretRef,omitempty" tf:"-"`
+	ClientTLSKeySecretRef *v2.SecretKeySelector `json:"clientTlsKeySecretRef,omitempty" tf:"-"`
 
 	// Default lease duration for secrets in seconds.
 	// Default lease duration for secrets in seconds
@@ -528,8 +528,8 @@ type SecretBackendParameters struct {
 
 // SecretBackendSpec defines the desired state of SecretBackend
 type SecretBackendSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     SecretBackendParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   SecretBackendParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -545,8 +545,8 @@ type SecretBackendSpec struct {
 
 // SecretBackendStatus defines the observed state of SecretBackend.
 type SecretBackendStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretBackendObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretBackendObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

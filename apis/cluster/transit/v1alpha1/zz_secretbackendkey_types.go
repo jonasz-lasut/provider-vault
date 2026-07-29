@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretBackendKeyInitParameters struct {
@@ -32,11 +32,11 @@ type SecretBackendKeyInitParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// Base64 encoded context for key derivation. Required if derived is set to true. This provides additional entropy for key derivation and should be consistent across operations that need to use the same derived key.
 	// Base64 encoded context for key derivation. Required if derived is set to true.
@@ -255,11 +255,11 @@ type SecretBackendKeyParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// Base64 encoded context for key derivation. Required if derived is set to true. This provides additional entropy for key derivation and should be consistent across operations that need to use the same derived key.
 	// Base64 encoded context for key derivation. Required if derived is set to true.
@@ -354,8 +354,8 @@ type SecretBackendKeyParameters struct {
 
 // SecretBackendKeySpec defines the desired state of SecretBackendKey
 type SecretBackendKeySpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     SecretBackendKeyParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   SecretBackendKeyParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -371,8 +371,8 @@ type SecretBackendKeySpec struct {
 
 // SecretBackendKeyStatus defines the observed state of SecretBackendKey.
 type SecretBackendKeyStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretBackendKeyObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretBackendKeyObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

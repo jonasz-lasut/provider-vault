@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type CloudSecretRoleInitParameters struct {
@@ -22,11 +22,11 @@ type CloudSecretRoleInitParameters struct {
 
 	// Reference to a CloudSecretBackend in terraform to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a CloudSecretBackend in terraform to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// The type of credential to generate. Valid values are 'team', 'team_legacy', 'user', or 'organization'. Can only create multiple-team tokens with team.
 	// The type of credential to generate. Valid values are 'team', 'team_legacy', 'user', or 'organization'.
@@ -121,11 +121,11 @@ type CloudSecretRoleParameters struct {
 
 	// Reference to a CloudSecretBackend in terraform to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a CloudSecretBackend in terraform to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// The type of credential to generate. Valid values are 'team', 'team_legacy', 'user', or 'organization'. Can only create multiple-team tokens with team.
 	// The type of credential to generate. Valid values are 'team', 'team_legacy', 'user', or 'organization'.
@@ -176,8 +176,8 @@ type CloudSecretRoleParameters struct {
 
 // CloudSecretRoleSpec defines the desired state of CloudSecretRole
 type CloudSecretRoleSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     CloudSecretRoleParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   CloudSecretRoleParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -193,8 +193,8 @@ type CloudSecretRoleSpec struct {
 
 // CloudSecretRoleStatus defines the observed state of CloudSecretRole.
 type CloudSecretRoleStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        CloudSecretRoleObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               CloudSecretRoleObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

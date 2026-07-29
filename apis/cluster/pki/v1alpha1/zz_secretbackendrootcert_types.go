@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretBackendRootCertInitParameters struct {
@@ -27,11 +27,11 @@ type SecretBackendRootCertInitParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// CN of intermediate to create
 	// CN of root to create.
@@ -405,11 +405,11 @@ type SecretBackendRootCertParameters struct {
 
 	// Reference to a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// CN of intermediate to create
 	// CN of root to create.
@@ -613,8 +613,8 @@ type SecretBackendRootCertParameters struct {
 
 // SecretBackendRootCertSpec defines the desired state of SecretBackendRootCert
 type SecretBackendRootCertSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     SecretBackendRootCertParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   SecretBackendRootCertParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -630,8 +630,8 @@ type SecretBackendRootCertSpec struct {
 
 // SecretBackendRootCertStatus defines the observed state of SecretBackendRootCert.
 type SecretBackendRootCertStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretBackendRootCertObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretBackendRootCertObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type EntityPoliciesInitParameters struct {
@@ -24,11 +23,11 @@ type EntityPoliciesInitParameters struct {
 
 	// Reference to a Entity in identity to populate entityId.
 	// +kubebuilder:validation:Optional
-	EntityIDRef *v1.NamespacedReference `json:"entityIdRef,omitempty" tf:"-"`
+	EntityIDRef *v2.NamespacedReference `json:"entityIdRef,omitempty" tf:"-"`
 
 	// Selector for a Entity in identity to populate entityId.
 	// +kubebuilder:validation:Optional
-	EntityIDSelector *v1.NamespacedSelector `json:"entityIdSelector,omitempty" tf:"-"`
+	EntityIDSelector *v2.NamespacedSelector `json:"entityIdSelector,omitempty" tf:"-"`
 
 	// Defaults to true.
 	// Should the resource manage policies exclusively
@@ -87,11 +86,11 @@ type EntityPoliciesParameters struct {
 
 	// Reference to a Entity in identity to populate entityId.
 	// +kubebuilder:validation:Optional
-	EntityIDRef *v1.NamespacedReference `json:"entityIdRef,omitempty" tf:"-"`
+	EntityIDRef *v2.NamespacedReference `json:"entityIdRef,omitempty" tf:"-"`
 
 	// Selector for a Entity in identity to populate entityId.
 	// +kubebuilder:validation:Optional
-	EntityIDSelector *v1.NamespacedSelector `json:"entityIdSelector,omitempty" tf:"-"`
+	EntityIDSelector *v2.NamespacedSelector `json:"entityIdSelector,omitempty" tf:"-"`
 
 	// Defaults to true.
 	// Should the resource manage policies exclusively
@@ -132,8 +131,8 @@ type EntityPoliciesSpec struct {
 
 // EntityPoliciesStatus defines the observed state of EntityPolicies.
 type EntityPoliciesStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        EntityPoliciesObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               EntityPoliciesObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

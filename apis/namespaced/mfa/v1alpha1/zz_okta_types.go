@@ -10,15 +10,14 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type OktaInitParameters struct {
 
 	// Okta API key.
 	// Okta API key.
-	APITokenSecretRef v1.LocalSecretKeySelector `json:"apiTokenSecretRef" tf:"-"`
+	APITokenSecretRef v2.LocalSecretKeySelector `json:"apiTokenSecretRef" tf:"-"`
 
 	// If set, will be used as the base domain for API requests. Examples are okta.com,
 	// oktapreview.com, and okta-emea.com.
@@ -34,11 +33,11 @@ type OktaInitParameters struct {
 
 	// Reference to a Backend in auth to populate mountAccessor.
 	// +kubebuilder:validation:Optional
-	MountAccessorRef *v1.NamespacedReference `json:"mountAccessorRef,omitempty" tf:"-"`
+	MountAccessorRef *v2.NamespacedReference `json:"mountAccessorRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate mountAccessor.
 	// +kubebuilder:validation:Optional
-	MountAccessorSelector *v1.NamespacedSelector `json:"mountAccessorSelector,omitempty" tf:"-"`
+	MountAccessorSelector *v2.NamespacedSelector `json:"mountAccessorSelector,omitempty" tf:"-"`
 
 	// (string: <required>) – Name of the MFA method.
 	// Name of the MFA method.
@@ -113,7 +112,7 @@ type OktaParameters struct {
 	// Okta API key.
 	// Okta API key.
 	// +kubebuilder:validation:Optional
-	APITokenSecretRef v1.LocalSecretKeySelector `json:"apiTokenSecretRef" tf:"-"`
+	APITokenSecretRef v2.LocalSecretKeySelector `json:"apiTokenSecretRef" tf:"-"`
 
 	// If set, will be used as the base domain for API requests. Examples are okta.com,
 	// oktapreview.com, and okta-emea.com.
@@ -131,11 +130,11 @@ type OktaParameters struct {
 
 	// Reference to a Backend in auth to populate mountAccessor.
 	// +kubebuilder:validation:Optional
-	MountAccessorRef *v1.NamespacedReference `json:"mountAccessorRef,omitempty" tf:"-"`
+	MountAccessorRef *v2.NamespacedReference `json:"mountAccessorRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate mountAccessor.
 	// +kubebuilder:validation:Optional
-	MountAccessorSelector *v1.NamespacedSelector `json:"mountAccessorSelector,omitempty" tf:"-"`
+	MountAccessorSelector *v2.NamespacedSelector `json:"mountAccessorSelector,omitempty" tf:"-"`
 
 	// (string: <required>) – Name of the MFA method.
 	// Name of the MFA method.
@@ -188,8 +187,8 @@ type OktaSpec struct {
 
 // OktaStatus defines the observed state of Okta.
 type OktaStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        OktaObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               OktaObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

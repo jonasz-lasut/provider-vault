@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type AuthBackendConfigIdentityInitParameters struct {
@@ -25,11 +24,11 @@ type AuthBackendConfigIdentityInitParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// How to generate the identity alias when using the ec2 auth method. Valid choices are
 	// role_id, instance_id, and image_id. Defaults to role_id
@@ -112,11 +111,11 @@ type AuthBackendConfigIdentityParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.NamespacedReference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.NamespacedSelector `json:"backendSelector,omitempty" tf:"-"`
 
 	// How to generate the identity alias when using the ec2 auth method. Valid choices are
 	// role_id, instance_id, and image_id. Defaults to role_id
@@ -172,8 +171,8 @@ type AuthBackendConfigIdentitySpec struct {
 
 // AuthBackendConfigIdentityStatus defines the observed state of AuthBackendConfigIdentity.
 type AuthBackendConfigIdentityStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        AuthBackendConfigIdentityObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               AuthBackendConfigIdentityObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

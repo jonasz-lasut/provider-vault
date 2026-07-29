@@ -5,404 +5,404 @@ Copyright 2022 Upbound Inc.
 
 package v1alpha1
 
-import xpv1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+import xpv2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 
 // GetCondition of this SecretBackendCert.
-func (mg *SecretBackendCert) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *SecretBackendCert) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetManagementPolicies of this SecretBackendCert.
-func (mg *SecretBackendCert) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *SecretBackendCert) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this SecretBackendCert.
-func (mg *SecretBackendCert) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+func (mg *SecretBackendCert) GetProviderConfigReference() *xpv2.ProviderConfigReference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this SecretBackendCert.
-func (mg *SecretBackendCert) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+func (mg *SecretBackendCert) GetWriteConnectionSecretToReference() *xpv2.LocalSecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this SecretBackendCert.
-func (mg *SecretBackendCert) SetConditions(c ...xpv1.Condition) {
+func (mg *SecretBackendCert) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetManagementPolicies of this SecretBackendCert.
-func (mg *SecretBackendCert) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *SecretBackendCert) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this SecretBackendCert.
-func (mg *SecretBackendCert) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+func (mg *SecretBackendCert) SetProviderConfigReference(r *xpv2.ProviderConfigReference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this SecretBackendCert.
-func (mg *SecretBackendCert) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+func (mg *SecretBackendCert) SetWriteConnectionSecretToReference(r *xpv2.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this SecretBackendConfigCA.
-func (mg *SecretBackendConfigCA) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *SecretBackendConfigCA) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetManagementPolicies of this SecretBackendConfigCA.
-func (mg *SecretBackendConfigCA) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *SecretBackendConfigCA) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this SecretBackendConfigCA.
-func (mg *SecretBackendConfigCA) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+func (mg *SecretBackendConfigCA) GetProviderConfigReference() *xpv2.ProviderConfigReference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this SecretBackendConfigCA.
-func (mg *SecretBackendConfigCA) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+func (mg *SecretBackendConfigCA) GetWriteConnectionSecretToReference() *xpv2.LocalSecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this SecretBackendConfigCA.
-func (mg *SecretBackendConfigCA) SetConditions(c ...xpv1.Condition) {
+func (mg *SecretBackendConfigCA) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetManagementPolicies of this SecretBackendConfigCA.
-func (mg *SecretBackendConfigCA) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *SecretBackendConfigCA) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this SecretBackendConfigCA.
-func (mg *SecretBackendConfigCA) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+func (mg *SecretBackendConfigCA) SetProviderConfigReference(r *xpv2.ProviderConfigReference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this SecretBackendConfigCA.
-func (mg *SecretBackendConfigCA) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+func (mg *SecretBackendConfigCA) SetWriteConnectionSecretToReference(r *xpv2.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this SecretBackendConfigUrls.
-func (mg *SecretBackendConfigUrls) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *SecretBackendConfigUrls) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetManagementPolicies of this SecretBackendConfigUrls.
-func (mg *SecretBackendConfigUrls) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *SecretBackendConfigUrls) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this SecretBackendConfigUrls.
-func (mg *SecretBackendConfigUrls) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+func (mg *SecretBackendConfigUrls) GetProviderConfigReference() *xpv2.ProviderConfigReference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this SecretBackendConfigUrls.
-func (mg *SecretBackendConfigUrls) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+func (mg *SecretBackendConfigUrls) GetWriteConnectionSecretToReference() *xpv2.LocalSecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this SecretBackendConfigUrls.
-func (mg *SecretBackendConfigUrls) SetConditions(c ...xpv1.Condition) {
+func (mg *SecretBackendConfigUrls) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetManagementPolicies of this SecretBackendConfigUrls.
-func (mg *SecretBackendConfigUrls) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *SecretBackendConfigUrls) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this SecretBackendConfigUrls.
-func (mg *SecretBackendConfigUrls) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+func (mg *SecretBackendConfigUrls) SetProviderConfigReference(r *xpv2.ProviderConfigReference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this SecretBackendConfigUrls.
-func (mg *SecretBackendConfigUrls) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+func (mg *SecretBackendConfigUrls) SetWriteConnectionSecretToReference(r *xpv2.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this SecretBackendCrlConfig.
-func (mg *SecretBackendCrlConfig) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *SecretBackendCrlConfig) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetManagementPolicies of this SecretBackendCrlConfig.
-func (mg *SecretBackendCrlConfig) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *SecretBackendCrlConfig) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this SecretBackendCrlConfig.
-func (mg *SecretBackendCrlConfig) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+func (mg *SecretBackendCrlConfig) GetProviderConfigReference() *xpv2.ProviderConfigReference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this SecretBackendCrlConfig.
-func (mg *SecretBackendCrlConfig) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+func (mg *SecretBackendCrlConfig) GetWriteConnectionSecretToReference() *xpv2.LocalSecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this SecretBackendCrlConfig.
-func (mg *SecretBackendCrlConfig) SetConditions(c ...xpv1.Condition) {
+func (mg *SecretBackendCrlConfig) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetManagementPolicies of this SecretBackendCrlConfig.
-func (mg *SecretBackendCrlConfig) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *SecretBackendCrlConfig) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this SecretBackendCrlConfig.
-func (mg *SecretBackendCrlConfig) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+func (mg *SecretBackendCrlConfig) SetProviderConfigReference(r *xpv2.ProviderConfigReference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this SecretBackendCrlConfig.
-func (mg *SecretBackendCrlConfig) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+func (mg *SecretBackendCrlConfig) SetWriteConnectionSecretToReference(r *xpv2.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this SecretBackendIntermediateCertRequest.
-func (mg *SecretBackendIntermediateCertRequest) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *SecretBackendIntermediateCertRequest) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetManagementPolicies of this SecretBackendIntermediateCertRequest.
-func (mg *SecretBackendIntermediateCertRequest) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *SecretBackendIntermediateCertRequest) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this SecretBackendIntermediateCertRequest.
-func (mg *SecretBackendIntermediateCertRequest) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+func (mg *SecretBackendIntermediateCertRequest) GetProviderConfigReference() *xpv2.ProviderConfigReference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this SecretBackendIntermediateCertRequest.
-func (mg *SecretBackendIntermediateCertRequest) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+func (mg *SecretBackendIntermediateCertRequest) GetWriteConnectionSecretToReference() *xpv2.LocalSecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this SecretBackendIntermediateCertRequest.
-func (mg *SecretBackendIntermediateCertRequest) SetConditions(c ...xpv1.Condition) {
+func (mg *SecretBackendIntermediateCertRequest) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetManagementPolicies of this SecretBackendIntermediateCertRequest.
-func (mg *SecretBackendIntermediateCertRequest) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *SecretBackendIntermediateCertRequest) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this SecretBackendIntermediateCertRequest.
-func (mg *SecretBackendIntermediateCertRequest) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+func (mg *SecretBackendIntermediateCertRequest) SetProviderConfigReference(r *xpv2.ProviderConfigReference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this SecretBackendIntermediateCertRequest.
-func (mg *SecretBackendIntermediateCertRequest) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+func (mg *SecretBackendIntermediateCertRequest) SetWriteConnectionSecretToReference(r *xpv2.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this SecretBackendIntermediateSetSigned.
-func (mg *SecretBackendIntermediateSetSigned) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *SecretBackendIntermediateSetSigned) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetManagementPolicies of this SecretBackendIntermediateSetSigned.
-func (mg *SecretBackendIntermediateSetSigned) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *SecretBackendIntermediateSetSigned) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this SecretBackendIntermediateSetSigned.
-func (mg *SecretBackendIntermediateSetSigned) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+func (mg *SecretBackendIntermediateSetSigned) GetProviderConfigReference() *xpv2.ProviderConfigReference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this SecretBackendIntermediateSetSigned.
-func (mg *SecretBackendIntermediateSetSigned) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+func (mg *SecretBackendIntermediateSetSigned) GetWriteConnectionSecretToReference() *xpv2.LocalSecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this SecretBackendIntermediateSetSigned.
-func (mg *SecretBackendIntermediateSetSigned) SetConditions(c ...xpv1.Condition) {
+func (mg *SecretBackendIntermediateSetSigned) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetManagementPolicies of this SecretBackendIntermediateSetSigned.
-func (mg *SecretBackendIntermediateSetSigned) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *SecretBackendIntermediateSetSigned) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this SecretBackendIntermediateSetSigned.
-func (mg *SecretBackendIntermediateSetSigned) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+func (mg *SecretBackendIntermediateSetSigned) SetProviderConfigReference(r *xpv2.ProviderConfigReference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this SecretBackendIntermediateSetSigned.
-func (mg *SecretBackendIntermediateSetSigned) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+func (mg *SecretBackendIntermediateSetSigned) SetWriteConnectionSecretToReference(r *xpv2.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this SecretBackendRole.
-func (mg *SecretBackendRole) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *SecretBackendRole) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetManagementPolicies of this SecretBackendRole.
-func (mg *SecretBackendRole) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *SecretBackendRole) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this SecretBackendRole.
-func (mg *SecretBackendRole) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+func (mg *SecretBackendRole) GetProviderConfigReference() *xpv2.ProviderConfigReference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this SecretBackendRole.
-func (mg *SecretBackendRole) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+func (mg *SecretBackendRole) GetWriteConnectionSecretToReference() *xpv2.LocalSecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this SecretBackendRole.
-func (mg *SecretBackendRole) SetConditions(c ...xpv1.Condition) {
+func (mg *SecretBackendRole) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetManagementPolicies of this SecretBackendRole.
-func (mg *SecretBackendRole) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *SecretBackendRole) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this SecretBackendRole.
-func (mg *SecretBackendRole) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+func (mg *SecretBackendRole) SetProviderConfigReference(r *xpv2.ProviderConfigReference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this SecretBackendRole.
-func (mg *SecretBackendRole) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+func (mg *SecretBackendRole) SetWriteConnectionSecretToReference(r *xpv2.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this SecretBackendRootCert.
-func (mg *SecretBackendRootCert) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *SecretBackendRootCert) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetManagementPolicies of this SecretBackendRootCert.
-func (mg *SecretBackendRootCert) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *SecretBackendRootCert) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this SecretBackendRootCert.
-func (mg *SecretBackendRootCert) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+func (mg *SecretBackendRootCert) GetProviderConfigReference() *xpv2.ProviderConfigReference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this SecretBackendRootCert.
-func (mg *SecretBackendRootCert) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+func (mg *SecretBackendRootCert) GetWriteConnectionSecretToReference() *xpv2.LocalSecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this SecretBackendRootCert.
-func (mg *SecretBackendRootCert) SetConditions(c ...xpv1.Condition) {
+func (mg *SecretBackendRootCert) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetManagementPolicies of this SecretBackendRootCert.
-func (mg *SecretBackendRootCert) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *SecretBackendRootCert) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this SecretBackendRootCert.
-func (mg *SecretBackendRootCert) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+func (mg *SecretBackendRootCert) SetProviderConfigReference(r *xpv2.ProviderConfigReference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this SecretBackendRootCert.
-func (mg *SecretBackendRootCert) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+func (mg *SecretBackendRootCert) SetWriteConnectionSecretToReference(r *xpv2.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this SecretBackendRootSignIntermediate.
-func (mg *SecretBackendRootSignIntermediate) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *SecretBackendRootSignIntermediate) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetManagementPolicies of this SecretBackendRootSignIntermediate.
-func (mg *SecretBackendRootSignIntermediate) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *SecretBackendRootSignIntermediate) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this SecretBackendRootSignIntermediate.
-func (mg *SecretBackendRootSignIntermediate) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+func (mg *SecretBackendRootSignIntermediate) GetProviderConfigReference() *xpv2.ProviderConfigReference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this SecretBackendRootSignIntermediate.
-func (mg *SecretBackendRootSignIntermediate) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+func (mg *SecretBackendRootSignIntermediate) GetWriteConnectionSecretToReference() *xpv2.LocalSecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this SecretBackendRootSignIntermediate.
-func (mg *SecretBackendRootSignIntermediate) SetConditions(c ...xpv1.Condition) {
+func (mg *SecretBackendRootSignIntermediate) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetManagementPolicies of this SecretBackendRootSignIntermediate.
-func (mg *SecretBackendRootSignIntermediate) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *SecretBackendRootSignIntermediate) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this SecretBackendRootSignIntermediate.
-func (mg *SecretBackendRootSignIntermediate) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+func (mg *SecretBackendRootSignIntermediate) SetProviderConfigReference(r *xpv2.ProviderConfigReference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this SecretBackendRootSignIntermediate.
-func (mg *SecretBackendRootSignIntermediate) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+func (mg *SecretBackendRootSignIntermediate) SetWriteConnectionSecretToReference(r *xpv2.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this SecretBackendSign.
-func (mg *SecretBackendSign) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *SecretBackendSign) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetManagementPolicies of this SecretBackendSign.
-func (mg *SecretBackendSign) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *SecretBackendSign) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this SecretBackendSign.
-func (mg *SecretBackendSign) GetProviderConfigReference() *xpv1.ProviderConfigReference {
+func (mg *SecretBackendSign) GetProviderConfigReference() *xpv2.ProviderConfigReference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this SecretBackendSign.
-func (mg *SecretBackendSign) GetWriteConnectionSecretToReference() *xpv1.LocalSecretReference {
+func (mg *SecretBackendSign) GetWriteConnectionSecretToReference() *xpv2.LocalSecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this SecretBackendSign.
-func (mg *SecretBackendSign) SetConditions(c ...xpv1.Condition) {
+func (mg *SecretBackendSign) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetManagementPolicies of this SecretBackendSign.
-func (mg *SecretBackendSign) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *SecretBackendSign) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this SecretBackendSign.
-func (mg *SecretBackendSign) SetProviderConfigReference(r *xpv1.ProviderConfigReference) {
+func (mg *SecretBackendSign) SetProviderConfigReference(r *xpv2.ProviderConfigReference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this SecretBackendSign.
-func (mg *SecretBackendSign) SetWriteConnectionSecretToReference(r *xpv1.LocalSecretReference) {
+func (mg *SecretBackendSign) SetWriteConnectionSecretToReference(r *xpv2.LocalSecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }

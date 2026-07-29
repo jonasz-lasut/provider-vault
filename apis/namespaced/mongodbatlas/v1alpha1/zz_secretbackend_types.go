@@ -10,8 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
-	v2 "github.com/crossplane/crossplane-runtime/v2/apis/common/v2"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type SecretBackendInitParameters struct {
@@ -24,11 +23,11 @@ type SecretBackendInitParameters struct {
 
 	// Reference to a Mount in vault to populate mount.
 	// +kubebuilder:validation:Optional
-	MountRef *v1.NamespacedReference `json:"mountRef,omitempty" tf:"-"`
+	MountRef *v2.NamespacedReference `json:"mountRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate mount.
 	// +kubebuilder:validation:Optional
-	MountSelector *v1.NamespacedSelector `json:"mountSelector,omitempty" tf:"-"`
+	MountSelector *v2.NamespacedSelector `json:"mountSelector,omitempty" tf:"-"`
 
 	// The namespace to provision the resource in.
 	// The value should not contain leading or trailing forward slashes.
@@ -40,12 +39,12 @@ type SecretBackendInitParameters struct {
 	// Specifies the Private API Key used to authenticate with the MongoDB Atlas API. Mutually exclusive
 	// with private_key_wo. Consider using private_key_wo instead for enhanced security.
 	// The Private Programmatic API Key used to connect with MongoDB Atlas API
-	PrivateKeySecretRef *v1.LocalSecretKeySelector `json:"privateKeySecretRef,omitempty" tf:"-"`
+	PrivateKeySecretRef *v2.LocalSecretKeySelector `json:"privateKeySecretRef,omitempty" tf:"-"`
 
 	// Specifies the Private API Key used to authenticate with the MongoDB Atlas API.
 	// Mutually exclusive with private_key. Must be used with private_key_wo_version. To rotate the secret, update the value and increment private_key_wo_version.
 	// The Private Programmatic API Key used to connect with MongoDB Atlas API. This is a write-only field that is not stored in state.
-	PrivateKeyWoSecretRef *v1.LocalSecretKeySelector `json:"privateKeyWoSecretRef,omitempty" tf:"-"`
+	PrivateKeyWoSecretRef *v2.LocalSecretKeySelector `json:"privateKeyWoSecretRef,omitempty" tf:"-"`
 
 	// An incrementing version counter. Increment this value to force an update
 	// to the private key. Required when using private_key_wo.
@@ -95,11 +94,11 @@ type SecretBackendParameters struct {
 
 	// Reference to a Mount in vault to populate mount.
 	// +kubebuilder:validation:Optional
-	MountRef *v1.NamespacedReference `json:"mountRef,omitempty" tf:"-"`
+	MountRef *v2.NamespacedReference `json:"mountRef,omitempty" tf:"-"`
 
 	// Selector for a Mount in vault to populate mount.
 	// +kubebuilder:validation:Optional
-	MountSelector *v1.NamespacedSelector `json:"mountSelector,omitempty" tf:"-"`
+	MountSelector *v2.NamespacedSelector `json:"mountSelector,omitempty" tf:"-"`
 
 	// The namespace to provision the resource in.
 	// The value should not contain leading or trailing forward slashes.
@@ -113,13 +112,13 @@ type SecretBackendParameters struct {
 	// with private_key_wo. Consider using private_key_wo instead for enhanced security.
 	// The Private Programmatic API Key used to connect with MongoDB Atlas API
 	// +kubebuilder:validation:Optional
-	PrivateKeySecretRef *v1.LocalSecretKeySelector `json:"privateKeySecretRef,omitempty" tf:"-"`
+	PrivateKeySecretRef *v2.LocalSecretKeySelector `json:"privateKeySecretRef,omitempty" tf:"-"`
 
 	// Specifies the Private API Key used to authenticate with the MongoDB Atlas API.
 	// Mutually exclusive with private_key. Must be used with private_key_wo_version. To rotate the secret, update the value and increment private_key_wo_version.
 	// The Private Programmatic API Key used to connect with MongoDB Atlas API. This is a write-only field that is not stored in state.
 	// +kubebuilder:validation:Optional
-	PrivateKeyWoSecretRef *v1.LocalSecretKeySelector `json:"privateKeyWoSecretRef,omitempty" tf:"-"`
+	PrivateKeyWoSecretRef *v2.LocalSecretKeySelector `json:"privateKeyWoSecretRef,omitempty" tf:"-"`
 
 	// An incrementing version counter. Increment this value to force an update
 	// to the private key. Required when using private_key_wo.
@@ -152,8 +151,8 @@ type SecretBackendSpec struct {
 
 // SecretBackendStatus defines the observed state of SecretBackend.
 type SecretBackendStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        SecretBackendObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               SecretBackendObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

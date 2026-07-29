@@ -5,104 +5,104 @@ Copyright 2022 Upbound Inc.
 
 package v1alpha1
 
-import xpv1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+import xpv2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 
 // GetCondition of this Autopilot.
-func (mg *Autopilot) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *Autopilot) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetDeletionPolicy of this Autopilot.
-func (mg *Autopilot) GetDeletionPolicy() xpv1.DeletionPolicy {
+func (mg *Autopilot) GetDeletionPolicy() xpv2.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
 // GetManagementPolicies of this Autopilot.
-func (mg *Autopilot) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *Autopilot) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this Autopilot.
-func (mg *Autopilot) GetProviderConfigReference() *xpv1.Reference {
+func (mg *Autopilot) GetProviderConfigReference() *xpv2.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this Autopilot.
-func (mg *Autopilot) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+func (mg *Autopilot) GetWriteConnectionSecretToReference() *xpv2.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this Autopilot.
-func (mg *Autopilot) SetConditions(c ...xpv1.Condition) {
+func (mg *Autopilot) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetDeletionPolicy of this Autopilot.
-func (mg *Autopilot) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+func (mg *Autopilot) SetDeletionPolicy(r xpv2.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
 // SetManagementPolicies of this Autopilot.
-func (mg *Autopilot) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *Autopilot) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this Autopilot.
-func (mg *Autopilot) SetProviderConfigReference(r *xpv1.Reference) {
+func (mg *Autopilot) SetProviderConfigReference(r *xpv2.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this Autopilot.
-func (mg *Autopilot) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+func (mg *Autopilot) SetWriteConnectionSecretToReference(r *xpv2.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
 // GetCondition of this SnapshotAgentConfig.
-func (mg *SnapshotAgentConfig) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *SnapshotAgentConfig) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetDeletionPolicy of this SnapshotAgentConfig.
-func (mg *SnapshotAgentConfig) GetDeletionPolicy() xpv1.DeletionPolicy {
+func (mg *SnapshotAgentConfig) GetDeletionPolicy() xpv2.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
 // GetManagementPolicies of this SnapshotAgentConfig.
-func (mg *SnapshotAgentConfig) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *SnapshotAgentConfig) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this SnapshotAgentConfig.
-func (mg *SnapshotAgentConfig) GetProviderConfigReference() *xpv1.Reference {
+func (mg *SnapshotAgentConfig) GetProviderConfigReference() *xpv2.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this SnapshotAgentConfig.
-func (mg *SnapshotAgentConfig) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+func (mg *SnapshotAgentConfig) GetWriteConnectionSecretToReference() *xpv2.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this SnapshotAgentConfig.
-func (mg *SnapshotAgentConfig) SetConditions(c ...xpv1.Condition) {
+func (mg *SnapshotAgentConfig) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetDeletionPolicy of this SnapshotAgentConfig.
-func (mg *SnapshotAgentConfig) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+func (mg *SnapshotAgentConfig) SetDeletionPolicy(r xpv2.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
 // SetManagementPolicies of this SnapshotAgentConfig.
-func (mg *SnapshotAgentConfig) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *SnapshotAgentConfig) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this SnapshotAgentConfig.
-func (mg *SnapshotAgentConfig) SetProviderConfigReference(r *xpv1.Reference) {
+func (mg *SnapshotAgentConfig) SetProviderConfigReference(r *xpv2.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this SnapshotAgentConfig.
-func (mg *SnapshotAgentConfig) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+func (mg *SnapshotAgentConfig) SetWriteConnectionSecretToReference(r *xpv2.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }

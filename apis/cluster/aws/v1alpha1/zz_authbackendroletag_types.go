@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type AuthBackendRoleTagInitParameters struct {
@@ -28,11 +28,11 @@ type AuthBackendRoleTagInitParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// If set, only allows a single token to be granted per instance ID.
 	// Only allow a single token to be granted per instance ID.
@@ -67,11 +67,11 @@ type AuthBackendRoleTagInitParameters struct {
 
 	// Reference to a AuthBackendRole in aws to populate role.
 	// +kubebuilder:validation:Optional
-	RoleRef *v1.Reference `json:"roleRef,omitempty" tf:"-"`
+	RoleRef *v2.Reference `json:"roleRef,omitempty" tf:"-"`
 
 	// Selector for a AuthBackendRole in aws to populate role.
 	// +kubebuilder:validation:Optional
-	RoleSelector *v1.Selector `json:"roleSelector,omitempty" tf:"-"`
+	RoleSelector *v2.Selector `json:"roleSelector,omitempty" tf:"-"`
 }
 
 type AuthBackendRoleTagObservation struct {
@@ -140,11 +140,11 @@ type AuthBackendRoleTagParameters struct {
 
 	// Reference to a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendRef *v1.Reference `json:"backendRef,omitempty" tf:"-"`
+	BackendRef *v2.Reference `json:"backendRef,omitempty" tf:"-"`
 
 	// Selector for a Backend in auth to populate backend.
 	// +kubebuilder:validation:Optional
-	BackendSelector *v1.Selector `json:"backendSelector,omitempty" tf:"-"`
+	BackendSelector *v2.Selector `json:"backendSelector,omitempty" tf:"-"`
 
 	// If set, only allows a single token to be granted per instance ID.
 	// Only allow a single token to be granted per instance ID.
@@ -185,17 +185,17 @@ type AuthBackendRoleTagParameters struct {
 
 	// Reference to a AuthBackendRole in aws to populate role.
 	// +kubebuilder:validation:Optional
-	RoleRef *v1.Reference `json:"roleRef,omitempty" tf:"-"`
+	RoleRef *v2.Reference `json:"roleRef,omitempty" tf:"-"`
 
 	// Selector for a AuthBackendRole in aws to populate role.
 	// +kubebuilder:validation:Optional
-	RoleSelector *v1.Selector `json:"roleSelector,omitempty" tf:"-"`
+	RoleSelector *v2.Selector `json:"roleSelector,omitempty" tf:"-"`
 }
 
 // AuthBackendRoleTagSpec defines the desired state of AuthBackendRoleTag
 type AuthBackendRoleTagSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     AuthBackendRoleTagParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   AuthBackendRoleTagParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -211,8 +211,8 @@ type AuthBackendRoleTagSpec struct {
 
 // AuthBackendRoleTagStatus defines the observed state of AuthBackendRoleTag.
 type AuthBackendRoleTagStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        AuthBackendRoleTagObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               AuthBackendRoleTagObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

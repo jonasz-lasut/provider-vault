@@ -10,7 +10,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type OidcClientInitParameters struct {
@@ -28,11 +28,11 @@ type OidcClientInitParameters struct {
 
 	// References to OidcAssignment in identity to populate assignments.
 	// +kubebuilder:validation:Optional
-	AssignmentsRefs []v1.Reference `json:"assignmentsRefs,omitempty" tf:"-"`
+	AssignmentsRefs []v2.Reference `json:"assignmentsRefs,omitempty" tf:"-"`
 
 	// Selector for a list of OidcAssignment in identity to populate assignments.
 	// +kubebuilder:validation:Optional
-	AssignmentsSelector *v1.Selector `json:"assignmentsSelector,omitempty" tf:"-"`
+	AssignmentsSelector *v2.Selector `json:"assignmentsSelector,omitempty" tf:"-"`
 
 	// The client type based on its ability to maintain confidentiality of credentials.
 	// The following client types are supported: confidential, public. Defaults to confidential.
@@ -138,11 +138,11 @@ type OidcClientParameters struct {
 
 	// References to OidcAssignment in identity to populate assignments.
 	// +kubebuilder:validation:Optional
-	AssignmentsRefs []v1.Reference `json:"assignmentsRefs,omitempty" tf:"-"`
+	AssignmentsRefs []v2.Reference `json:"assignmentsRefs,omitempty" tf:"-"`
 
 	// Selector for a list of OidcAssignment in identity to populate assignments.
 	// +kubebuilder:validation:Optional
-	AssignmentsSelector *v1.Selector `json:"assignmentsSelector,omitempty" tf:"-"`
+	AssignmentsSelector *v2.Selector `json:"assignmentsSelector,omitempty" tf:"-"`
 
 	// The client type based on its ability to maintain confidentiality of credentials.
 	// The following client types are supported: confidential, public. Defaults to confidential.
@@ -187,8 +187,8 @@ type OidcClientParameters struct {
 
 // OidcClientSpec defines the desired state of OidcClient
 type OidcClientSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     OidcClientParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   OidcClientParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -204,8 +204,8 @@ type OidcClientSpec struct {
 
 // OidcClientStatus defines the observed state of OidcClient.
 type OidcClientStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        OidcClientObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               OidcClientObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

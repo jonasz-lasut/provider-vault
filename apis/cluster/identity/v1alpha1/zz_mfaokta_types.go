@@ -10,14 +10,14 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	v1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+	v2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 )
 
 type MfaOktaInitParameters struct {
 
 	// Okta API token.
 	// Okta API token.
-	APITokenSecretRef v1.SecretKeySelector `json:"apiTokenSecretRef" tf:"-"`
+	APITokenSecretRef v2.SecretKeySelector `json:"apiTokenSecretRef" tf:"-"`
 
 	// The base domain to use for API requests.
 	// The base domain to use for API requests.
@@ -97,7 +97,7 @@ type MfaOktaParameters struct {
 	// Okta API token.
 	// Okta API token.
 	// +kubebuilder:validation:Optional
-	APITokenSecretRef v1.SecretKeySelector `json:"apiTokenSecretRef" tf:"-"`
+	APITokenSecretRef v2.SecretKeySelector `json:"apiTokenSecretRef" tf:"-"`
 
 	// The base domain to use for API requests.
 	// The base domain to use for API requests.
@@ -127,8 +127,8 @@ type MfaOktaParameters struct {
 
 // MfaOktaSpec defines the desired state of MfaOkta
 type MfaOktaSpec struct {
-	v1.ResourceSpec `json:",inline"`
-	ForProvider     MfaOktaParameters `json:"forProvider"`
+	v2.ClusterManagedResourceSpec `json:",inline"`
+	ForProvider                   MfaOktaParameters `json:"forProvider"`
 	// THIS IS A BETA FIELD. It will be honored
 	// unless the Management Policies feature flag is disabled.
 	// InitProvider holds the same fields as ForProvider, with the exception
@@ -144,8 +144,8 @@ type MfaOktaSpec struct {
 
 // MfaOktaStatus defines the observed state of MfaOkta.
 type MfaOktaStatus struct {
-	v1.ResourceStatus `json:",inline"`
-	AtProvider        MfaOktaObservation `json:"atProvider,omitempty"`
+	v2.ManagedResourceStatus `json:",inline"`
+	AtProvider               MfaOktaObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true

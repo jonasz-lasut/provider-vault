@@ -5,54 +5,54 @@ Copyright 2022 Upbound Inc.
 
 package v1alpha1
 
-import xpv1 "github.com/crossplane/crossplane-runtime/v2/apis/common/v1"
+import xpv2 "github.com/crossplane/crossplane/apis/v2/core/v2"
 
 // GetCondition of this Backend.
-func (mg *Backend) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+func (mg *Backend) GetCondition(ct xpv2.ConditionType) xpv2.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
 // GetDeletionPolicy of this Backend.
-func (mg *Backend) GetDeletionPolicy() xpv1.DeletionPolicy {
+func (mg *Backend) GetDeletionPolicy() xpv2.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
 // GetManagementPolicies of this Backend.
-func (mg *Backend) GetManagementPolicies() xpv1.ManagementPolicies {
+func (mg *Backend) GetManagementPolicies() xpv2.ManagementPolicies {
 	return mg.Spec.ManagementPolicies
 }
 
 // GetProviderConfigReference of this Backend.
-func (mg *Backend) GetProviderConfigReference() *xpv1.Reference {
+func (mg *Backend) GetProviderConfigReference() *xpv2.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 // GetWriteConnectionSecretToReference of this Backend.
-func (mg *Backend) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+func (mg *Backend) GetWriteConnectionSecretToReference() *xpv2.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
 // SetConditions of this Backend.
-func (mg *Backend) SetConditions(c ...xpv1.Condition) {
+func (mg *Backend) SetConditions(c ...xpv2.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
 // SetDeletionPolicy of this Backend.
-func (mg *Backend) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+func (mg *Backend) SetDeletionPolicy(r xpv2.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
 // SetManagementPolicies of this Backend.
-func (mg *Backend) SetManagementPolicies(r xpv1.ManagementPolicies) {
+func (mg *Backend) SetManagementPolicies(r xpv2.ManagementPolicies) {
 	mg.Spec.ManagementPolicies = r
 }
 
 // SetProviderConfigReference of this Backend.
-func (mg *Backend) SetProviderConfigReference(r *xpv1.Reference) {
+func (mg *Backend) SetProviderConfigReference(r *xpv2.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 // SetWriteConnectionSecretToReference of this Backend.
-func (mg *Backend) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+func (mg *Backend) SetWriteConnectionSecretToReference(r *xpv2.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
