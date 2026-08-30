@@ -33,34 +33,35 @@ const (
 
 	// optional provider arguments
 	// remove options that we do not yet want to implement
-	keyAddAddressToEnv      = "add_address_to_env"
-	keyToken                = "token"
-	keyTokenName            = "token_name"
-	keyCaCertFile           = "ca_cert_file"
-	keyCaCertDir            = "ca_cert_dir"
-	keyAuthLoginUserpass    = "auth_login_userpath"
-	keyAuthLoginAWS         = "auth_login_aws"
-	keyAuthLoginCert        = "auth_login_cert"
-	keyAuthLoginGCP         = "auth_login_gcp"
-	keyAuthLoginKerberos    = "auth_login_kerberos"
-	keyAuthLoginRadius      = "auth_login_radius"
-	keyAuthLoginOCI         = "auth_login_oci"
-	keyAuthLoginOIDC        = "auth_login_oidc"
-	keyAuthLoginJWT         = "auth_login_jwt"
-	keyAuthLoginAzure       = "auth_login_azure"
-	keyAuthLogin            = "auth_login"
-	keyClientAuth           = "client_auth"
-	keySkipTLSVerify        = "skip_tls_verify"
-	keyTLSServerName        = "tls_server_name"
-	keySkipChildToken       = "skip_child_token"
-	keyMaxLeaseTTLSeconds   = "max_lease_ttl_seconds"
-	keyMaxRetries           = "max_retries"
-	keyMaxRetriesCcc        = "max_retries_ccc"
-	keyNamespace            = "namespace"
-	keySkipGetVaultVersion  = "skip_get_vault_version"
-	keyVaultVersionOverride = "vault_version_override"
-	keyHeaders              = "headers"
-	keyRole                 = "role"
+	keyAddAddressToEnv       = "add_address_to_env"
+	keyToken                 = "token"
+	keyTokenName             = "token_name"
+	keyCaCertFile            = "ca_cert_file"
+	keyCaCertDir             = "ca_cert_dir"
+	keyAuthLoginUserpass     = "auth_login_userpath"
+	keyAuthLoginAWS          = "auth_login_aws"
+	keyAuthLoginCert         = "auth_login_cert"
+	keyAuthLoginGCP          = "auth_login_gcp"
+	keyAuthLoginKerberos     = "auth_login_kerberos"
+	keyAuthLoginRadius       = "auth_login_radius"
+	keyAuthLoginOCI          = "auth_login_oci"
+	keyAuthLoginOIDC         = "auth_login_oidc"
+	keyAuthLoginJWT          = "auth_login_jwt"
+	keyAuthLoginAzure        = "auth_login_azure"
+	keyAuthLogin             = "auth_login"
+	keyClientAuth            = "client_auth"
+	keySkipTLSVerify         = "skip_tls_verify"
+	keyTLSServerName         = "tls_server_name"
+	keySkipChildToken        = "skip_child_token"
+	keyMaxLeaseTTLSeconds    = "max_lease_ttl_seconds"
+	keyMaxRetries            = "max_retries"
+	keyMaxRetriesCcc         = "max_retries_ccc"
+	keyNamespace             = "namespace"
+	keySkipGetVaultVersion   = "skip_get_vault_version"
+	keySetNamespaceFromToken = "set_namespace_from_token"
+	keyVaultVersionOverride  = "vault_version_override"
+	keyHeaders               = "headers"
+	keyRole                  = "role"
 
 	// error messages
 	errNoProviderConfig      = "no providerConfigRef provided"
@@ -89,32 +90,7 @@ func TerraformSetupBuilder(tfProvider *schema.Provider) terraform.SetupFn {
 			return terraform.Setup{}, err
 		}
 
-		// set provider configuration
-		ps.Configuration = map[string]any{}
-
-		// Assign mandatory address parameter
-		ps.Configuration[keyAddress] = pcSpec.Address
-
-		// Assign optional parameters
-		ps.Configuration[keyAddAddressToEnv] = pcSpec.AddAddressToEnv
-		ps.Configuration[keySkipTLSVerify] = pcSpec.SkipTLSVerify
-		if len(pcSpec.TLSServerName) > 0 {
-			ps.Configuration[keyTLSServerName] = pcSpec.TLSServerName
-		}
-		ps.Configuration[keySkipChildToken] = pcSpec.SkipChildToken
-		ps.Configuration[keyMaxLeaseTTLSeconds] = pcSpec.MaxLeaseTTLSeconds
-		ps.Configuration[keyMaxRetries] = pcSpec.MaxRetries
-		ps.Configuration[keyMaxRetriesCcc] = pcSpec.MaxRetriesCcc
-		if len(pcSpec.Namespace) > 0 {
-			ps.Configuration[keyNamespace] = pcSpec.Namespace
-		}
-		ps.Configuration[keySkipGetVaultVersion] = pcSpec.SkipGetVaultVersion
-		if len(pcSpec.VaultVersionOverride) > 0 {
-			ps.Configuration[keyVaultVersionOverride] = pcSpec.VaultVersionOverride
-		}
-		if pcSpec.Headers != (namespacedv1beta1.ProviderHeaders{}) {
-			ps.Configuration[keyHeaders] = pcSpec.Headers
-		}
+		setProviderConfiguration(pcSpec, &ps)
 
 		switch pcSpec.Credentials.Source { //nolint:exhaustive
 		case credentialsSourceKubernetes:
@@ -131,6 +107,47 @@ func TerraformSetupBuilder(tfProvider *schema.Provider) terraform.SetupFn {
 			configureNoForkVaultClient(ctx, &ps, *tfProvider),
 			"failed to configure the no-fork Vault client",
 		)
+	}
+}
+
+// setProviderConfiguration translates a ProviderConfig spec into the Terraform
+// provider configuration that schema.Provider.Configure consumes.
+//
+// A field is only written when the user actually set it, unless the Terraform
+// provider's own default is the Go zero value. Writing a zero value for an
+// unset field is not harmless: it is indistinguishable from the user asking
+// for it, so it silently overrides any non-zero default the Terraform provider
+// documents.
+func setProviderConfiguration(pcSpec *namespacedv1beta1.ProviderConfigSpec, ps *terraform.Setup) {
+	ps.Configuration = map[string]any{}
+
+	// Assign mandatory address parameter
+	ps.Configuration[keyAddress] = pcSpec.Address
+
+	// Assign optional parameters
+	ps.Configuration[keyAddAddressToEnv] = pcSpec.AddAddressToEnv
+	ps.Configuration[keySkipTLSVerify] = pcSpec.SkipTLSVerify
+	if len(pcSpec.TLSServerName) > 0 {
+		ps.Configuration[keyTLSServerName] = pcSpec.TLSServerName
+	}
+	ps.Configuration[keySkipChildToken] = pcSpec.SkipChildToken
+	ps.Configuration[keyMaxLeaseTTLSeconds] = pcSpec.MaxLeaseTTLSeconds
+	ps.Configuration[keyMaxRetries] = pcSpec.MaxRetries
+	ps.Configuration[keyMaxRetriesCcc] = pcSpec.MaxRetriesCcc
+	if len(pcSpec.Namespace) > 0 {
+		ps.Configuration[keyNamespace] = pcSpec.Namespace
+	}
+	ps.Configuration[keySkipGetVaultVersion] = pcSpec.SkipGetVaultVersion
+	// The Terraform provider defaults this one to true, so writing false for an
+	// unset field would silently flip that default.
+	if pcSpec.SetNamespaceFromToken != nil {
+		ps.Configuration[keySetNamespaceFromToken] = *pcSpec.SetNamespaceFromToken
+	}
+	if len(pcSpec.VaultVersionOverride) > 0 {
+		ps.Configuration[keyVaultVersionOverride] = pcSpec.VaultVersionOverride
+	}
+	if pcSpec.Headers != (namespacedv1beta1.ProviderHeaders{}) {
+		ps.Configuration[keyHeaders] = pcSpec.Headers
 	}
 }
 

@@ -76,6 +76,13 @@ type ProviderConfigSpec struct {
 	// +optional
 	SkipGetVaultVersion bool `json:"skip_get_vault_version,omitempty"`
 
+	// In the case where the Vault token is for a specific
+	// namespace and the provider namespace is not configured, use the
+	// token's namespace as the root namespace for all resources.
+	// Defaults to true when unset.
+	// +optional
+	SetNamespaceFromToken *bool `json:"set_namespace_from_token,omitempty"`
+
 	// Override the target Vault server semantic
 	// version. Normally the version is dynamically set
 	// from the /sys/seal-status API endpoint. In the case
