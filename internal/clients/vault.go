@@ -8,6 +8,7 @@ import (
 	"context"
 	"encoding/json"
 	"os"
+	"strconv"
 
 	"github.com/crossplane/crossplane-runtime/v2/pkg/resource"
 	"github.com/crossplane/upjet/v2/pkg/terraform"
@@ -124,22 +125,40 @@ func setProviderConfiguration(pcSpec *namespacedv1beta1.ProviderConfigSpec, ps *
 	// Assign mandatory address parameter
 	ps.Configuration[keyAddress] = pcSpec.Address
 
-	// Assign optional parameters
-	ps.Configuration[keyAddAddressToEnv] = pcSpec.AddAddressToEnv
-	ps.Configuration[keySkipTLSVerify] = pcSpec.SkipTLSVerify
+	// Assign optional parameters.
+	//
+	// The booleans below are pointers so that "unset" stays distinguishable
+	// from "set to false". Writing a key at all suppresses the Terraform
+	// provider's own fallback chain for that field, which is its VAULT_* or
+	// TERRAFORM_VAULT_* environment variable and then its documented default,
+	// so an unset field must leave the key absent.
+	//
+	// add_address_to_env is the odd one out: the Terraform provider declares it
+	// as a string and compares it against "true", so a Go bool reaches it as
+	// "1" or "0" and never matches. Format it explicitly.
+	if pcSpec.AddAddressToEnv != nil {
+		ps.Configuration[keyAddAddressToEnv] = strconv.FormatBool(*pcSpec.AddAddressToEnv)
+	}
+	if pcSpec.SkipTLSVerify != nil {
+		ps.Configuration[keySkipTLSVerify] = *pcSpec.SkipTLSVerify
+	}
 	if len(pcSpec.TLSServerName) > 0 {
 		ps.Configuration[keyTLSServerName] = pcSpec.TLSServerName
 	}
-	ps.Configuration[keySkipChildToken] = pcSpec.SkipChildToken
+	if pcSpec.SkipChildToken != nil {
+		ps.Configuration[keySkipChildToken] = *pcSpec.SkipChildToken
+	}
 	ps.Configuration[keyMaxLeaseTTLSeconds] = pcSpec.MaxLeaseTTLSeconds
 	ps.Configuration[keyMaxRetries] = pcSpec.MaxRetries
 	ps.Configuration[keyMaxRetriesCcc] = pcSpec.MaxRetriesCcc
 	if len(pcSpec.Namespace) > 0 {
 		ps.Configuration[keyNamespace] = pcSpec.Namespace
 	}
-	ps.Configuration[keySkipGetVaultVersion] = pcSpec.SkipGetVaultVersion
-	// The Terraform provider defaults this one to true, so writing false for an
-	// unset field would silently flip that default.
+	if pcSpec.SkipGetVaultVersion != nil {
+		ps.Configuration[keySkipGetVaultVersion] = *pcSpec.SkipGetVaultVersion
+	}
+	// set_namespace_from_token defaults to true, so writing false for an unset
+	// field would silently flip that default.
 	if pcSpec.SetNamespaceFromToken != nil {
 		ps.Configuration[keySetNamespaceFromToken] = *pcSpec.SetNamespaceFromToken
 	}
