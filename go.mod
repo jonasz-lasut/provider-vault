@@ -11,11 +11,13 @@ require (
 	github.com/crossplane/crossplane-tools v0.0.0-20260719180100-659f1dc036c5
 	github.com/crossplane/crossplane/apis/v2 v2.4.0
 	github.com/crossplane/upjet/v2 v2.4.1-0.20260728103920-4f6e6e10dff2
+	github.com/google/go-cmp v0.7.0
 	github.com/hashicorp/terraform-json v0.27.2
 	github.com/hashicorp/terraform-plugin-framework v1.19.0
 	github.com/hashicorp/terraform-plugin-go v0.31.0
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.40.0
 	github.com/hashicorp/terraform-provider-vault v1.9.1-0.20250709180749-dc098d37d2bc
+	github.com/hashicorp/vault/api v1.23.0
 	github.com/pkg/errors v0.9.1
 	google.golang.org/grpc v1.82.1
 	k8s.io/api v0.36.2
@@ -117,7 +119,6 @@ require (
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/certificate-transparency-go v1.3.3 // indirect
 	github.com/google/gnostic-models v0.7.1 // indirect
-	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/s2a-go v0.1.9 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/googleapis/enterprise-certificate-proxy v0.3.14 // indirect
@@ -169,7 +170,6 @@ require (
 	github.com/hashicorp/vault-plugin-auth-jwt v0.26.1 // indirect
 	github.com/hashicorp/vault-plugin-auth-kerberos v0.17.1 // indirect
 	github.com/hashicorp/vault-plugin-auth-oci v0.21.1 // indirect
-	github.com/hashicorp/vault/api v1.23.0 // indirect
 	github.com/hashicorp/vault/sdk v0.25.1 // indirect
 	github.com/hashicorp/yamux v0.1.2 // indirect
 	github.com/iancoleman/strcase v0.3.0 // indirect

@@ -21,9 +21,9 @@ type ProviderConfigSpec struct {
 	// If true the environment variable
 	// VAULT_ADDR in the Terraform process environment
 	// will be set to the value of the address argument
-	// from this provider. By default, this is false.
+	// from this provider. Defaults to false when left unset.
 	// +optional
-	AddAddressToEnv bool `json:"add_address_to_env,omitempty"`
+	AddAddressToEnv *bool `json:"add_address_to_env,omitempty"`
 
 	// Set this to true to disable verification
 	// of the Vault server's TLS certificate. This is
@@ -31,8 +31,9 @@ type ProviderConfigSpec struct {
 	// development environments, since it exposes the
 	// possibility that Terraform can be tricked into
 	// writing secrets to a server controlled by an intruder.
+	// When left unset, VAULT_SKIP_VERIFY applies, then false.
 	// +optional
-	SkipTLSVerify bool `json:"skip_tls_verify,omitempty"`
+	SkipTLSVerify *bool `json:"skip_tls_verify,omitempty"`
 
 	// Name to use as the SNI host when connecting
 	// via TLS.
@@ -46,8 +47,10 @@ type ProviderConfigSpec struct {
 	// in clear text. Only change this setting when the provided
 	// token cannot be permitted to create child tokens and there
 	// is no risk of exposure from the output of Terraform.
+	// When left unset, TERRAFORM_VAULT_SKIP_CHILD_TOKEN applies,
+	// then false.
 	// +optional
-	SkipChildToken bool `json:"skip_child_token,omitempty"`
+	SkipChildToken *bool `json:"skip_child_token,omitempty"`
 
 	// Used as the duration for the intermediate Vault
 	// token Terraform issues itself, which in turn limits the
@@ -72,9 +75,16 @@ type ProviderConfigSpec struct {
 
 	// Skip the dynamic fetching of the Vault server
 	// version. Set to true when the /sys/seal-status API
-	// endpoint is not available.
+	// endpoint is not available. Defaults to false when left unset.
 	// +optional
-	SkipGetVaultVersion bool `json:"skip_get_vault_version,omitempty"`
+	SkipGetVaultVersion *bool `json:"skip_get_vault_version,omitempty"`
+
+	// In the case where the Vault token is for a specific
+	// namespace and the provider namespace is not configured, use the
+	// token's namespace as the root namespace for all resources.
+	// Defaults to true when unset.
+	// +optional
+	SetNamespaceFromToken *bool `json:"set_namespace_from_token,omitempty"`
 
 	// Override the target Vault server semantic
 	// version. Normally the version is dynamically set
