@@ -10,4 +10,7 @@ package v1alpha1
 func (tr *PinnedVersion) Hub() {}
 
 // Hub marks this type as a conversion hub.
+func (tr *Plugin) Hub() {}
+
+// Hub marks this type as a conversion hub.
 func (tr *Runtime) Hub() {}

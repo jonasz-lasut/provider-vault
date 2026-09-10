@@ -79,7 +79,7 @@ spec:
                       Name of the plugin.
                     type: string
                   nameRef:
-                    description: Reference to a Plugin in vault to populate name.
+                    description: Reference to a Plugin in plugin to populate name.
                     properties:
                       name:
                         description: Name of the referenced object.
@@ -113,7 +113,7 @@ spec:
                     - name
                     type: object
                   nameSelector:
-                    description: Selector for a Plugin in vault to populate name.
+                    description: Selector for a Plugin in plugin to populate name.
                     properties:
                       matchControllerRef:
                         description: |-
@@ -158,7 +158,7 @@ spec:
                       Type of plugin; one of "auth", "secret", or "database".
                     type: string
                   typeRef:
-                    description: Reference to a Plugin in vault to populate type.
+                    description: Reference to a Plugin in plugin to populate type.
                     properties:
                       name:
                         description: Name of the referenced object.
@@ -192,7 +192,7 @@ spec:
                     - name
                     type: object
                   typeSelector:
-                    description: Selector for a Plugin in vault to populate type.
+                    description: Selector for a Plugin in plugin to populate type.
                     properties:
                       matchControllerRef:
                         description: |-
@@ -237,7 +237,7 @@ spec:
                       Semantic pinned plugin version.
                     type: string
                   versionRef:
-                    description: Reference to a Plugin in vault to populate version.
+                    description: Reference to a Plugin in plugin to populate version.
                     properties:
                       name:
                         description: Name of the referenced object.
@@ -271,7 +271,7 @@ spec:
                     - name
                     type: object
                   versionSelector:
-                    description: Selector for a Plugin in vault to populate version.
+                    description: Selector for a Plugin in plugin to populate version.
                     properties:
                       matchControllerRef:
                         description: |-
@@ -330,7 +330,7 @@ spec:
                       Name of the plugin.
                     type: string
                   nameRef:
-                    description: Reference to a Plugin in vault to populate name.
+                    description: Reference to a Plugin in plugin to populate name.
                     properties:
                       name:
                         description: Name of the referenced object.
@@ -364,7 +364,7 @@ spec:
                     - name
                     type: object
                   nameSelector:
-                    description: Selector for a Plugin in vault to populate name.
+                    description: Selector for a Plugin in plugin to populate name.
                     properties:
                       matchControllerRef:
                         description: |-
@@ -409,7 +409,7 @@ spec:
                       Type of plugin; one of "auth", "secret", or "database".
                     type: string
                   typeRef:
-                    description: Reference to a Plugin in vault to populate type.
+                    description: Reference to a Plugin in plugin to populate type.
                     properties:
                       name:
                         description: Name of the referenced object.
@@ -443,7 +443,7 @@ spec:
                     - name
                     type: object
                   typeSelector:
-                    description: Selector for a Plugin in vault to populate type.
+                    description: Selector for a Plugin in plugin to populate type.
                     properties:
                       matchControllerRef:
                         description: |-
@@ -488,7 +488,7 @@ spec:
                       Semantic pinned plugin version.
                     type: string
                   versionRef:
-                    description: Reference to a Plugin in vault to populate version.
+                    description: Reference to a Plugin in plugin to populate version.
                     properties:
                       name:
                         description: Name of the referenced object.
@@ -522,7 +522,7 @@ spec:
                     - name
                     type: object
                   versionSelector:
-                    description: Selector for a Plugin in vault to populate version.
+                    description: Selector for a Plugin in plugin to populate version.
                     properties:
                       matchControllerRef:
                         description: |-

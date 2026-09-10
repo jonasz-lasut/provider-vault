@@ -17,43 +17,43 @@ type PinnedVersionInitParameters struct {
 
 	// Name of the plugin.
 	// Name of the plugin.
-	// +crossplane:generate:reference:type=github.com/upbound/provider-vault/v4/apis/namespaced/vault/v1alpha1.Plugin
+	// +crossplane:generate:reference:type=github.com/upbound/provider-vault/v4/apis/namespaced/plugin/v1alpha1.Plugin
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath("name",false)
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
-	// Reference to a Plugin in vault to populate name.
+	// Reference to a Plugin in plugin to populate name.
 	// +kubebuilder:validation:Optional
 	NameRef *v2.NamespacedReference `json:"nameRef,omitempty" tf:"-"`
 
-	// Selector for a Plugin in vault to populate name.
+	// Selector for a Plugin in plugin to populate name.
 	// +kubebuilder:validation:Optional
 	NameSelector *v2.NamespacedSelector `json:"nameSelector,omitempty" tf:"-"`
 
 	// Type of plugin; one of "auth", "secret", or "database".
 	// Type of plugin; one of "auth", "secret", or "database".
-	// +crossplane:generate:reference:type=github.com/upbound/provider-vault/v4/apis/namespaced/vault/v1alpha1.Plugin
+	// +crossplane:generate:reference:type=github.com/upbound/provider-vault/v4/apis/namespaced/plugin/v1alpha1.Plugin
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath("type",false)
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
-	// Reference to a Plugin in vault to populate type.
+	// Reference to a Plugin in plugin to populate type.
 	// +kubebuilder:validation:Optional
 	TypeRef *v2.NamespacedReference `json:"typeRef,omitempty" tf:"-"`
 
-	// Selector for a Plugin in vault to populate type.
+	// Selector for a Plugin in plugin to populate type.
 	// +kubebuilder:validation:Optional
 	TypeSelector *v2.NamespacedSelector `json:"typeSelector,omitempty" tf:"-"`
 
 	// Semantic version of the plugin to pin.
 	// Semantic pinned plugin version.
-	// +crossplane:generate:reference:type=github.com/upbound/provider-vault/v4/apis/namespaced/vault/v1alpha1.Plugin
+	// +crossplane:generate:reference:type=github.com/upbound/provider-vault/v4/apis/namespaced/plugin/v1alpha1.Plugin
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath("version",false)
 	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 
-	// Reference to a Plugin in vault to populate version.
+	// Reference to a Plugin in plugin to populate version.
 	// +kubebuilder:validation:Optional
 	VersionRef *v2.NamespacedReference `json:"versionRef,omitempty" tf:"-"`
 
-	// Selector for a Plugin in vault to populate version.
+	// Selector for a Plugin in plugin to populate version.
 	// +kubebuilder:validation:Optional
 	VersionSelector *v2.NamespacedSelector `json:"versionSelector,omitempty" tf:"-"`
 }
@@ -78,46 +78,46 @@ type PinnedVersionParameters struct {
 
 	// Name of the plugin.
 	// Name of the plugin.
-	// +crossplane:generate:reference:type=github.com/upbound/provider-vault/v4/apis/namespaced/vault/v1alpha1.Plugin
+	// +crossplane:generate:reference:type=github.com/upbound/provider-vault/v4/apis/namespaced/plugin/v1alpha1.Plugin
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath("name",false)
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
-	// Reference to a Plugin in vault to populate name.
+	// Reference to a Plugin in plugin to populate name.
 	// +kubebuilder:validation:Optional
 	NameRef *v2.NamespacedReference `json:"nameRef,omitempty" tf:"-"`
 
-	// Selector for a Plugin in vault to populate name.
+	// Selector for a Plugin in plugin to populate name.
 	// +kubebuilder:validation:Optional
 	NameSelector *v2.NamespacedSelector `json:"nameSelector,omitempty" tf:"-"`
 
 	// Type of plugin; one of "auth", "secret", or "database".
 	// Type of plugin; one of "auth", "secret", or "database".
-	// +crossplane:generate:reference:type=github.com/upbound/provider-vault/v4/apis/namespaced/vault/v1alpha1.Plugin
+	// +crossplane:generate:reference:type=github.com/upbound/provider-vault/v4/apis/namespaced/plugin/v1alpha1.Plugin
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath("type",false)
 	// +kubebuilder:validation:Optional
 	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 
-	// Reference to a Plugin in vault to populate type.
+	// Reference to a Plugin in plugin to populate type.
 	// +kubebuilder:validation:Optional
 	TypeRef *v2.NamespacedReference `json:"typeRef,omitempty" tf:"-"`
 
-	// Selector for a Plugin in vault to populate type.
+	// Selector for a Plugin in plugin to populate type.
 	// +kubebuilder:validation:Optional
 	TypeSelector *v2.NamespacedSelector `json:"typeSelector,omitempty" tf:"-"`
 
 	// Semantic version of the plugin to pin.
 	// Semantic pinned plugin version.
-	// +crossplane:generate:reference:type=github.com/upbound/provider-vault/v4/apis/namespaced/vault/v1alpha1.Plugin
+	// +crossplane:generate:reference:type=github.com/upbound/provider-vault/v4/apis/namespaced/plugin/v1alpha1.Plugin
 	// +crossplane:generate:reference:extractor=github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath("version",false)
 	// +kubebuilder:validation:Optional
 	Version *string `json:"version,omitempty" tf:"version,omitempty"`
 
-	// Reference to a Plugin in vault to populate version.
+	// Reference to a Plugin in plugin to populate version.
 	// +kubebuilder:validation:Optional
 	VersionRef *v2.NamespacedReference `json:"versionRef,omitempty" tf:"-"`
 
-	// Selector for a Plugin in vault to populate version.
+	// Selector for a Plugin in plugin to populate version.
 	// +kubebuilder:validation:Optional
 	VersionSelector *v2.NamespacedSelector `json:"versionSelector,omitempty" tf:"-"`
 }

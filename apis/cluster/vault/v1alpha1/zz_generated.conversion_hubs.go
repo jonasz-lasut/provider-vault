@@ -13,9 +13,6 @@ func (tr *Audit) Hub() {}
 func (tr *Mount) Hub() {}
 
 // Hub marks this type as a conversion hub.
-func (tr *Plugin) Hub() {}
-
-// Hub marks this type as a conversion hub.
 func (tr *Policy) Hub() {}
 
 // Hub marks this type as a conversion hub.

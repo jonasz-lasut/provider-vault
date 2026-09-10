@@ -10,7 +10,6 @@ import (
 	reference "github.com/crossplane/crossplane-runtime/v2/pkg/reference"
 	resource "github.com/crossplane/upjet/v2/pkg/resource"
 	errors "github.com/pkg/errors"
-	v1alpha1 "github.com/upbound/provider-vault/v4/apis/namespaced/vault/v1alpha1"
 	client "sigs.k8s.io/controller-runtime/pkg/client"
 )
 
@@ -28,8 +27,8 @@ func (mg *PinnedVersion) ResolveReferences(ctx context.Context, c client.Reader)
 		Reference:    mg.Spec.ForProvider.NameRef,
 		Selector:     mg.Spec.ForProvider.NameSelector,
 		To: reference.To{
-			List:    &v1alpha1.PluginList{},
-			Managed: &v1alpha1.Plugin{},
+			List:    &PluginList{},
+			Managed: &Plugin{},
 		},
 	})
 	if err != nil {
@@ -45,8 +44,8 @@ func (mg *PinnedVersion) ResolveReferences(ctx context.Context, c client.Reader)
 		Reference:    mg.Spec.ForProvider.TypeRef,
 		Selector:     mg.Spec.ForProvider.TypeSelector,
 		To: reference.To{
-			List:    &v1alpha1.PluginList{},
-			Managed: &v1alpha1.Plugin{},
+			List:    &PluginList{},
+			Managed: &Plugin{},
 		},
 	})
 	if err != nil {
@@ -62,8 +61,8 @@ func (mg *PinnedVersion) ResolveReferences(ctx context.Context, c client.Reader)
 		Reference:    mg.Spec.ForProvider.VersionRef,
 		Selector:     mg.Spec.ForProvider.VersionSelector,
 		To: reference.To{
-			List:    &v1alpha1.PluginList{},
-			Managed: &v1alpha1.Plugin{},
+			List:    &PluginList{},
+			Managed: &Plugin{},
 		},
 	})
 	if err != nil {
@@ -79,8 +78,8 @@ func (mg *PinnedVersion) ResolveReferences(ctx context.Context, c client.Reader)
 		Reference:    mg.Spec.InitProvider.NameRef,
 		Selector:     mg.Spec.InitProvider.NameSelector,
 		To: reference.To{
-			List:    &v1alpha1.PluginList{},
-			Managed: &v1alpha1.Plugin{},
+			List:    &PluginList{},
+			Managed: &Plugin{},
 		},
 	})
 	if err != nil {
@@ -96,8 +95,8 @@ func (mg *PinnedVersion) ResolveReferences(ctx context.Context, c client.Reader)
 		Reference:    mg.Spec.InitProvider.TypeRef,
 		Selector:     mg.Spec.InitProvider.TypeSelector,
 		To: reference.To{
-			List:    &v1alpha1.PluginList{},
-			Managed: &v1alpha1.Plugin{},
+			List:    &PluginList{},
+			Managed: &Plugin{},
 		},
 	})
 	if err != nil {
@@ -113,8 +112,8 @@ func (mg *PinnedVersion) ResolveReferences(ctx context.Context, c client.Reader)
 		Reference:    mg.Spec.InitProvider.VersionRef,
 		Selector:     mg.Spec.InitProvider.VersionSelector,
 		To: reference.To{
-			List:    &v1alpha1.PluginList{},
-			Managed: &v1alpha1.Plugin{},
+			List:    &PluginList{},
+			Managed: &Plugin{},
 		},
 	})
 	if err != nil {

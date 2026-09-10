@@ -125,7 +125,6 @@ var ExternalNameConfigs = map[string]config.ExternalName{
 	"vault_quota_rate_limit":                             config.IdentifierFromProvider,
 	"vault_plugin":                                       config.IdentifierFromProvider,
 	"vault_plugin_pinned_version":                        config.IdentifierFromProvider,
-	"vault_plugin_runtime":                               config.IdentifierFromProvider,
 	"vault_rabbitmq_secret_backend":                      config.IdentifierFromProvider,
 	"vault_rabbitmq_secret_backend_role":                 config.IdentifierFromProvider,
 	"vault_raft_autopilot":                               config.IdentifierFromProvider,
@@ -148,6 +147,9 @@ var ExternalNameConfigs = map[string]config.ExternalName{
 
 var TerraformPluginFrameworkExternalNameConfigs = map[string]config.ExternalName{
 	"vault_password_policy": vaultPasswordPolicy(),
+	// The Vault API addresses a plugin runtime by "<type>/<name>", both of
+	// which are arguments, so the ID is known before the resource exists.
+	"vault_plugin_runtime": config.TemplatedStringAsIdentifier("", "{{ .parameters.type }}/{{ .parameters.name }}"),
 }
 
 // vaultPasswordPolicy returns the external name configuration for

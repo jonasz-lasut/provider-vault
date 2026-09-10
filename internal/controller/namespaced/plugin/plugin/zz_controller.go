@@ -21,7 +21,7 @@ import (
 	"github.com/pkg/errors"
 	ctrl "sigs.k8s.io/controller-runtime"
 
-	v1alpha1 "github.com/upbound/provider-vault/v4/apis/cluster/vault/v1alpha1"
+	v1alpha1 "github.com/upbound/provider-vault/v4/apis/namespaced/plugin/v1alpha1"
 	features "github.com/upbound/provider-vault/v4/internal/features"
 )
 

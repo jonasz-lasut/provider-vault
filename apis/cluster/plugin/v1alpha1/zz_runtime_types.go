@@ -30,11 +30,6 @@ type RuntimeInitParameters struct {
 	// Specifies memory limit to set per container in bytes.
 	MemoryBytes *float64 `json:"memoryBytes,omitempty" tf:"memory_bytes,omitempty"`
 
-	// The name of the plugin runtime.
-	// Changing this forces a new resource to be created.
-	// The name of the plugin runtime.
-	Name *string `json:"name,omitempty" tf:"name,omitempty"`
-
 	// The namespace to provision the resource in.
 	// The value should not contain leading or trailing forward slashes.
 	// The namespace is always relative to the provider's configured namespace.
@@ -51,11 +46,6 @@ type RuntimeInitParameters struct {
 	// Defaults to false. When set to true, enhances security by running containers without root privileges.
 	// Whether the container runtime is running as a non-privileged user.
 	Rootless *bool `json:"rootless,omitempty" tf:"rootless,omitempty"`
-
-	// The type of plugin runtime. Currently only container is supported.
-	// Changing this forces a new resource to be created.
-	// Specifies the plugin runtime type. Currently only `container` is supported.
-	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type RuntimeObservation struct {
@@ -129,8 +119,8 @@ type RuntimeParameters struct {
 	// The name of the plugin runtime.
 	// Changing this forces a new resource to be created.
 	// The name of the plugin runtime.
-	// +kubebuilder:validation:Optional
-	Name *string `json:"name,omitempty" tf:"name,omitempty"`
+	// +kubebuilder:validation:Required
+	Name *string `json:"name" tf:"name,omitempty"`
 
 	// The namespace to provision the resource in.
 	// The value should not contain leading or trailing forward slashes.
@@ -155,8 +145,8 @@ type RuntimeParameters struct {
 	// The type of plugin runtime. Currently only container is supported.
 	// Changing this forces a new resource to be created.
 	// Specifies the plugin runtime type. Currently only `container` is supported.
-	// +kubebuilder:validation:Optional
-	Type *string `json:"type,omitempty" tf:"type,omitempty"`
+	// +kubebuilder:validation:Required
+	Type *string `json:"type" tf:"type,omitempty"`
 }
 
 // RuntimeSpec defines the desired state of Runtime
@@ -195,10 +185,8 @@ type RuntimeStatus struct {
 type Runtime struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.name) || (has(self.initProvider) && has(self.initProvider.name))",message="spec.forProvider.name is a required parameter"
-	// +kubebuilder:validation:XValidation:rule="!('*' in self.managementPolicies || 'Create' in self.managementPolicies || 'Update' in self.managementPolicies) || has(self.forProvider.type) || (has(self.initProvider) && has(self.initProvider.type))",message="spec.forProvider.type is a required parameter"
-	Spec   RuntimeSpec   `json:"spec"`
-	Status RuntimeStatus `json:"status,omitempty"`
+	Spec              RuntimeSpec   `json:"spec"`
+	Status            RuntimeStatus `json:"status,omitempty"`
 }
 
 // +kubebuilder:object:root=true

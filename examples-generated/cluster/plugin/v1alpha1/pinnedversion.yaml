@@ -34,7 +34,7 @@ spec:
 
 ---
 
-apiVersion: vault.vault.upbound.io/v1alpha1
+apiVersion: plugin.vault.upbound.io/v1alpha1
 kind: Plugin
 metadata:
   annotations:
