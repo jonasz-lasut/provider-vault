@@ -110,6 +110,8 @@ import (
 	secretbackendrootcert "github.com/upbound/provider-vault/v4/internal/controller/cluster/pki/secretbackendrootcert"
 	secretbackendrootsignintermediate "github.com/upbound/provider-vault/v4/internal/controller/cluster/pki/secretbackendrootsignintermediate"
 	secretbackendsign "github.com/upbound/provider-vault/v4/internal/controller/cluster/pki/secretbackendsign"
+	pinnedversion "github.com/upbound/provider-vault/v4/internal/controller/cluster/plugin/pinnedversion"
+	runtime "github.com/upbound/provider-vault/v4/internal/controller/cluster/plugin/runtime"
 	providerconfig "github.com/upbound/provider-vault/v4/internal/controller/cluster/providerconfig"
 	leasecount "github.com/upbound/provider-vault/v4/internal/controller/cluster/quota/leasecount"
 	ratelimit "github.com/upbound/provider-vault/v4/internal/controller/cluster/quota/ratelimit"
@@ -131,6 +133,7 @@ import (
 	secretbackendkey "github.com/upbound/provider-vault/v4/internal/controller/cluster/transit/secretbackendkey"
 	audit "github.com/upbound/provider-vault/v4/internal/controller/cluster/vault/audit"
 	mount "github.com/upbound/provider-vault/v4/internal/controller/cluster/vault/mount"
+	plugin "github.com/upbound/provider-vault/v4/internal/controller/cluster/vault/plugin"
 	policyvault "github.com/upbound/provider-vault/v4/internal/controller/cluster/vault/policy"
 	token "github.com/upbound/provider-vault/v4/internal/controller/cluster/vault/token"
 	vaultnamespace "github.com/upbound/provider-vault/v4/internal/controller/cluster/vault/vaultnamespace"
@@ -241,6 +244,8 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		secretbackendrootcert.Setup,
 		secretbackendrootsignintermediate.Setup,
 		secretbackendsign.Setup,
+		pinnedversion.Setup,
+		runtime.Setup,
 		providerconfig.Setup,
 		leasecount.Setup,
 		ratelimit.Setup,
@@ -262,6 +267,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		secretbackendkey.Setup,
 		audit.Setup,
 		mount.Setup,
+		plugin.Setup,
 		policyvault.Setup,
 		token.Setup,
 		vaultnamespace.Setup,
@@ -378,6 +384,8 @@ func SetupGated(mgr ctrl.Manager, o controller.Options) error {
 		secretbackendrootcert.SetupGated,
 		secretbackendrootsignintermediate.SetupGated,
 		secretbackendsign.SetupGated,
+		pinnedversion.SetupGated,
+		runtime.SetupGated,
 		providerconfig.SetupGated,
 		leasecount.SetupGated,
 		ratelimit.SetupGated,
@@ -399,6 +407,7 @@ func SetupGated(mgr ctrl.Manager, o controller.Options) error {
 		secretbackendkey.SetupGated,
 		audit.SetupGated,
 		mount.SetupGated,
+		plugin.SetupGated,
 		policyvault.SetupGated,
 		token.SetupGated,
 		vaultnamespace.SetupGated,
